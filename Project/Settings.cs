@@ -24,6 +24,7 @@ namespace Project
                 Program.IF.WriteINI("ConnSett", "Adress", TBip.Text);
                 Program.IF.WriteINI("ConnSett", "DBname", TBdatabase.Text);
             }
+
         }
 
         private void SettingsForm_Load(object sender, EventArgs e)

@@ -54,6 +54,7 @@ namespace Project
                 //String query = "insert into test_p.rep values( '" + TB1.Text + "', " + " '" + TB2.Text + "' )";                
                 //MySqlCommand command = new MySqlCommand(query, conn); 
                 //command.ExecuteScalar();
+
                 if(conn.State == ConnectionState.Open)
                 {
                     ReportForm = new SendRepForm();
