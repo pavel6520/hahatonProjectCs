@@ -30,47 +30,49 @@
         {
             this.TBip = new System.Windows.Forms.TextBox();
             this.TBdatabase = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.LabelIP = new System.Windows.Forms.Label();
+            this.LabelBDname = new System.Windows.Forms.Label();
             this.BSave = new System.Windows.Forms.Button();
+            this.LabelPort = new System.Windows.Forms.Label();
+            this.TBport = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // TBip
             // 
-            this.TBip.Location = new System.Drawing.Point(108, 44);
+            this.TBip.Location = new System.Drawing.Point(116, 6);
             this.TBip.Name = "TBip";
-            this.TBip.Size = new System.Drawing.Size(96, 20);
+            this.TBip.Size = new System.Drawing.Size(156, 20);
             this.TBip.TabIndex = 0;
             // 
             // TBdatabase
             // 
             this.TBdatabase.AccessibleRole = System.Windows.Forms.AccessibleRole.Grip;
-            this.TBdatabase.Location = new System.Drawing.Point(108, 79);
+            this.TBdatabase.Location = new System.Drawing.Point(116, 58);
             this.TBdatabase.Name = "TBdatabase";
-            this.TBdatabase.Size = new System.Drawing.Size(96, 20);
+            this.TBdatabase.Size = new System.Drawing.Size(156, 20);
             this.TBdatabase.TabIndex = 1;
             // 
-            // label1
+            // LabelIP
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 47);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(98, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "IP-адрес сервера:";
+            this.LabelIP.AutoSize = true;
+            this.LabelIP.Location = new System.Drawing.Point(15, 9);
+            this.LabelIP.Name = "LabelIP";
+            this.LabelIP.Size = new System.Drawing.Size(98, 13);
+            this.LabelIP.TabIndex = 2;
+            this.LabelIP.Text = "IP-адрес сервера:";
             // 
-            // label2
+            // LabelBDname
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 82);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(101, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Имя базы данных:";
+            this.LabelBDname.AutoSize = true;
+            this.LabelBDname.Location = new System.Drawing.Point(9, 61);
+            this.LabelBDname.Name = "LabelBDname";
+            this.LabelBDname.Size = new System.Drawing.Size(101, 13);
+            this.LabelBDname.TabIndex = 3;
+            this.LabelBDname.Text = "Имя базы данных:";
             // 
             // BSave
             // 
-            this.BSave.Location = new System.Drawing.Point(91, 118);
+            this.BSave.Location = new System.Drawing.Point(106, 114);
             this.BSave.Name = "BSave";
             this.BSave.Size = new System.Drawing.Size(75, 23);
             this.BSave.TabIndex = 4;
@@ -78,18 +80,37 @@
             this.BSave.UseVisualStyleBackColor = true;
             this.BSave.Click += new System.EventHandler(this.BSave_Click);
             // 
+            // LabelPort
+            // 
+            this.LabelPort.AutoSize = true;
+            this.LabelPort.Location = new System.Drawing.Point(75, 35);
+            this.LabelPort.Name = "LabelPort";
+            this.LabelPort.Size = new System.Drawing.Size(35, 13);
+            this.LabelPort.TabIndex = 5;
+            this.LabelPort.Text = "Порт:";
+            // 
+            // TBport
+            // 
+            this.TBport.Location = new System.Drawing.Point(116, 32);
+            this.TBport.MaxLength = 5;
+            this.TBport.Name = "TBport";
+            this.TBport.Size = new System.Drawing.Size(39, 20);
+            this.TBport.TabIndex = 6;
+            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(259, 180);
+            this.ClientSize = new System.Drawing.Size(284, 161);
+            this.Controls.Add(this.TBport);
+            this.Controls.Add(this.LabelPort);
             this.Controls.Add(this.BSave);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.LabelBDname);
+            this.Controls.Add(this.LabelIP);
             this.Controls.Add(this.TBdatabase);
             this.Controls.Add(this.TBip);
             this.Name = "SettingsForm";
-            this.Text = "Settings";
+            this.Text = "Натройки";
             this.Load += new System.EventHandler(this.SettingsForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -100,8 +121,10 @@
 
         private System.Windows.Forms.TextBox TBip;
         private System.Windows.Forms.TextBox TBdatabase;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label LabelIP;
+        private System.Windows.Forms.Label LabelBDname;
         private System.Windows.Forms.Button BSave;
+        private System.Windows.Forms.Label LabelPort;
+        private System.Windows.Forms.TextBox TBport;
     }
 }

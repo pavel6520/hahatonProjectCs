@@ -5,6 +5,8 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.IO;
+using System.Net;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 namespace Project
@@ -12,8 +14,11 @@ namespace Project
     public partial class ConnectForm : Form
     {
         public MySqlConnection conn;
-        public SendRepForm ReportForm;
-        public SettingsForm SetForm;
+        private SendRepForm ReportForm;
+        private SettingsForm SetForm;
+        public string ConnectAdress;
+        public string ConnectPort;
+        public string NameDB;
 
         public ConnectForm()
         {
@@ -22,12 +27,38 @@ namespace Project
 
         private void ConnectForm_Load(object sender, EventArgs e)
         {
-            if(!Program.IF.KeyExists("ConnSett", "Adress") || !Program.IF.KeyExists("ConnSett", "DBname"))
+            while (true)//Проверка интернета
+            {
+                try
+                {
+                    // Create a request for the URL.        
+                    HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create("http://www.google.ru/");
+                    request.UserAgent = "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1)";
+                    request.Timeout = 10000;
+
+                    HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+                    Stream ReceiveStream1 = response.GetResponseStream();
+                    StreamReader sr = new StreamReader(ReceiveStream1, true);
+                    string responseFromServer = sr.ReadToEnd();
+
+                    response.Close();
+                    break;
+                }
+                catch (Exception)
+                {
+                    DialogResult = MessageBox.Show("Нет подключения к интернету\nПроверьте ваш фаервол или настройки сетевого подключения", "", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                    if(DialogResult == DialogResult.Cancel)
+                    {
+                        Environment.Exit(0);
+                    }
+                    continue;
+                }
+            }
+            if (!Program.IF.KeyExists("ConnSett", "Adress") || !Program.IF.KeyExists("ConnSett", "DBname") || !Program.IF.KeyExists("ConnSett", "Port"))//Проверка файла настроек
             {
                 SetForm = new SettingsForm();
                 this.Hide();
-                MessageBox.Show("Педор нахуя ты файл настроек дельнул?\n Ебись теперь все конем.\n" +
-                    "Вводи рукожопая тварь все заново");
+                MessageBox.Show("Первый запуск. Введите настройки.", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 SetForm.FormClosing += (obj, arg) =>
                 {
                     this.Show();
@@ -36,43 +67,66 @@ namespace Project
             }
         }
 
-        bool God(KeyPressEventArgs n, char c)
+        /*bool God(KeyPressEventArgs n, char c)
         {
             if (!(Char.IsDigit(n.KeyChar)) && n.KeyChar != 8)
                 return false;
             else return true;
-        }
+        }*/
 
         private void ButtonConnect_Click(object sender, EventArgs e)
         {
-            //if (TBLogin.Text != "" && TBPass.Text != "")
-            //{
-                //conn = new MySqlConnection("server=localhost;user=" + TBLogin.Text + ";database=project;password=" + TBPass.Text + ";");
-                conn = new MySqlConnection("server=localhost;user= root;database=project;password=121958;");
-                conn.Open();
-                //conn.ChangeDatabase("db");
-                //String query = "insert into test_p.rep values( '" + TB1.Text + "', " + " '" + TB2.Text + "' )";                
-                //MySqlCommand command = new MySqlCommand(query, conn); 
-                //command.ExecuteScalar();
-
-                if(conn.State == ConnectionState.Open)
+            try
+            {
+                if (TBLogin.Text != "" && TBPass.Text != "")
                 {
-                    ReportForm = new SendRepForm();
-                    this.Visible = false;
-                    ReportForm.Show();
+                    ConnectAdress = Program.IF.ReadINI("ConnSett", "Adress");
+                    NameDB = Program.IF.ReadINI("ConnSett", "DBname");
+                    ConnectPort = Program.IF.ReadINI("ConnSett", "Port");
+
+                    conn = new MySqlConnection("server=" + ConnectAdress + ";user=" + TBLogin.Text + ";database=" + NameDB + ";password=" + TBPass.Text + ";port=" + ConnectPort + ";");
+
+                    conn.Open();
+                    //conn.ChangeDatabase("db");
+
+                    //String query = "insert into test_p.rep values( '" + TB1.Text + "', " + " '" + TB2.Text + "' )";                
+                    //MySqlCommand command = new MySqlCommand(query, conn); 
+                    //command.ExecuteScalar();
+
+                    if (conn.State == ConnectionState.Open)
+                    {
+                        ReportForm = new SendRepForm();
+                        this.Hide();
+                        ReportForm.Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Не удалось подключится к базе данных. Проверьте настройки.", "Ошибка подключения", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
-            //}
+                else
+                {
+                    MessageBox.Show("Введите логин и пароль");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Не удалось подключится к базе данных. Проверьте настройки.\n" + ex, "Ошибка подключения", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SetForm = new SettingsForm();
-            this.Hide();
-            SetForm.FormClosing += (obj, arg) =>
-            {
-                this.Show();
-            };
-            SetForm.ShowDialog();
+            //if (TBLogin.Text != "" && TBPass.Text != "")
+            //{
+                SetForm = new SettingsForm();
+                this.Hide();
+                SetForm.FormClosing += (obj, arg) =>
+                {
+                    this.Show();
+                };
+                SetForm.ShowDialog();
+            //}
         }
 
     }
