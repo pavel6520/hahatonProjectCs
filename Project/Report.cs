@@ -164,7 +164,7 @@ namespace Project
             DateTime date = DateTime.Now;
             date = MC1.SelectionStart;
 
-            string query = "insert into reports value( ' " + TB2.Text + " ', ' " + date.ToString("yyyy.mm.dd") + " ', ' " + TB3.Text + " ', ' " +
+            string query = "insert into reports value( ' " + TB2.Text + " ', ' " + date.ToString("yyyy.MM.dd") + " ', ' " + TB3.Text + " ', ' " +
                 TB4.Text + " ', ' " + TB5.Text + " ', ' " + TB6.Text + " ', ' " + TB7.Text + " ', ' " + TB8.Text + " ', ' " + TB9.Text +
                 " ', ' " + TB10.Text + " ', ' " + TB11.Text + " ', ' " + TB12.Text + " ', ' " + TB13.Text + " ', ' " + TB14.Text +
                  " ', ' " + TB15.Text + " ', ' " + TB16.Text + " ', ' " + TB14.Text + " ' )";

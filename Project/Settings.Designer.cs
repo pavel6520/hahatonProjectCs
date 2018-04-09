@@ -50,7 +50,7 @@
             this.TBdatabase.Location = new System.Drawing.Point(116, 58);
             this.TBdatabase.Name = "TBdatabase";
             this.TBdatabase.Size = new System.Drawing.Size(156, 20);
-            this.TBdatabase.TabIndex = 1;
+            this.TBdatabase.TabIndex = 2;
             // 
             // LabelIP
             // 
@@ -75,7 +75,7 @@
             this.BSave.Location = new System.Drawing.Point(106, 114);
             this.BSave.Name = "BSave";
             this.BSave.Size = new System.Drawing.Size(75, 23);
-            this.BSave.TabIndex = 4;
+            this.BSave.TabIndex = 3;
             this.BSave.Text = "Сохранить";
             this.BSave.UseVisualStyleBackColor = true;
             this.BSave.Click += new System.EventHandler(this.BSave_Click);
@@ -95,7 +95,7 @@
             this.TBport.MaxLength = 5;
             this.TBport.Name = "TBport";
             this.TBport.Size = new System.Drawing.Size(39, 20);
-            this.TBport.TabIndex = 6;
+            this.TBport.TabIndex = 1;
             // 
             // SettingsForm
             // 
@@ -109,8 +109,10 @@
             this.Controls.Add(this.LabelIP);
             this.Controls.Add(this.TBdatabase);
             this.Controls.Add(this.TBip);
+            this.MaximizeBox = false;
             this.Name = "SettingsForm";
-            this.Text = "Натройки";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Настройки";
             this.Load += new System.EventHandler(this.SettingsForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

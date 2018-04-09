@@ -46,7 +46,7 @@ namespace Project
                 }
                 catch (Exception)
                 {
-                    DialogResult = MessageBox.Show("Нет подключения к интернету\nПроверьте ваш фаервол или настройки сетевого подключения", "", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                    DialogResult = MessageBox.Show("Нет подключения к интернету\nПроверьте Ваш фаервол или настройки сетевого подключения", "", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
                     if(DialogResult == DialogResult.Cancel)
                     {
                         Environment.Exit(0);
@@ -67,13 +67,6 @@ namespace Project
             }
         }
 
-        /*bool God(KeyPressEventArgs n, char c)
-        {
-            if (!(Char.IsDigit(n.KeyChar)) && n.KeyChar != 8)
-                return false;
-            else return true;
-        }*/
-
         private void ButtonConnect_Click(object sender, EventArgs e)
         {
             try
@@ -87,11 +80,6 @@ namespace Project
                     conn = new MySqlConnection("server=" + ConnectAdress + ";user=" + TBLogin.Text + ";database=" + NameDB + ";password=" + TBPass.Text + ";port=" + ConnectPort + ";");
 
                     conn.Open();
-                    //conn.ChangeDatabase("db");
-
-                    //String query = "insert into test_p.rep values( '" + TB1.Text + "', " + " '" + TB2.Text + "' )";                
-                    //MySqlCommand command = new MySqlCommand(query, conn); 
-                    //command.ExecuteScalar();
 
                     if (conn.State == ConnectionState.Open)
                     {
