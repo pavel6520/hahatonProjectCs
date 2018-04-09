@@ -19,6 +19,7 @@ namespace Project
         public string ConnectAdress;
         public string ConnectPort;
         public string NameDB;
+        public string login;
 
         public ConnectForm()
         {
@@ -83,6 +84,7 @@ namespace Project
 
                     if (conn.State == ConnectionState.Open)
                     {
+                        login = TBLogin.Text;
                         ReportForm = new SendRepForm();
                         this.Hide();
                         ReportForm.Show();
@@ -97,24 +99,20 @@ namespace Project
                     MessageBox.Show("Введите логин и пароль");
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show("Не удалось подключится к базе данных. Проверьте настройки.\n" + ex, "Ошибка подключения", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Не удалось подключится к базе данных. Проверьте настройки.\n", "Ошибка подключения", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //if (TBLogin.Text != "" && TBPass.Text != "")
-            //{
-                SetForm = new SettingsForm();
-                this.Hide();
-                SetForm.FormClosing += (obj, arg) =>
-                {
-                    this.Show();
-                };
-                SetForm.ShowDialog();
-            //}
+            SetForm = new SettingsForm();
+
+            SetForm.FormClosing += (obj, arg) =>
+            {
+            };
+            SetForm.ShowDialog();
         }
 
     }

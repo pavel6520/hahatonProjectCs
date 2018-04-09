@@ -126,6 +126,10 @@ namespace Project
 
             MTB1.Text = MC1.TodayDate.ToShortDateString();
 
+
+            CM_INN.SelectedIndex = 0;
+            CB1.SelectedIndex = 0;
+
             TB3.Show(); TB3.Text = "0";
             TB4.Show(); TB4.Text = "0";
             TB5.Show(); TB5.Text = "0.0";
@@ -137,10 +141,22 @@ namespace Project
             TB11.Hide(); TB11.Text = "0.0";
             TB12.Hide(); TB12.Text = "0";
             TB13.Hide(); TB13.Text = "0";
+            TB13.Hide(); TB13.Text = "0";
             TB14.Hide(); TB14.Text = "0.0";
             TB15.Hide(); TB15.Text = "0";
             TB16.Hide(); TB16.Text = "0";
             TB17.Hide(); TB17.Text = "0.0";
+            
+            MySqlCommand com = new MySqlCommand("select INN from project.login_inn where login = '" + Program.ConnectForm.login + "'", Program.ConnectForm.conn);
+            MySqlDataReader readed = com.ExecuteReader();
+            int count = 0;
+            while (readed.Read())
+            {
+                CM_INN.Items.Insert(count++, readed[0].ToString());
+            }
+
+            Program.ConnectForm.conn.Close();
+            
         }        
 
         private void MTB1_Click(object sender, EventArgs e)

@@ -60,6 +60,7 @@
             this.MTB1 = new System.Windows.Forms.MaskedTextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.MC1 = new System.Windows.Forms.MonthCalendar();
+            this.CM_INN = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -333,11 +334,22 @@
             this.MC1.TabIndex = 22;
             this.MC1.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.MC1_DateSelected);
             // 
+            // CM_INN
+            // 
+            this.CM_INN.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CM_INN.FormattingEnabled = true;
+            this.CM_INN.Location = new System.Drawing.Point(268, 48);
+            this.CM_INN.Name = "CM_INN";
+            this.CM_INN.Size = new System.Drawing.Size(122, 21);
+            this.CM_INN.TabIndex = 23;
+            // 
             // SendRepForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(643, 432);
+            this.Controls.Add(this.CM_INN);
             this.Controls.Add(this.MC1);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.MTB1);
@@ -361,7 +373,9 @@
             this.Controls.Add(this.TB2);
             this.Controls.Add(this.TB1);
             this.Controls.Add(this.groupBox1);
+            this.MaximizeBox = false;
             this.Name = "SendRepForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "  ";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form2_FormClosing);
             this.Load += new System.EventHandler(this.SendRepForm_Load);
@@ -407,5 +421,6 @@
         private System.Windows.Forms.MaskedTextBox MTB1;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.MonthCalendar MC1;
+        private System.Windows.Forms.ComboBox CM_INN;
     }
 }
