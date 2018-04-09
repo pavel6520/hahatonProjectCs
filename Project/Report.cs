@@ -13,6 +13,7 @@ namespace Project
 {
     public partial class SendRepForm : Form
     {
+        private string [][]inn_comp;
         public SendRepForm()
         {
             InitializeComponent();
@@ -115,7 +116,6 @@ namespace Project
                     TB16.Show();
                     TB17.Show();
                     break;
-
             }
 
         }
@@ -127,7 +127,6 @@ namespace Project
             MTB1.Text = MC1.TodayDate.ToShortDateString();
 
 
-            CM_INN.SelectedIndex = 0;
             CB1.SelectedIndex = 0;
 
             TB3.Show(); TB3.Text = "0";
@@ -146,16 +145,23 @@ namespace Project
             TB15.Hide(); TB15.Text = "0";
             TB16.Hide(); TB16.Text = "0";
             TB17.Hide(); TB17.Text = "0.0";
-            
-            MySqlCommand com = new MySqlCommand("select INN from project.login_inn where login = '" + Program.ConnectForm.login + "'", Program.ConnectForm.conn);
+
+            Program.ConnectForm.conn.Open();
+            MySqlCommand com = new MySqlCommand("select INN, comp_name from project.login_inn where login = '" + Program.ConnectForm.login + "'", Program.ConnectForm.conn);
             MySqlDataReader readed = com.ExecuteReader();
-            int count = 0;
+            int count = 1;
+            inn_comp = new string[1][];
             while (readed.Read())
             {
-                CM_INN.Items.Insert(count++, readed[0].ToString());
+                Array.Resize(ref inn_comp, count);
+                inn_comp[count - 1] = new string[2];
+                inn_comp[count - 1][0] = readed[0].ToString();
+                inn_comp[count - 1][1] = readed[1].ToString();
+                CM_INN.Items.Insert(count - 1, inn_comp[count - 1][0]);
+                count++;
             }
-
             Program.ConnectForm.conn.Close();
+            CM_INN.SelectedIndex = 0;
             
         }        
 
@@ -180,13 +186,20 @@ namespace Project
             DateTime date = DateTime.Now;
             date = MC1.SelectionStart;
 
-            string query = "insert into reports value( ' " + TB2.Text + " ', ' " + date.ToString("yyyy.MM.dd") + " ', ' " + TB3.Text + " ', ' " +
+
+
+            /*string query = "insert into reports value( ' " + TB2.Text + " ', ' " + date.ToString("yyyy.MM.dd") + " ', ' " + TB3.Text + " ', ' " +
                 TB4.Text + " ', ' " + TB5.Text + " ', ' " + TB6.Text + " ', ' " + TB7.Text + " ', ' " + TB8.Text + " ', ' " + TB9.Text +
                 " ', ' " + TB10.Text + " ', ' " + TB11.Text + " ', ' " + TB12.Text + " ', ' " + TB13.Text + " ', ' " + TB14.Text +
                  " ', ' " + TB15.Text + " ', ' " + TB16.Text + " ', ' " + TB14.Text + " ' )";
 
             MySqlCommand command = new MySqlCommand(query, Program.ConnectForm.conn);
-            command.ExecuteScalar();
+            command.ExecuteScalar();*/
+        }
+
+        private void CM_INN_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            TBcompName.Text = inn_comp[CM_INN.SelectedIndex][1];
         }
     }
 }

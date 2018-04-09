@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.TB1 = new System.Windows.Forms.TextBox();
-            this.TB2 = new System.Windows.Forms.TextBox();
             this.CB1 = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -61,22 +59,11 @@
             this.label10 = new System.Windows.Forms.Label();
             this.MC1 = new System.Windows.Forms.MonthCalendar();
             this.CM_INN = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.TBcompName = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // TB1
-            // 
-            this.TB1.Location = new System.Drawing.Point(141, 12);
-            this.TB1.Name = "TB1";
-            this.TB1.Size = new System.Drawing.Size(236, 20);
-            this.TB1.TabIndex = 0;
-            // 
-            // TB2
-            // 
-            this.TB2.Location = new System.Drawing.Point(141, 48);
-            this.TB2.Name = "TB2";
-            this.TB2.Size = new System.Drawing.Size(121, 20);
-            this.TB2.TabIndex = 1;
             // 
             // CB1
             // 
@@ -88,7 +75,7 @@
             "Центр кластерного развития",
             "Центр поддержки предпринимательства",
             "Центр экспорта"});
-            this.CB1.Location = new System.Drawing.Point(141, 85);
+            this.CB1.Location = new System.Drawing.Point(222, 93);
             this.CB1.Name = "CB1";
             this.CB1.Size = new System.Drawing.Size(236, 21);
             this.CB1.TabIndex = 2;
@@ -105,7 +92,7 @@
             this.groupBox1.Controls.Add(this.TB5);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Location = new System.Drawing.Point(101, 128);
+            this.groupBox1.Location = new System.Drawing.Point(100, 160);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(276, 119);
             this.groupBox1.TabIndex = 3;
@@ -190,7 +177,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 15);
+            this.label1.Location = new System.Drawing.Point(88, 44);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(128, 13);
             this.label1.TabIndex = 4;
@@ -199,7 +186,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(104, 51);
+            this.label2.Location = new System.Drawing.Point(182, 17);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(34, 13);
             this.label2.TabIndex = 5;
@@ -208,7 +195,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(23, 88);
+            this.label3.Location = new System.Drawing.Point(101, 96);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(115, 13);
             this.label3.TabIndex = 6;
@@ -216,91 +203,91 @@
             // 
             // TB6
             // 
-            this.TB6.Location = new System.Drawing.Point(383, 157);
+            this.TB6.Location = new System.Drawing.Point(382, 189);
             this.TB6.Name = "TB6";
             this.TB6.Size = new System.Drawing.Size(58, 20);
             this.TB6.TabIndex = 7;
             // 
             // TB7
             // 
-            this.TB7.Location = new System.Drawing.Point(383, 186);
+            this.TB7.Location = new System.Drawing.Point(382, 218);
             this.TB7.Name = "TB7";
             this.TB7.Size = new System.Drawing.Size(58, 20);
             this.TB7.TabIndex = 8;
             // 
             // TB8
             // 
-            this.TB8.Location = new System.Drawing.Point(383, 212);
+            this.TB8.Location = new System.Drawing.Point(382, 244);
             this.TB8.Name = "TB8";
             this.TB8.Size = new System.Drawing.Size(58, 20);
             this.TB8.TabIndex = 9;
             // 
             // TB9
             // 
-            this.TB9.Location = new System.Drawing.Point(447, 157);
+            this.TB9.Location = new System.Drawing.Point(446, 189);
             this.TB9.Name = "TB9";
             this.TB9.Size = new System.Drawing.Size(58, 20);
             this.TB9.TabIndex = 10;
             // 
             // TB10
             // 
-            this.TB10.Location = new System.Drawing.Point(447, 186);
+            this.TB10.Location = new System.Drawing.Point(446, 218);
             this.TB10.Name = "TB10";
             this.TB10.Size = new System.Drawing.Size(58, 20);
             this.TB10.TabIndex = 11;
             // 
             // TB11
             // 
-            this.TB11.Location = new System.Drawing.Point(447, 212);
+            this.TB11.Location = new System.Drawing.Point(446, 244);
             this.TB11.Name = "TB11";
             this.TB11.Size = new System.Drawing.Size(58, 20);
             this.TB11.TabIndex = 12;
             // 
             // TB12
             // 
-            this.TB12.Location = new System.Drawing.Point(511, 157);
+            this.TB12.Location = new System.Drawing.Point(510, 189);
             this.TB12.Name = "TB12";
             this.TB12.Size = new System.Drawing.Size(58, 20);
             this.TB12.TabIndex = 13;
             // 
             // TB13
             // 
-            this.TB13.Location = new System.Drawing.Point(511, 186);
+            this.TB13.Location = new System.Drawing.Point(510, 218);
             this.TB13.Name = "TB13";
             this.TB13.Size = new System.Drawing.Size(58, 20);
             this.TB13.TabIndex = 14;
             // 
             // TB14
             // 
-            this.TB14.Location = new System.Drawing.Point(511, 212);
+            this.TB14.Location = new System.Drawing.Point(510, 244);
             this.TB14.Name = "TB14";
             this.TB14.Size = new System.Drawing.Size(58, 20);
             this.TB14.TabIndex = 15;
             // 
             // TB15
             // 
-            this.TB15.Location = new System.Drawing.Point(575, 157);
+            this.TB15.Location = new System.Drawing.Point(574, 189);
             this.TB15.Name = "TB15";
             this.TB15.Size = new System.Drawing.Size(58, 20);
             this.TB15.TabIndex = 16;
             // 
             // TB16
             // 
-            this.TB16.Location = new System.Drawing.Point(575, 186);
+            this.TB16.Location = new System.Drawing.Point(574, 218);
             this.TB16.Name = "TB16";
             this.TB16.Size = new System.Drawing.Size(58, 20);
             this.TB16.TabIndex = 17;
             // 
             // TB17
             // 
-            this.TB17.Location = new System.Drawing.Point(575, 212);
+            this.TB17.Location = new System.Drawing.Point(574, 244);
             this.TB17.Name = "TB17";
             this.TB17.Size = new System.Drawing.Size(58, 20);
             this.TB17.TabIndex = 18;
             // 
             // Send
             // 
-            this.Send.Location = new System.Drawing.Point(47, 363);
+            this.Send.Location = new System.Drawing.Point(46, 395);
             this.Send.Name = "Send";
             this.Send.Size = new System.Drawing.Size(82, 23);
             this.Send.TabIndex = 19;
@@ -310,7 +297,7 @@
             // 
             // MTB1
             // 
-            this.MTB1.Location = new System.Drawing.Point(141, 263);
+            this.MTB1.Location = new System.Drawing.Point(140, 295);
             this.MTB1.Mask = "00/00/0000";
             this.MTB1.Name = "MTB1";
             this.MTB1.Size = new System.Drawing.Size(65, 20);
@@ -321,7 +308,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(66, 266);
+            this.label10.Location = new System.Drawing.Point(65, 298);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(72, 13);
             this.label10.TabIndex = 21;
@@ -329,7 +316,7 @@
             // 
             // MC1
             // 
-            this.MC1.Location = new System.Drawing.Point(213, 237);
+            this.MC1.Location = new System.Drawing.Point(212, 269);
             this.MC1.Name = "MC1";
             this.MC1.TabIndex = 22;
             this.MC1.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.MC1_DateSelected);
@@ -338,17 +325,44 @@
             // 
             this.CM_INN.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CM_INN.FormattingEnabled = true;
-            this.CM_INN.Location = new System.Drawing.Point(268, 48);
+            this.CM_INN.Location = new System.Drawing.Point(222, 14);
             this.CM_INN.Name = "CM_INN";
             this.CM_INN.Size = new System.Drawing.Size(122, 21);
             this.CM_INN.TabIndex = 23;
+            this.CM_INN.SelectedIndexChanged += new System.EventHandler(this.CM_INN_SelectedIndexChanged);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(12, 70);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(204, 13);
+            this.label11.TabIndex = 24;
+            this.label11.Text = "Общее кол-во созданых рабочих мест:";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(222, 67);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(59, 20);
+            this.textBox1.TabIndex = 25;
+            // 
+            // TBcompName
+            // 
+            this.TBcompName.Location = new System.Drawing.Point(222, 41);
+            this.TBcompName.Name = "TBcompName";
+            this.TBcompName.Size = new System.Drawing.Size(218, 20);
+            this.TBcompName.TabIndex = 26;
             // 
             // SendRepForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(643, 432);
+            this.ClientSize = new System.Drawing.Size(651, 470);
+            this.Controls.Add(this.TBcompName);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.label11);
             this.Controls.Add(this.CM_INN);
             this.Controls.Add(this.MC1);
             this.Controls.Add(this.label10);
@@ -370,8 +384,6 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.TB6);
             this.Controls.Add(this.CB1);
-            this.Controls.Add(this.TB2);
-            this.Controls.Add(this.TB1);
             this.Controls.Add(this.groupBox1);
             this.MaximizeBox = false;
             this.Name = "SendRepForm";
@@ -388,9 +400,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox TB1;
-        private System.Windows.Forms.TextBox TB2;
         private System.Windows.Forms.ComboBox CB1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox TB5;
@@ -422,5 +431,8 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.MonthCalendar MC1;
         private System.Windows.Forms.ComboBox CM_INN;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox TBcompName;
     }
 }

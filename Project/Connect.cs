@@ -87,6 +87,7 @@ namespace Project
                         login = TBLogin.Text;
                         ReportForm = new SendRepForm();
                         this.Hide();
+                        conn.Close();
                         ReportForm.Show();
                     }
                     else
