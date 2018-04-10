@@ -146,7 +146,7 @@ namespace Project
             TB16.Hide(); TB16.Text = "0";
             TB17.Hide(); TB17.Text = "0.0";
 
-            Program.ConnectForm.conn.Open();
+            //Program.ConnectForm.conn.Open();
             MySqlCommand com = new MySqlCommand("select INN, comp_name from project.login_inn where login = '" + Program.ConnectForm.login + "'", Program.ConnectForm.conn);
             MySqlDataReader readed = com.ExecuteReader();
             int count = 1;
