@@ -33,89 +33,89 @@ namespace Project
             {
 
                 case 0:
-                    TB.Show();
-                    TB4.Show();
-                    TB5.Show();
-                    TB6.Hide();
-                    TB7.Hide();
-                    TB8.Hide();
-                    TB9.Hide();
-                    TB10.Hide();
-                    TB11.Hide();
-                    TB12.Hide();
-                    TB13.Hide();
-                    TB14.Hide();
-                    TB15.Hide();
-                    TB16.Hide();
-                    TB17.Hide();
+                    TBFM1.Show();
+                    TBFM2.Show();
+                    TBFM3.Show();
+                    TBGF1.Hide();
+                    TBGF2.Hide();
+                    TBGF3.Hide();
+                    TBCKR1.Hide();
+                    TBCKR2.Hide();
+                    TBCKR3.Hide();
+                    TBCPP1.Hide();
+                    TBCPP2.Hide();
+                    TBCPP3.Hide();
+                    TBCE1.Hide();
+                    TBCE2.Hide();
+                    TBCE3.Hide();
                     break;
                 case 1:
-                    TB.Hide();
-                    TB4.Hide();
-                    TB5.Hide();
-                    TB6.Show();
-                    TB7.Show();
-                    TB8.Show();
-                    TB9.Hide();
-                    TB10.Hide();
-                    TB11.Hide();
-                    TB12.Hide();
-                    TB13.Hide();
-                    TB14.Hide();
-                    TB15.Hide();
-                    TB16.Hide();
-                    TB17.Hide();
+                    TBFM1.Hide();
+                    TBFM2.Hide();
+                    TBFM3.Hide();
+                    TBGF1.Show();
+                    TBGF2.Show();
+                    TBGF3.Show();
+                    TBCKR1.Hide();
+                    TBCKR2.Hide();
+                    TBCKR3.Hide();
+                    TBCPP1.Hide();
+                    TBCPP2.Hide();
+                    TBCPP3.Hide();
+                    TBCE1.Hide();
+                    TBCE2.Hide();
+                    TBCE3.Hide();
                     break;
                 case 2:
-                    TB.Hide();
-                    TB4.Hide();
-                    TB5.Hide();
-                    TB6.Hide();
-                    TB7.Hide();
-                    TB8.Hide();
-                    TB9.Show();
-                    TB10.Show();
-                    TB11.Show();
-                    TB12.Hide();
-                    TB13.Hide();
-                    TB14.Hide();
-                    TB15.Hide();
-                    TB16.Hide();
-                    TB17.Hide();
+                    TBFM1.Hide();
+                    TBFM2.Hide();
+                    TBFM3.Hide();
+                    TBGF1.Hide();
+                    TBGF2.Hide();
+                    TBGF3.Hide();
+                    TBCKR1.Show();
+                    TBCKR2.Show();
+                    TBCKR3.Show();
+                    TBCPP1.Hide();
+                    TBCPP2.Hide();
+                    TBCPP3.Hide();
+                    TBCE1.Hide();
+                    TBCE2.Hide();
+                    TBCE3.Hide();
                     break;
                 case 3:
-                    TB.Hide();
-                    TB4.Hide();
-                    TB5.Hide();
-                    TB6.Hide();
-                    TB7.Hide();
-                    TB8.Hide();
-                    TB9.Hide();
-                    TB10.Hide();
-                    TB11.Hide();
-                    TB12.Show();
-                    TB13.Show();
-                    TB14.Show();
-                    TB15.Hide();
-                    TB16.Hide();
-                    TB17.Hide();
+                    TBFM1.Hide();
+                    TBFM2.Hide();
+                    TBFM3.Hide();
+                    TBGF1.Hide();
+                    TBGF2.Hide();
+                    TBGF3.Hide();
+                    TBCKR1.Hide();
+                    TBCKR2.Hide();
+                    TBCKR3.Hide();
+                    TBCPP1.Show();
+                    TBCPP2.Show();
+                    TBCPP3.Show();
+                    TBCE1.Hide();
+                    TBCE2.Hide();
+                    TBCE3.Hide();
                     break;
                 case 4:
-                    TB.Hide();
-                    TB4.Hide();
-                    TB5.Hide();
-                    TB6.Hide();
-                    TB7.Hide();
-                    TB8.Hide();
-                    TB9.Hide();
-                    TB10.Hide();
-                    TB11.Hide();
-                    TB12.Hide();
-                    TB13.Hide();
-                    TB14.Hide();
-                    TB15.Show();
-                    TB16.Show();
-                    TB17.Show();
+                    TBFM1.Hide();
+                    TBFM2.Hide();
+                    TBFM3.Hide();
+                    TBGF1.Hide();
+                    TBGF2.Hide();
+                    TBGF3.Hide();
+                    TBCKR1.Hide();
+                    TBCKR2.Hide();
+                    TBCKR3.Hide();
+                    TBCPP1.Hide();
+                    TBCPP2.Hide();
+                    TBCPP3.Hide();
+                    TBCE1.Show();
+                    TBCE2.Show();
+                    TBCE3.Show();
                     break;
             }
 
@@ -130,22 +130,21 @@ namespace Project
 
             CB1.SelectedIndex = 0;
 
-            TB.Show(); TB.Text = "0";
-            TB4.Show(); TB4.Text = "0";
-            TB5.Show(); TB5.Text = "0.0";
-            TB6.Hide(); TB6.Text = "0";
-            TB7.Hide(); TB7.Text = "0";
-            TB8.Hide(); TB8.Text = "0.0";
-            TB9.Hide(); TB9.Text = "0";
-            TB10.Hide(); TB10.Text = "0";
-            TB11.Hide(); TB11.Text = "0.0";
-            TB12.Hide(); TB12.Text = "0";
-            TB13.Hide(); TB13.Text = "0";
-            TB13.Hide(); TB13.Text = "0";
-            TB14.Hide(); TB14.Text = "0.0";
-            TB15.Hide(); TB15.Text = "0";
-            TB16.Hide(); TB16.Text = "0";
-            TB17.Hide(); TB17.Text = "0.0";
+            TBFM1.Show(); TBFM1.Text = "0";
+            TBFM2.Show(); TBFM2.Text = "0";
+            TBFM3.Show(); TBFM3.Text = "0.0";
+            TBGF1.Hide(); TBGF1.Text = "0";
+            TBGF2.Hide(); TBGF2.Text = "0";
+            TBGF3.Hide(); TBGF3.Text = "0.0";
+            TBCKR1.Hide(); TBCKR1.Text = "0";
+            TBCKR2.Hide(); TBCKR2.Text = "0";
+            TBCKR3.Hide(); TBCKR3.Text = "0.0";
+            TBCPP1.Hide(); TBCPP1.Text = "0";
+            TBCPP2.Hide(); TBCPP2.Text = "0";
+            TBCPP3.Hide(); TBCPP3.Text = "0.0";
+            TBCE1.Hide(); TBCE1.Text = "0";
+            TBCE2.Hide(); TBCE2.Text = "0";
+            TBCE3.Hide(); TBCE3.Text = "0.0";
 
             //Program.ConnectForm.conn.Open();
             MySqlCommand com;
@@ -163,26 +162,27 @@ namespace Project
                     inn_comp[count - 1] = new string[2];
                     inn_comp[count - 1][0] = readed[0].ToString();
                     inn_comp[count - 1][1] = readed[1].ToString();
-                    CM_INN.Items.Insert(count - 1, inn_comp[count - 1][0]);
+                    CB_INN.Items.Insert(count - 1, inn_comp[count - 1][1]);
                     count++;
                 }
             }
-            catch (MySqlException)
+            catch (MySqlException ex)
             {
-                MessageBox.Show("Ошибка получения данных.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Ошибка получения данных.\n" + ex, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Environment.Exit(0);
             }
             Program.ConnectForm.conn.Close();
-            try
+            if (CB_INN.Items.Count == 0)
+            /*try
             {
                 CM_INN.SelectedIndex = 0;
             }
-            catch (ArgumentOutOfRangeException ex)
+            catch (ArgumentOutOfRangeException ex)*/
             {
-                MessageBox.Show("На ваш аккаунт не зарегистрировано ни одной компании.\nОбратитесь к администратору.\n" + ex, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("На ваш аккаунт не зарегистрировано ни одной компании.\nОбратитесь к администратору.\n"/* + ex*/, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Environment.Exit(0);
             }
-
+            CB_INN.SelectedIndex = 0;
         }        
 
         private void MTB1_Click(object sender, EventArgs e)
@@ -217,9 +217,9 @@ namespace Project
             command.ExecuteScalar();*/
         }
 
-        private void CM_INN_SelectedIndexChanged(object sender, EventArgs e)
+        private void CB_INN_SelectedIndexChanged(object sender, EventArgs e)
         {
-            TBcompName.Text = inn_comp[CM_INN.SelectedIndex][1];
+            TBcompName.Text = inn_comp[CB_INN.SelectedIndex][0];
         }
 
         private void TBcompName_TextChanged(object sender, EventArgs e)
