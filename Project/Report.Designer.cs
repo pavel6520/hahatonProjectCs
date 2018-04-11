@@ -35,7 +35,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.TB4 = new System.Windows.Forms.TextBox();
-            this.TB3 = new System.Windows.Forms.TextBox();
+            this.TB = new System.Windows.Forms.TextBox();
             this.TB5 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -88,7 +88,7 @@
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.TB4);
-            this.groupBox1.Controls.Add(this.TB3);
+            this.groupBox1.Controls.Add(this.TB);
             this.groupBox1.Controls.Add(this.TB5);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label9);
@@ -142,12 +142,12 @@
             this.TB4.Size = new System.Drawing.Size(58, 20);
             this.TB4.TabIndex = 1;
             // 
-            // TB3
+            // TB
             // 
-            this.TB3.Location = new System.Drawing.Point(170, 29);
-            this.TB3.Name = "TB3";
-            this.TB3.Size = new System.Drawing.Size(58, 20);
-            this.TB3.TabIndex = 0;
+            this.TB.Location = new System.Drawing.Point(170, 29);
+            this.TB.Name = "TB";
+            this.TB.Size = new System.Drawing.Size(58, 20);
+            this.TB.TabIndex = 0;
             // 
             // TB5
             // 
@@ -316,7 +316,7 @@
             // 
             // MC1
             // 
-            this.MC1.Location = new System.Drawing.Point(212, 269);
+            this.MC1.Location = new System.Drawing.Point(212, 295);
             this.MC1.Name = "MC1";
             this.MC1.TabIndex = 22;
             this.MC1.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.MC1_DateSelected);
@@ -353,6 +353,7 @@
             this.TBcompName.Name = "TBcompName";
             this.TBcompName.Size = new System.Drawing.Size(218, 20);
             this.TBcompName.TabIndex = 26;
+            this.TBcompName.TextChanged += new System.EventHandler(this.TBcompName_TextChanged);
             // 
             // SendRepForm
             // 
@@ -388,7 +389,7 @@
             this.MaximizeBox = false;
             this.Name = "SendRepForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "  ";
+            this.Text = "  Отчет";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form2_FormClosing);
             this.Load += new System.EventHandler(this.SendRepForm_Load);
             this.Click += new System.EventHandler(this.SendRepForm_Click);
@@ -404,7 +405,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox TB5;
         private System.Windows.Forms.TextBox TB4;
-        private System.Windows.Forms.TextBox TB3;
+        private System.Windows.Forms.TextBox TB;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;

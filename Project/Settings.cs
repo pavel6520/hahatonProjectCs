@@ -51,7 +51,7 @@ namespace Project
 
                 if (TBip.Text.Length != 0 && TBdatabase.Text.Length != 0 && TBport.Text.Length != 0)
             {
-                Program.IF.WriteINI("ConnSett", "Adress", TBip.Text);
+                Program.IF.WriteINI("ConnSett", "Address", TBip.Text);
                 Program.IF.WriteINI("ConnSett", "DBname", TBdatabase.Text);
                 Program.IF.WriteINI("ConnSett", "Port", TBport.Text);
                 this.Close();
@@ -64,9 +64,9 @@ namespace Project
 
         private void SettingsForm_Load(object sender, EventArgs e)
         {
-            if(Program.IF.KeyExists("ConnSett", "Adress"))
+            if(Program.IF.KeyExists("ConnSett", "Address"))
             {
-                TBip.Text = Program.IF.ReadINI("ConnSett", "Adress");
+                TBip.Text = Program.IF.ReadINI("ConnSett", "Address");
             }
             if (Program.IF.KeyExists("ConnSett", "DBname"))
             {

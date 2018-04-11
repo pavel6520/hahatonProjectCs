@@ -14,6 +14,7 @@ namespace Project
     public partial class SendRepForm : Form
     {
         private string [][]inn_comp;
+
         public SendRepForm()
         {
             InitializeComponent();
@@ -32,7 +33,7 @@ namespace Project
             {
 
                 case 0:
-                    TB3.Show();
+                    TB.Show();
                     TB4.Show();
                     TB5.Show();
                     TB6.Hide();
@@ -49,7 +50,7 @@ namespace Project
                     TB17.Hide();
                     break;
                 case 1:
-                    TB3.Hide();
+                    TB.Hide();
                     TB4.Hide();
                     TB5.Hide();
                     TB6.Show();
@@ -66,7 +67,7 @@ namespace Project
                     TB17.Hide();
                     break;
                 case 2:
-                    TB3.Hide();
+                    TB.Hide();
                     TB4.Hide();
                     TB5.Hide();
                     TB6.Hide();
@@ -83,7 +84,7 @@ namespace Project
                     TB17.Hide();
                     break;
                 case 3:
-                    TB3.Hide();
+                    TB.Hide();
                     TB4.Hide();
                     TB5.Hide();
                     TB6.Hide();
@@ -100,7 +101,7 @@ namespace Project
                     TB17.Hide();
                     break;
                 case 4:
-                    TB3.Hide();
+                    TB.Hide();
                     TB4.Hide();
                     TB5.Hide();
                     TB6.Hide();
@@ -129,7 +130,7 @@ namespace Project
 
             CB1.SelectedIndex = 0;
 
-            TB3.Show(); TB3.Text = "0";
+            TB.Show(); TB.Text = "0";
             TB4.Show(); TB4.Text = "0";
             TB5.Show(); TB5.Text = "0.0";
             TB6.Hide(); TB6.Text = "0";
@@ -147,22 +148,41 @@ namespace Project
             TB17.Hide(); TB17.Text = "0.0";
 
             //Program.ConnectForm.conn.Open();
-            MySqlCommand com = new MySqlCommand("select INN, comp_name from project.login_inn where login = '" + Program.ConnectForm.login + "'", Program.ConnectForm.conn);
-            MySqlDataReader readed = com.ExecuteReader();
-            int count = 1;
-            inn_comp = new string[1][];
-            while (readed.Read())
+            MySqlCommand com;
+            MySqlDataReader readed;
+            int count = 0;
+            try
             {
-                Array.Resize(ref inn_comp, count);
-                inn_comp[count - 1] = new string[2];
-                inn_comp[count - 1][0] = readed[0].ToString();
-                inn_comp[count - 1][1] = readed[1].ToString();
-                CM_INN.Items.Insert(count - 1, inn_comp[count - 1][0]);
-                count++;
+                com = new MySqlCommand("select INN, comp_name from project.login_inn where login = '" + Program.ConnectForm.login + "'", Program.ConnectForm.conn);
+                readed = com.ExecuteReader();
+                count = 1;
+                inn_comp = new string[1][];
+                while (readed.Read())
+                {
+                    Array.Resize(ref inn_comp, count);
+                    inn_comp[count - 1] = new string[2];
+                    inn_comp[count - 1][0] = readed[0].ToString();
+                    inn_comp[count - 1][1] = readed[1].ToString();
+                    CM_INN.Items.Insert(count - 1, inn_comp[count - 1][0]);
+                    count++;
+                }
+            }
+            catch (MySqlException)
+            {
+                MessageBox.Show("Ошибка получения данных.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Environment.Exit(0);
             }
             Program.ConnectForm.conn.Close();
-            CM_INN.SelectedIndex = 0;
-            
+            try
+            {
+                CM_INN.SelectedIndex = 0;
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                MessageBox.Show("На ваш аккаунт не зарегистрировано ни одной компании.\nОбратитесь к администратору.\n" + ex, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Environment.Exit(0);
+            }
+
         }        
 
         private void MTB1_Click(object sender, EventArgs e)
@@ -200,6 +220,11 @@ namespace Project
         private void CM_INN_SelectedIndexChanged(object sender, EventArgs e)
         {
             TBcompName.Text = inn_comp[CM_INN.SelectedIndex][1];
+        }
+
+        private void TBcompName_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

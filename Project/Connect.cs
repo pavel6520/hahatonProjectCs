@@ -16,7 +16,7 @@ namespace Project
         public MySqlConnection conn;
         private SendRepForm ReportForm;
         private SettingsForm SetForm;
-        public string ConnectAdress;
+        public string ConnectAddress;
         public string ConnectPort;
         public string NameDB;
         public string login;
@@ -47,7 +47,7 @@ namespace Project
                 }
                 catch (Exception)
                 {
-                    DialogResult = MessageBox.Show("Нет подключения к интернету\nПроверьте Ваш фаервол или настройки сетевого подключения", "", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                    DialogResult = MessageBox.Show("Проверьте Ваш фаервол или настройки сетевого подключения", "Нет подключения к интернету", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
                     if(DialogResult == DialogResult.Cancel)
                     {
                         Environment.Exit(0);
@@ -55,11 +55,11 @@ namespace Project
                     continue;
                 }
             }
-            if (!Program.IF.KeyExists("ConnSett", "Adress") || !Program.IF.KeyExists("ConnSett", "DBname") || !Program.IF.KeyExists("ConnSett", "Port"))//Проверка файла настроек
+            if (!Program.IF.KeyExists("ConnSett", "Address") || !Program.IF.KeyExists("ConnSett", "DBname") || !Program.IF.KeyExists("ConnSett", "Port"))//Проверка файла настроек
             {
                 SetForm = new SettingsForm();
                 this.Hide();
-                MessageBox.Show("Первый запуск. Введите настройки.", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Первый запуск. Введите настройки.", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 SetForm.FormClosing += (obj, arg) =>
                 {
                     this.Show();
@@ -74,11 +74,11 @@ namespace Project
             {
                 if (TBLogin.Text != "" && TBPass.Text != "")
                 {
-                    ConnectAdress = Program.IF.ReadINI("ConnSett", "Adress");
+                    ConnectAddress = Program.IF.ReadINI("ConnSett", "Address");
                     NameDB = Program.IF.ReadINI("ConnSett", "DBname");
                     ConnectPort = Program.IF.ReadINI("ConnSett", "Port");
 
-                    conn = new MySqlConnection("server=" + ConnectAdress + ";user=" + TBLogin.Text + ";database=" + NameDB + ";password=" + TBPass.Text + ";port=" + ConnectPort + ";");
+                    conn = new MySqlConnection("server=" + ConnectAddress + ";user=" + TBLogin.Text + ";database=" + NameDB + ";password=" + TBPass.Text + ";port=" + ConnectPort + ";");
 
                     conn.Open();
 
