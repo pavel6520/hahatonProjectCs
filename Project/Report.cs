@@ -202,19 +202,30 @@ namespace Project
 
         private void Send_Click(object sender, EventArgs e)
         {
+            try
+            {
+                Program.ConnectForm.conn.Open();
+                DateTime date = DateTime.Now;
+                date = MC1.SelectionStart;
+            
+                //Обработка пустых полей, формата чисел
 
-            DateTime date = DateTime.Now;
-            date = MC1.SelectionStart;
+                string query = "insert into project.`" + TBcompName.Text + "` value( ' " + date.ToString("yyyy.MM.dd") +
+                    " ', ' " + TBFM1.Text + " ', ' " + TBFM2.Text + " ', ' " + TBFM3.Text +
+                    " ', ' " + TBGF1.Text + " ', ' " + TBGF2.Text + " ', ' " + TBGF3.Text +
+                    " ', ' " + TBCKR1.Text + " ', ' " + TBCKR2.Text + " ', ' " + TBCKR3.Text +
+                    " ', ' " + TBCPP1.Text + " ', ' " + TBCPP2.Text + " ', ' " + TBCPP3.Text +
+                    " ', ' " + TBCE1.Text + " ', ' " + TBCE2.Text + " ', ' " + TBCE3.Text + " ' )";
 
-
-
-            /*string query = "insert into reports value( ' " + TB2.Text + " ', ' " + date.ToString("yyyy.MM.dd") + " ', ' " + TB3.Text + " ', ' " +
-                TB4.Text + " ', ' " + TB5.Text + " ', ' " + TB6.Text + " ', ' " + TB7.Text + " ', ' " + TB8.Text + " ', ' " + TB9.Text +
-                " ', ' " + TB10.Text + " ', ' " + TB11.Text + " ', ' " + TB12.Text + " ', ' " + TB13.Text + " ', ' " + TB14.Text +
-                 " ', ' " + TB15.Text + " ', ' " + TB16.Text + " ', ' " + TB14.Text + " ' )";
-
-            MySqlCommand command = new MySqlCommand(query, Program.ConnectForm.conn);
-            command.ExecuteScalar();*/
+                MySqlCommand command = new MySqlCommand(query, Program.ConnectForm.conn);
+                command.ExecuteNonQuery();
+                Program.ConnectForm.conn.Close();
+            }
+            catch (MySqlException ex)
+            {
+                Program.ConnectForm.conn.Close();
+                MessageBox.Show("Error\n" + ex);
+            }
         }
 
         private void CB_INN_SelectedIndexChanged(object sender, EventArgs e)

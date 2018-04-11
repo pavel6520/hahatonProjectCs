@@ -38,22 +38,22 @@
             this.TBFM1 = new System.Windows.Forms.TextBox();
             this.TBFM3 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.TBCE3 = new System.Windows.Forms.TextBox();
+            this.TBCE2 = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.TBCE1 = new System.Windows.Forms.TextBox();
+            this.TBGF1 = new System.Windows.Forms.TextBox();
+            this.TBGF3 = new System.Windows.Forms.TextBox();
+            this.TBCPP3 = new System.Windows.Forms.TextBox();
+            this.TBCPP2 = new System.Windows.Forms.TextBox();
+            this.TBGF2 = new System.Windows.Forms.TextBox();
+            this.TBCPP1 = new System.Windows.Forms.TextBox();
+            this.TBCKR3 = new System.Windows.Forms.TextBox();
+            this.TBCKR1 = new System.Windows.Forms.TextBox();
+            this.TBCKR2 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.TBGF1 = new System.Windows.Forms.TextBox();
-            this.TBGF2 = new System.Windows.Forms.TextBox();
-            this.TBGF3 = new System.Windows.Forms.TextBox();
-            this.TBCKR1 = new System.Windows.Forms.TextBox();
-            this.TBCKR2 = new System.Windows.Forms.TextBox();
-            this.TBCKR3 = new System.Windows.Forms.TextBox();
-            this.TBCPP1 = new System.Windows.Forms.TextBox();
-            this.TBCPP2 = new System.Windows.Forms.TextBox();
-            this.TBCPP3 = new System.Windows.Forms.TextBox();
-            this.TBCE1 = new System.Windows.Forms.TextBox();
-            this.TBCE2 = new System.Windows.Forms.TextBox();
-            this.TBCE3 = new System.Windows.Forms.TextBox();
             this.Send = new System.Windows.Forms.Button();
             this.MTB1 = new System.Windows.Forms.MaskedTextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -177,6 +177,20 @@
             this.label6.TabIndex = 5;
             this.label6.Text = "Выручка:";
             // 
+            // TBCE3
+            // 
+            this.TBCE3.Location = new System.Drawing.Point(170, 84);
+            this.TBCE3.Name = "TBCE3";
+            this.TBCE3.Size = new System.Drawing.Size(58, 20);
+            this.TBCE3.TabIndex = 18;
+            // 
+            // TBCE2
+            // 
+            this.TBCE2.Location = new System.Drawing.Point(170, 58);
+            this.TBCE2.Name = "TBCE2";
+            this.TBCE2.Size = new System.Drawing.Size(58, 20);
+            this.TBCE2.TabIndex = 17;
+            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -185,6 +199,76 @@
             this.label9.Size = new System.Drawing.Size(30, 13);
             this.label9.TabIndex = 8;
             this.label9.Text = "млн.";
+            // 
+            // TBCE1
+            // 
+            this.TBCE1.Location = new System.Drawing.Point(170, 29);
+            this.TBCE1.Name = "TBCE1";
+            this.TBCE1.Size = new System.Drawing.Size(58, 20);
+            this.TBCE1.TabIndex = 16;
+            // 
+            // TBGF1
+            // 
+            this.TBGF1.Location = new System.Drawing.Point(170, 29);
+            this.TBGF1.Name = "TBGF1";
+            this.TBGF1.Size = new System.Drawing.Size(58, 20);
+            this.TBGF1.TabIndex = 7;
+            // 
+            // TBGF3
+            // 
+            this.TBGF3.Location = new System.Drawing.Point(170, 84);
+            this.TBGF3.Name = "TBGF3";
+            this.TBGF3.Size = new System.Drawing.Size(58, 20);
+            this.TBGF3.TabIndex = 9;
+            // 
+            // TBCPP3
+            // 
+            this.TBCPP3.Location = new System.Drawing.Point(170, 84);
+            this.TBCPP3.Name = "TBCPP3";
+            this.TBCPP3.Size = new System.Drawing.Size(58, 20);
+            this.TBCPP3.TabIndex = 15;
+            // 
+            // TBCPP2
+            // 
+            this.TBCPP2.Location = new System.Drawing.Point(170, 58);
+            this.TBCPP2.Name = "TBCPP2";
+            this.TBCPP2.Size = new System.Drawing.Size(58, 20);
+            this.TBCPP2.TabIndex = 14;
+            // 
+            // TBGF2
+            // 
+            this.TBGF2.Location = new System.Drawing.Point(170, 58);
+            this.TBGF2.Name = "TBGF2";
+            this.TBGF2.Size = new System.Drawing.Size(58, 20);
+            this.TBGF2.TabIndex = 8;
+            // 
+            // TBCPP1
+            // 
+            this.TBCPP1.Location = new System.Drawing.Point(170, 29);
+            this.TBCPP1.Name = "TBCPP1";
+            this.TBCPP1.Size = new System.Drawing.Size(58, 20);
+            this.TBCPP1.TabIndex = 13;
+            // 
+            // TBCKR3
+            // 
+            this.TBCKR3.Location = new System.Drawing.Point(170, 84);
+            this.TBCKR3.Name = "TBCKR3";
+            this.TBCKR3.Size = new System.Drawing.Size(58, 20);
+            this.TBCKR3.TabIndex = 12;
+            // 
+            // TBCKR1
+            // 
+            this.TBCKR1.Location = new System.Drawing.Point(170, 29);
+            this.TBCKR1.Name = "TBCKR1";
+            this.TBCKR1.Size = new System.Drawing.Size(58, 20);
+            this.TBCKR1.TabIndex = 10;
+            // 
+            // TBCKR2
+            // 
+            this.TBCKR2.Location = new System.Drawing.Point(170, 58);
+            this.TBCKR2.Name = "TBCKR2";
+            this.TBCKR2.Size = new System.Drawing.Size(58, 20);
+            this.TBCKR2.TabIndex = 11;
             // 
             // label1
             // 
@@ -212,90 +296,6 @@
             this.label3.Size = new System.Drawing.Size(115, 13);
             this.label3.TabIndex = 6;
             this.label3.Text = "Институт поддержки:";
-            // 
-            // TBGF1
-            // 
-            this.TBGF1.Location = new System.Drawing.Point(170, 29);
-            this.TBGF1.Name = "TBGF1";
-            this.TBGF1.Size = new System.Drawing.Size(58, 20);
-            this.TBGF1.TabIndex = 7;
-            // 
-            // TBGF2
-            // 
-            this.TBGF2.Location = new System.Drawing.Point(170, 58);
-            this.TBGF2.Name = "TBGF2";
-            this.TBGF2.Size = new System.Drawing.Size(58, 20);
-            this.TBGF2.TabIndex = 8;
-            // 
-            // TBGF3
-            // 
-            this.TBGF3.Location = new System.Drawing.Point(170, 84);
-            this.TBGF3.Name = "TBGF3";
-            this.TBGF3.Size = new System.Drawing.Size(58, 20);
-            this.TBGF3.TabIndex = 9;
-            // 
-            // TBCKR1
-            // 
-            this.TBCKR1.Location = new System.Drawing.Point(170, 29);
-            this.TBCKR1.Name = "TBCKR1";
-            this.TBCKR1.Size = new System.Drawing.Size(58, 20);
-            this.TBCKR1.TabIndex = 10;
-            // 
-            // TBCKR2
-            // 
-            this.TBCKR2.Location = new System.Drawing.Point(170, 58);
-            this.TBCKR2.Name = "TBCKR2";
-            this.TBCKR2.Size = new System.Drawing.Size(58, 20);
-            this.TBCKR2.TabIndex = 11;
-            // 
-            // TBCKR3
-            // 
-            this.TBCKR3.Location = new System.Drawing.Point(170, 84);
-            this.TBCKR3.Name = "TBCKR3";
-            this.TBCKR3.Size = new System.Drawing.Size(58, 20);
-            this.TBCKR3.TabIndex = 12;
-            // 
-            // TBCPP1
-            // 
-            this.TBCPP1.Location = new System.Drawing.Point(170, 29);
-            this.TBCPP1.Name = "TBCPP1";
-            this.TBCPP1.Size = new System.Drawing.Size(58, 20);
-            this.TBCPP1.TabIndex = 13;
-            // 
-            // TBCPP2
-            // 
-            this.TBCPP2.Location = new System.Drawing.Point(170, 58);
-            this.TBCPP2.Name = "TBCPP2";
-            this.TBCPP2.Size = new System.Drawing.Size(58, 20);
-            this.TBCPP2.TabIndex = 14;
-            // 
-            // TBCPP3
-            // 
-            this.TBCPP3.Location = new System.Drawing.Point(170, 84);
-            this.TBCPP3.Name = "TBCPP3";
-            this.TBCPP3.Size = new System.Drawing.Size(58, 20);
-            this.TBCPP3.TabIndex = 15;
-            // 
-            // TBCE1
-            // 
-            this.TBCE1.Location = new System.Drawing.Point(170, 29);
-            this.TBCE1.Name = "TBCE1";
-            this.TBCE1.Size = new System.Drawing.Size(58, 20);
-            this.TBCE1.TabIndex = 16;
-            // 
-            // TBCE2
-            // 
-            this.TBCE2.Location = new System.Drawing.Point(170, 58);
-            this.TBCE2.Name = "TBCE2";
-            this.TBCE2.Size = new System.Drawing.Size(58, 20);
-            this.TBCE2.TabIndex = 17;
-            // 
-            // TBCE3
-            // 
-            this.TBCE3.Location = new System.Drawing.Point(170, 84);
-            this.TBCE3.Name = "TBCE3";
-            this.TBCE3.Size = new System.Drawing.Size(58, 20);
-            this.TBCE3.TabIndex = 18;
             // 
             // Send
             // 
@@ -360,7 +360,7 @@
             this.textBox1.TabIndex = 25;
             // 
             // TBcompName
-            //
+            // 
             this.TBcompName.Location = new System.Drawing.Point(222, 41);
             this.TBcompName.Name = "TBcompName";
             this.TBcompName.ReadOnly = true;
