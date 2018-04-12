@@ -13,9 +13,18 @@ namespace Project
 {
     public partial class SendRepForm : Form
     {
+        private string [][]inn_comp;
+
         public SendRepForm()
         {
             InitializeComponent();
+        }
+
+        private bool Is_dig(char x)
+        {
+            if (Char.IsDigit(x))
+                return true;
+            else return false;
         }
 
         private void Form2_FormClosing(object sender, FormClosingEventArgs e)
@@ -31,91 +40,90 @@ namespace Project
             {
 
                 case 0:
-                    TB3.Show();
-                    TB4.Show();
-                    TB5.Show();
-                    TB6.Hide();
-                    TB7.Hide();
-                    TB8.Hide();
-                    TB9.Hide();
-                    TB10.Hide();
-                    TB11.Hide();
-                    TB12.Hide();
-                    TB13.Hide();
-                    TB14.Hide();
-                    TB15.Hide();
-                    TB16.Hide();
-                    TB17.Hide();
+                    TBFM1.Show();
+                    TBFM2.Show();
+                    TBFM3.Show();
+                    TBGF1.Hide();
+                    TBGF2.Hide();
+                    TBGF3.Hide();
+                    TBCKR1.Hide();
+                    TBCKR2.Hide();
+                    TBCKR3.Hide();
+                    TBCPP1.Hide();
+                    TBCPP2.Hide();
+                    TBCPP3.Hide();
+                    TBCE1.Hide();
+                    TBCE2.Hide();
+                    TBCE3.Hide();
                     break;
                 case 1:
-                    TB3.Hide();
-                    TB4.Hide();
-                    TB5.Hide();
-                    TB6.Show();
-                    TB7.Show();
-                    TB8.Show();
-                    TB9.Hide();
-                    TB10.Hide();
-                    TB11.Hide();
-                    TB12.Hide();
-                    TB13.Hide();
-                    TB14.Hide();
-                    TB15.Hide();
-                    TB16.Hide();
-                    TB17.Hide();
+                    TBFM1.Hide();
+                    TBFM2.Hide();
+                    TBFM3.Hide();
+                    TBGF1.Show();
+                    TBGF2.Show();
+                    TBGF3.Show();
+                    TBCKR1.Hide();
+                    TBCKR2.Hide();
+                    TBCKR3.Hide();
+                    TBCPP1.Hide();
+                    TBCPP2.Hide();
+                    TBCPP3.Hide();
+                    TBCE1.Hide();
+                    TBCE2.Hide();
+                    TBCE3.Hide();
                     break;
                 case 2:
-                    TB3.Hide();
-                    TB4.Hide();
-                    TB5.Hide();
-                    TB6.Hide();
-                    TB7.Hide();
-                    TB8.Hide();
-                    TB9.Show();
-                    TB10.Show();
-                    TB11.Show();
-                    TB12.Hide();
-                    TB13.Hide();
-                    TB14.Hide();
-                    TB15.Hide();
-                    TB16.Hide();
-                    TB17.Hide();
+                    TBFM1.Hide();
+                    TBFM2.Hide();
+                    TBFM3.Hide();
+                    TBGF1.Hide();
+                    TBGF2.Hide();
+                    TBGF3.Hide();
+                    TBCKR1.Show();
+                    TBCKR2.Show();
+                    TBCKR3.Show();
+                    TBCPP1.Hide();
+                    TBCPP2.Hide();
+                    TBCPP3.Hide();
+                    TBCE1.Hide();
+                    TBCE2.Hide();
+                    TBCE3.Hide();
                     break;
                 case 3:
-                    TB3.Hide();
-                    TB4.Hide();
-                    TB5.Hide();
-                    TB6.Hide();
-                    TB7.Hide();
-                    TB8.Hide();
-                    TB9.Hide();
-                    TB10.Hide();
-                    TB11.Hide();
-                    TB12.Show();
-                    TB13.Show();
-                    TB14.Show();
-                    TB15.Hide();
-                    TB16.Hide();
-                    TB17.Hide();
+                    TBFM1.Hide();
+                    TBFM2.Hide();
+                    TBFM3.Hide();
+                    TBGF1.Hide();
+                    TBGF2.Hide();
+                    TBGF3.Hide();
+                    TBCKR1.Hide();
+                    TBCKR2.Hide();
+                    TBCKR3.Hide();
+                    TBCPP1.Show();
+                    TBCPP2.Show();
+                    TBCPP3.Show();
+                    TBCE1.Hide();
+                    TBCE2.Hide();
+                    TBCE3.Hide();
                     break;
                 case 4:
-                    TB3.Hide();
-                    TB4.Hide();
-                    TB5.Hide();
-                    TB6.Hide();
-                    TB7.Hide();
-                    TB8.Hide();
-                    TB9.Hide();
-                    TB10.Hide();
-                    TB11.Hide();
-                    TB12.Hide();
-                    TB13.Hide();
-                    TB14.Hide();
-                    TB15.Show();
-                    TB16.Show();
-                    TB17.Show();
+                    TBFM1.Hide();
+                    TBFM2.Hide();
+                    TBFM3.Hide();
+                    TBGF1.Hide();
+                    TBGF2.Hide();
+                    TBGF3.Hide();
+                    TBCKR1.Hide();
+                    TBCKR2.Hide();
+                    TBCKR3.Hide();
+                    TBCPP1.Hide();
+                    TBCPP2.Hide();
+                    TBCPP3.Hide();
+                    TBCE1.Show();
+                    TBCE2.Show();
+                    TBCE3.Show();
                     break;
-
             }
 
         }
@@ -126,21 +134,62 @@ namespace Project
 
             MTB1.Text = MC1.TodayDate.ToShortDateString();
 
-            TB3.Show(); TB3.Text = "0";
-            TB4.Show(); TB4.Text = "0";
-            TB5.Show(); TB5.Text = "0.0";
-            TB6.Hide(); TB6.Text = "0";
-            TB7.Hide(); TB7.Text = "0";
-            TB8.Hide(); TB8.Text = "0.0";
-            TB9.Hide(); TB9.Text = "0";
-            TB10.Hide(); TB10.Text = "0";
-            TB11.Hide(); TB11.Text = "0.0";
-            TB12.Hide(); TB12.Text = "0";
-            TB13.Hide(); TB13.Text = "0";
-            TB14.Hide(); TB14.Text = "0.0";
-            TB15.Hide(); TB15.Text = "0";
-            TB16.Hide(); TB16.Text = "0";
-            TB17.Hide(); TB17.Text = "0.0";
+
+            CB1.SelectedIndex = 0;
+
+            TBFM1.Show(); TBFM1.Text = "0";
+            TBFM2.Show(); TBFM2.Text = "0";
+            TBFM3.Show(); TBFM3.Text = "0.0";
+            TBGF1.Hide(); TBGF1.Text = "0";
+            TBGF2.Hide(); TBGF2.Text = "0";
+            TBGF3.Hide(); TBGF3.Text = "0.0";
+            TBCKR1.Hide(); TBCKR1.Text = "0";
+            TBCKR2.Hide(); TBCKR2.Text = "0";
+            TBCKR3.Hide(); TBCKR3.Text = "0.0";
+            TBCPP1.Hide(); TBCPP1.Text = "0";
+            TBCPP2.Hide(); TBCPP2.Text = "0";
+            TBCPP3.Hide(); TBCPP3.Text = "0.0";
+            TBCE1.Hide(); TBCE1.Text = "0";
+            TBCE2.Hide(); TBCE2.Text = "0";
+            TBCE3.Hide(); TBCE3.Text = "0.0";
+
+            //Program.ConnectForm.conn.Open();
+            MySqlCommand com;
+            MySqlDataReader readed;
+            int count = 0;
+            try
+            {
+                com = new MySqlCommand("select INN, comp_name from project.login_inn where login = '" + Program.ConnectForm.login + "'", Program.ConnectForm.conn);
+                readed = com.ExecuteReader();
+                count = 1;
+                inn_comp = new string[1][];
+                while (readed.Read())
+                {
+                    Array.Resize(ref inn_comp, count);
+                    inn_comp[count - 1] = new string[2];
+                    inn_comp[count - 1][0] = readed[0].ToString();
+                    inn_comp[count - 1][1] = readed[1].ToString();
+                    CB_INN.Items.Insert(count - 1, inn_comp[count - 1][1]);
+                    count++;
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Ошибка получения данных.\n" + ex, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Environment.Exit(0);
+            }
+            Program.ConnectForm.conn.Close();
+            if (CB_INN.Items.Count == 0)
+            /*try
+            {
+                CM_INN.SelectedIndex = 0;
+            }
+            catch (ArgumentOutOfRangeException ex)*/
+            {
+                MessageBox.Show("На ваш аккаунт не зарегистрировано ни одной компании.\nОбратитесь к администратору.\n"/* + ex*/, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Environment.Exit(0);
+            }
+            CB_INN.SelectedIndex = 0;
         }        
 
         private void MTB1_Click(object sender, EventArgs e)
@@ -160,17 +209,48 @@ namespace Project
 
         private void Send_Click(object sender, EventArgs e)
         {
+            try
+            {
+                Program.ConnectForm.conn.Open();
+                DateTime date = DateTime.Now;
+                date = MC1.SelectionStart;
+            
+                //Обработка пустых полей, формата чисел
 
-            DateTime date = DateTime.Now;
-            date = MC1.SelectionStart;
+                string query = "insert into project.`" + TBcompName.Text + "` value( ' " + date.ToString("yyyy.MM.dd") +
+                    " ', ' " + TBFM1.Text + " ', ' " + TBFM2.Text + " ', ' " + TBFM3.Text +
+                    " ', ' " + TBGF1.Text + " ', ' " + TBGF2.Text + " ', ' " + TBGF3.Text +
+                    " ', ' " + TBCKR1.Text + " ', ' " + TBCKR2.Text + " ', ' " + TBCKR3.Text +
+                    " ', ' " + TBCPP1.Text + " ', ' " + TBCPP2.Text + " ', ' " + TBCPP3.Text +
+                    " ', ' " + TBCE1.Text + " ', ' " + TBCE2.Text + " ', ' " + TBCE3.Text + " ' )";
 
-            string query = "insert into reports value( ' " + TB2.Text + " ', ' " + date.ToString("yyyy.mm.dd") + " ', ' " + TB3.Text + " ', ' " +
-                TB4.Text + " ', ' " + TB5.Text + " ', ' " + TB6.Text + " ', ' " + TB7.Text + " ', ' " + TB8.Text + " ', ' " + TB9.Text +
-                " ', ' " + TB10.Text + " ', ' " + TB11.Text + " ', ' " + TB12.Text + " ', ' " + TB13.Text + " ', ' " + TB14.Text +
-                 " ', ' " + TB15.Text + " ', ' " + TB16.Text + " ', ' " + TB14.Text + " ' )";
+                MySqlCommand command = new MySqlCommand(query, Program.ConnectForm.conn);
+                command.ExecuteNonQuery();
+                Program.ConnectForm.conn.Close();
+            }
+            catch (MySqlException ex)
+            {
+                Program.ConnectForm.conn.Close();
+                MessageBox.Show("Error\n" + ex);
+            }
+        }
 
-            MySqlCommand command = new MySqlCommand(query, Program.ConnectForm.conn);
-            command.ExecuteScalar();
+        private void CB_INN_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            TBcompName.Text = inn_comp[CB_INN.SelectedIndex][0];
+        }
+
+
+        private void TBFM3_KeyPress(object sender, KeyPressEventArgs e)
+        {   
+            if (Program.In_Float(e.KeyChar))
+                e.Handled = true;
+        }
+
+        private void TBFM1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Program.In_Int(e.KeyChar))
+                e.Handled = true;
         }
     }
 }

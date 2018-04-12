@@ -23,6 +23,20 @@ namespace Project
             IF = new IniFile("Settings.ini");
             Application.Run(ConnectForm);
         }
+
+        public static bool In_Int(char x)
+        {
+            if (!Char.IsDigit(x) && x != 8)
+                return true;
+            else return false;
+        }
+
+        public static bool In_Float(char x)
+        {
+            if (!Char.IsDigit(x) && x != 8 && x != 46)
+                return true;
+            else return false;
+        }
     }
 
     class IniFile
