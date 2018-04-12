@@ -87,23 +87,23 @@
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.TBFM2);
-            this.groupBox1.Controls.Add(this.TBFM1);
-            this.groupBox1.Controls.Add(this.TBFM3);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.TBCE3);
-            this.groupBox1.Controls.Add(this.TBCE2);
-            this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.TBCE1);
-            this.groupBox1.Controls.Add(this.TBGF1);
-            this.groupBox1.Controls.Add(this.TBGF3);
             this.groupBox1.Controls.Add(this.TBCPP3);
-            this.groupBox1.Controls.Add(this.TBCPP2);
-            this.groupBox1.Controls.Add(this.TBGF2);
             this.groupBox1.Controls.Add(this.TBCPP1);
+            this.groupBox1.Controls.Add(this.TBCE3);
+            this.groupBox1.Controls.Add(this.TBCPP2);
+            this.groupBox1.Controls.Add(this.TBGF3);
+            this.groupBox1.Controls.Add(this.TBGF2);
+            this.groupBox1.Controls.Add(this.TBFM3);
+            this.groupBox1.Controls.Add(this.TBGF1);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.TBCKR3);
             this.groupBox1.Controls.Add(this.TBCKR1);
             this.groupBox1.Controls.Add(this.TBCKR2);
+            this.groupBox1.Controls.Add(this.TBCE2);
+            this.groupBox1.Controls.Add(this.TBFM1);
+            this.groupBox1.Controls.Add(this.TBFM2);
+            this.groupBox1.Controls.Add(this.TBCE1);
             this.groupBox1.Location = new System.Drawing.Point(101, 133);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(276, 119);
@@ -153,6 +153,8 @@
             this.TBFM2.Name = "TBFM2";
             this.TBFM2.Size = new System.Drawing.Size(58, 20);
             this.TBFM2.TabIndex = 1;
+            this.TBFM2.Tag = "1";
+            this.TBFM2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TBFM1_KeyPress);
             // 
             // TBFM1
             // 
@@ -160,6 +162,8 @@
             this.TBFM1.Name = "TBFM1";
             this.TBFM1.Size = new System.Drawing.Size(58, 20);
             this.TBFM1.TabIndex = 0;
+            this.TBFM1.Tag = "0";
+            this.TBFM1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TBFM1_KeyPress);
             // 
             // TBFM3
             // 
@@ -167,6 +171,8 @@
             this.TBFM3.Name = "TBFM3";
             this.TBFM3.Size = new System.Drawing.Size(58, 20);
             this.TBFM3.TabIndex = 2;
+            this.TBFM3.Tag = "2";
+            this.TBFM3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TBFM3_KeyPress);
             // 
             // label6
             // 
@@ -183,6 +189,7 @@
             this.TBCE3.Name = "TBCE3";
             this.TBCE3.Size = new System.Drawing.Size(58, 20);
             this.TBCE3.TabIndex = 18;
+            this.TBCE3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TBFM3_KeyPress);
             // 
             // TBCE2
             // 
@@ -190,6 +197,7 @@
             this.TBCE2.Name = "TBCE2";
             this.TBCE2.Size = new System.Drawing.Size(58, 20);
             this.TBCE2.TabIndex = 17;
+            this.TBCE2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TBFM1_KeyPress);
             // 
             // label9
             // 
@@ -206,6 +214,7 @@
             this.TBCE1.Name = "TBCE1";
             this.TBCE1.Size = new System.Drawing.Size(58, 20);
             this.TBCE1.TabIndex = 16;
+            this.TBCE1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TBFM1_KeyPress);
             // 
             // TBGF1
             // 
@@ -213,6 +222,7 @@
             this.TBGF1.Name = "TBGF1";
             this.TBGF1.Size = new System.Drawing.Size(58, 20);
             this.TBGF1.TabIndex = 7;
+            this.TBGF1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TBFM1_KeyPress);
             // 
             // TBGF3
             // 
@@ -220,6 +230,7 @@
             this.TBGF3.Name = "TBGF3";
             this.TBGF3.Size = new System.Drawing.Size(58, 20);
             this.TBGF3.TabIndex = 9;
+            this.TBGF3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TBFM3_KeyPress);
             // 
             // TBCPP3
             // 
@@ -227,6 +238,7 @@
             this.TBCPP3.Name = "TBCPP3";
             this.TBCPP3.Size = new System.Drawing.Size(58, 20);
             this.TBCPP3.TabIndex = 15;
+            this.TBCPP3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TBFM3_KeyPress);
             // 
             // TBCPP2
             // 
@@ -234,6 +246,7 @@
             this.TBCPP2.Name = "TBCPP2";
             this.TBCPP2.Size = new System.Drawing.Size(58, 20);
             this.TBCPP2.TabIndex = 14;
+            this.TBCPP2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TBFM1_KeyPress);
             // 
             // TBGF2
             // 
@@ -241,6 +254,7 @@
             this.TBGF2.Name = "TBGF2";
             this.TBGF2.Size = new System.Drawing.Size(58, 20);
             this.TBGF2.TabIndex = 8;
+            this.TBGF2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TBFM1_KeyPress);
             // 
             // TBCPP1
             // 
@@ -248,6 +262,7 @@
             this.TBCPP1.Name = "TBCPP1";
             this.TBCPP1.Size = new System.Drawing.Size(58, 20);
             this.TBCPP1.TabIndex = 13;
+            this.TBCPP1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TBFM1_KeyPress);
             // 
             // TBCKR3
             // 
@@ -255,6 +270,7 @@
             this.TBCKR3.Name = "TBCKR3";
             this.TBCKR3.Size = new System.Drawing.Size(58, 20);
             this.TBCKR3.TabIndex = 12;
+            this.TBCKR3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TBFM3_KeyPress);
             // 
             // TBCKR1
             // 
@@ -262,6 +278,7 @@
             this.TBCKR1.Name = "TBCKR1";
             this.TBCKR1.Size = new System.Drawing.Size(58, 20);
             this.TBCKR1.TabIndex = 10;
+            this.TBCKR1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TBFM1_KeyPress);
             // 
             // TBCKR2
             // 
@@ -328,7 +345,7 @@
             // 
             // MC1
             // 
-            this.MC1.Location = new System.Drawing.Point(213, 126);
+            this.MC1.Location = new System.Drawing.Point(305, 271);
             this.MC1.Name = "MC1";
             this.MC1.TabIndex = 22;
             this.MC1.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.MC1_DateSelected);
@@ -366,14 +383,13 @@
             this.TBcompName.ReadOnly = true;
             this.TBcompName.Size = new System.Drawing.Size(131, 20);
             this.TBcompName.TabIndex = 26;
-            this.TBcompName.TextChanged += new System.EventHandler(this.TBcompName_TextChanged);
             // 
             // SendRepForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(472, 331);
+            this.ClientSize = new System.Drawing.Size(473, 331);
             this.Controls.Add(this.MC1);
             this.Controls.Add(this.TBcompName);
             this.Controls.Add(this.textBox1);

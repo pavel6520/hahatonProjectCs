@@ -20,6 +20,13 @@ namespace Project
             InitializeComponent();
         }
 
+        private bool Is_dig(char x)
+        {
+            if (Char.IsDigit(x))
+                return true;
+            else return false;
+        }
+
         private void Form2_FormClosing(object sender, FormClosingEventArgs e)
         {
             Program.ConnectForm.conn.Close();
@@ -233,9 +240,17 @@ namespace Project
             TBcompName.Text = inn_comp[CB_INN.SelectedIndex][0];
         }
 
-        private void TBcompName_TextChanged(object sender, EventArgs e)
-        {
 
+        private void TBFM3_KeyPress(object sender, KeyPressEventArgs e)
+        {   
+            if (Program.In_Float(e.KeyChar))
+                e.Handled = true;
+        }
+
+        private void TBFM1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Program.In_Int(e.KeyChar))
+                e.Handled = true;
         }
     }
 }
