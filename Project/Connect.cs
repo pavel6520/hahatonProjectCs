@@ -116,5 +116,19 @@ namespace Project
             SetForm.ShowDialog();
         }
 
+        private void TBLogin_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar <= 64 || e.KeyChar >= 91) && (e.KeyChar <= 96 || e.KeyChar >= 123)
+                && (e.KeyChar <= 47 || e.KeyChar >= 58) && e.KeyChar != 8 && e.KeyChar != 45 && e.KeyChar != 95)
+                e.Handled = true;
+        }
+
+        private void TBPass_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar <= 64 || e.KeyChar >= 91) && (e.KeyChar <= 96 || e.KeyChar >= 123)
+               && (e.KeyChar <= 47 || e.KeyChar >= 58) && e.KeyChar != 8 && e.KeyChar != 35 && e.KeyChar != 36
+               && e.KeyChar != 38 && e.KeyChar != 63 && e.KeyChar != 64 && e.KeyChar != 37)
+                e.Handled = true;
+        }
     }
 }
