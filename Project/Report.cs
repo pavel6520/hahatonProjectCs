@@ -5,7 +5,9 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
+using System.Net;
+using System.Net.Sockets;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
@@ -14,7 +16,10 @@ namespace Project
     public partial class SendRepForm : Form
     {
         private string [][]inn_comp;
-
+        string MMDD;
+        DateTime dateNow;
+        int dateNowCountTime = 0;
+        
         public SendRepForm()
         {
             InitializeComponent();
@@ -27,18 +32,52 @@ namespace Project
             else return false;
         }
 
+        private void TimerUpdateDateTime_Tick(object sender, EventArgs e)
+        {
+            if(dateNowCountTime >= 60)
+            {
+                dateNow = GetNetworkTime();
+                dateNowCountTime = 0;
+            }
+            else
+            {
+                dateNow = dateNow.AddSeconds(1);
+            }
+            LabelDateTime.Text = dateNow.ToString();
+            dateNowCountTime++;
+        }
+
+        public static DateTime GetNetworkTime()
+        {
+            const string ntpServer = "time.windows.com";
+            var ntpData = new byte[48];
+            ntpData[0] = 0x1B;
+            var addresses = Dns.GetHostEntry(ntpServer).AddressList;
+            var ipEndPoint = new IPEndPoint(addresses[0], 123);
+            using (var socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp))
+            {
+                socket.Connect(ipEndPoint);
+                socket.Send(ntpData);
+                socket.Receive(ntpData);
+                socket.Close();
+            }
+            var intPart = (ulong)ntpData[40] << 24 | (ulong)ntpData[41] << 16 | (ulong)ntpData[42] << 8 | ntpData[43];
+            var fractPart = (ulong)ntpData[44] << 24 | (ulong)ntpData[45] << 16 | (ulong)ntpData[46] << 8 | ntpData[47];
+            var milliseconds = (intPart * 1000) + ((fractPart * 1000) / 0x100000000L);
+            var networkDateTime = (new DateTime(1900, 1, 1, 0, 0, 0, DateTimeKind.Utc)).AddMilliseconds((long)milliseconds);
+            return networkDateTime.ToLocalTime();
+        }
+
         private void Form2_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Program.ConnectForm.conn.Close();
+            TimerUpdateDateTime.Stop();
             Environment.Exit(0);
         }
 
-        private void ComboBox1_SelectionChangeCommitted(object sender, EventArgs e)
+        private void CB1_SelectionChangeCommitted(object sender, EventArgs e)
         {
-
             switch (CB1.SelectedIndex)
             {
-
                 case 0:
                     TBFM1.Show();
                     TBFM2.Show();
@@ -125,18 +164,13 @@ namespace Project
                     TBCE3.Show();
                     break;
             }
-
         }
 
         private void SendRepForm_Load(object sender, EventArgs e)
         {
-            MC1.Hide();
-
-            MTB1.Text = MC1.TodayDate.ToShortDateString();
-
-
+            dateNow = GetNetworkTime();
+            LabelDateTime.Text = dateNow.ToString();
             CB1.SelectedIndex = 0;
-
             TBFM1.Show(); TBFM1.Text = "0";
             TBFM2.Show(); TBFM2.Text = "0";
             TBFM3.Show(); TBFM3.Text = "0.0";
@@ -152,8 +186,6 @@ namespace Project
             TBCE1.Hide(); TBCE1.Text = "0";
             TBCE2.Hide(); TBCE2.Text = "0";
             TBCE3.Hide(); TBCE3.Text = "0.0";
-
-            //Program.ConnectForm.conn.Open();
             MySqlCommand com;
             MySqlDataReader readed;
             int count = 0;
@@ -175,54 +207,37 @@ namespace Project
             }
             catch (MySqlException ex)
             {
+                Program.ConnectForm.conn.Close();
                 MessageBox.Show("Ошибка получения данных.\n" + ex, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Environment.Exit(0);
             }
             Program.ConnectForm.conn.Close();
             if (CB_INN.Items.Count == 0)
-            /*try
-            {
-                CM_INN.SelectedIndex = 0;
-            }
-            catch (ArgumentOutOfRangeException ex)*/
             {
                 MessageBox.Show("На ваш аккаунт не зарегистрировано ни одной компании.\nОбратитесь к администратору.\n"/* + ex*/, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Environment.Exit(0);
             }
             CB_INN.SelectedIndex = 0;
-        }        
-
-        private void MTB1_Click(object sender, EventArgs e)
-        {
-            MC1.Show();
+            CBQuarter.SelectedIndex = 0;
         }
-
-        private void SendRepForm_Click(object sender, EventArgs e)
-        {
-            MC1.Hide();
-        }
-
-        private void MC1_DateSelected(object sender, DateRangeEventArgs e)
-        {
-            MTB1.Text = MC1.SelectionStart.ToShortDateString();            
-        }        
 
         private void Send_Click(object sender, EventArgs e)
         {
             try
             {
                 Program.ConnectForm.conn.Open();
-                DateTime date = DateTime.Now;
-                date = MC1.SelectionStart;
-            
+                DateTime dateReport = Convert.ToDateTime(TBYear.Text + "." + MMDD);
+                dateNow = GetNetworkTime();
+
                 //Обработка пустых полей, формата чисел
 
-                string query = "insert into project.`" + TBcompName.Text + "` value( ' " + date.ToString("yyyy.MM.dd") +
-                    " ', ' " + TBFM1.Text + " ', ' " + TBFM2.Text + " ', ' " + TBFM3.Text +
-                    " ', ' " + TBGF1.Text + " ', ' " + TBGF2.Text + " ', ' " + TBGF3.Text +
-                    " ', ' " + TBCKR1.Text + " ', ' " + TBCKR2.Text + " ', ' " + TBCKR3.Text +
-                    " ', ' " + TBCPP1.Text + " ', ' " + TBCPP2.Text + " ', ' " + TBCPP3.Text +
-                    " ', ' " + TBCE1.Text + " ', ' " + TBCE2.Text + " ', ' " + TBCE3.Text + " ' )";
+                string query = "insert into project.`" + TBcompName.Text + "` value('" + 
+                    dateReport.ToString("yyyy.MM.dd") + "', '" + dateNow.ToString("yyyy.MM.dd HH:mm:ss") +
+                    "', '" + TBFM1.Text + "', '" + TBFM2.Text + "', '" + TBFM3.Text +
+                    "', '" + TBGF1.Text + "', '" + TBGF2.Text + "', '" + TBGF3.Text +
+                    "', '" + TBCKR1.Text + "', '" + TBCKR2.Text + "', '" + TBCKR3.Text +
+                    "', '" + TBCPP1.Text + "', '" + TBCPP2.Text + "', '" + TBCPP3.Text +
+                    "', '" + TBCE1.Text + "', '" + TBCE2.Text + "', '" + TBCE3.Text + "')";
 
                 MySqlCommand command = new MySqlCommand(query, Program.ConnectForm.conn);
                 command.ExecuteNonQuery();
@@ -233,6 +248,8 @@ namespace Project
                 Program.ConnectForm.conn.Close();
                 MessageBox.Show("Error\n" + ex);
             }
+            Thread.Sleep(1000);
+            MessageBox.Show("Успешно отправлено.", "Отправлено", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void CB_INN_SelectedIndexChanged(object sender, EventArgs e)
@@ -251,6 +268,33 @@ namespace Project
         {
             if (Program.In_Int(e.KeyChar))
                 e.Handled = true;
+        }
+
+        private void CBQuarter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (CBQuarter.SelectedIndex)
+            {
+                case 0:
+                    {
+                        MMDD = "03.25";
+                        break;
+                    }
+                case 1:
+                    {
+                        MMDD = "06.25";
+                        break;
+                    }
+                case 2:
+                    {
+                        MMDD = "09.25";
+                        break;
+                    }
+                case 3:
+                    {
+                        MMDD = "12.25";
+                        break;
+                    }
+            }
         }
     }
 }

@@ -28,12 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.CB1 = new System.Windows.Forms.ComboBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.GroupBoxKPI = new System.Windows.Forms.GroupBox();
+            this.LabelWorkplaces1 = new System.Windows.Forms.Label();
+            this.LabelNumber1 = new System.Windows.Forms.Label();
+            this.LabelWorkplaces = new System.Windows.Forms.Label();
+            this.LabelNumber = new System.Windows.Forms.Label();
             this.TBCPP3 = new System.Windows.Forms.TextBox();
             this.TBCPP1 = new System.Windows.Forms.TextBox();
             this.TBCE3 = new System.Windows.Forms.TextBox();
@@ -42,7 +43,7 @@
             this.TBGF2 = new System.Windows.Forms.TextBox();
             this.TBFM3 = new System.Windows.Forms.TextBox();
             this.TBGF1 = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
+            this.LabelProceeds = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.TBCKR3 = new System.Windows.Forms.TextBox();
             this.TBCKR1 = new System.Windows.Forms.TextBox();
@@ -51,18 +52,19 @@
             this.TBFM1 = new System.Windows.Forms.TextBox();
             this.TBFM2 = new System.Windows.Forms.TextBox();
             this.TBCE1 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.LabelCompName = new System.Windows.Forms.Label();
+            this.LabelINN = new System.Windows.Forms.Label();
+            this.LabelInst = new System.Windows.Forms.Label();
             this.Send = new System.Windows.Forms.Button();
-            this.MTB1 = new System.Windows.Forms.MaskedTextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.MC1 = new System.Windows.Forms.MonthCalendar();
             this.CB_INN = new System.Windows.Forms.ComboBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.TBcompName = new System.Windows.Forms.TextBox();
-            this.groupBox1.SuspendLayout();
+            this.TBYear = new System.Windows.Forms.TextBox();
+            this.CBQuarter = new System.Windows.Forms.ComboBox();
+            this.LabelQuarter = new System.Windows.Forms.Label();
+            this.LabelDateTime = new System.Windows.Forms.Label();
+            this.TimerUpdateDateTime = new System.Windows.Forms.Timer(this.components);
+            this.GroupBoxKPI.SuspendLayout();
             this.SuspendLayout();
             // 
             // CB1
@@ -75,77 +77,77 @@
             "Центр кластерного развития",
             "Центр поддержки предпринимательства",
             "Центр экспорта"});
-            this.CB1.Location = new System.Drawing.Point(222, 93);
+            this.CB1.Location = new System.Drawing.Point(140, 60);
             this.CB1.Name = "CB1";
             this.CB1.Size = new System.Drawing.Size(238, 21);
             this.CB1.TabIndex = 2;
-            this.CB1.SelectionChangeCommitted += new System.EventHandler(this.ComboBox1_SelectionChangeCommitted);
+            this.CB1.SelectionChangeCommitted += new System.EventHandler(this.CB1_SelectionChangeCommitted);
             // 
-            // groupBox1
+            // GroupBoxKPI
             // 
-            this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.TBCPP3);
-            this.groupBox1.Controls.Add(this.TBCPP1);
-            this.groupBox1.Controls.Add(this.TBCE3);
-            this.groupBox1.Controls.Add(this.TBCPP2);
-            this.groupBox1.Controls.Add(this.TBGF3);
-            this.groupBox1.Controls.Add(this.TBGF2);
-            this.groupBox1.Controls.Add(this.TBFM3);
-            this.groupBox1.Controls.Add(this.TBGF1);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.TBCKR3);
-            this.groupBox1.Controls.Add(this.TBCKR1);
-            this.groupBox1.Controls.Add(this.TBCKR2);
-            this.groupBox1.Controls.Add(this.TBCE2);
-            this.groupBox1.Controls.Add(this.TBFM1);
-            this.groupBox1.Controls.Add(this.TBFM2);
-            this.groupBox1.Controls.Add(this.TBCE1);
-            this.groupBox1.Location = new System.Drawing.Point(101, 133);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(276, 119);
-            this.groupBox1.TabIndex = 3;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Параметры KPI";
+            this.GroupBoxKPI.Controls.Add(this.LabelWorkplaces1);
+            this.GroupBoxKPI.Controls.Add(this.LabelNumber1);
+            this.GroupBoxKPI.Controls.Add(this.LabelWorkplaces);
+            this.GroupBoxKPI.Controls.Add(this.LabelNumber);
+            this.GroupBoxKPI.Controls.Add(this.TBCPP3);
+            this.GroupBoxKPI.Controls.Add(this.TBCPP1);
+            this.GroupBoxKPI.Controls.Add(this.TBCE3);
+            this.GroupBoxKPI.Controls.Add(this.TBCPP2);
+            this.GroupBoxKPI.Controls.Add(this.TBGF3);
+            this.GroupBoxKPI.Controls.Add(this.TBGF2);
+            this.GroupBoxKPI.Controls.Add(this.TBFM3);
+            this.GroupBoxKPI.Controls.Add(this.TBGF1);
+            this.GroupBoxKPI.Controls.Add(this.LabelProceeds);
+            this.GroupBoxKPI.Controls.Add(this.label9);
+            this.GroupBoxKPI.Controls.Add(this.TBCKR3);
+            this.GroupBoxKPI.Controls.Add(this.TBCKR1);
+            this.GroupBoxKPI.Controls.Add(this.TBCKR2);
+            this.GroupBoxKPI.Controls.Add(this.TBCE2);
+            this.GroupBoxKPI.Controls.Add(this.TBFM1);
+            this.GroupBoxKPI.Controls.Add(this.TBFM2);
+            this.GroupBoxKPI.Controls.Add(this.TBCE1);
+            this.GroupBoxKPI.Location = new System.Drawing.Point(10, 86);
+            this.GroupBoxKPI.Name = "GroupBoxKPI";
+            this.GroupBoxKPI.Size = new System.Drawing.Size(276, 119);
+            this.GroupBoxKPI.TabIndex = 3;
+            this.GroupBoxKPI.TabStop = false;
+            this.GroupBoxKPI.Text = "Параметры KPI";
             // 
-            // label8
+            // LabelWorkplaces1
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(230, 61);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(23, 13);
-            this.label8.TabIndex = 7;
-            this.label8.Text = "шт.";
+            this.LabelWorkplaces1.AutoSize = true;
+            this.LabelWorkplaces1.Location = new System.Drawing.Point(230, 61);
+            this.LabelWorkplaces1.Name = "LabelWorkplaces1";
+            this.LabelWorkplaces1.Size = new System.Drawing.Size(23, 13);
+            this.LabelWorkplaces1.TabIndex = 7;
+            this.LabelWorkplaces1.Text = "шт.";
             // 
-            // label7
+            // LabelNumber1
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(230, 32);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(27, 13);
-            this.label7.TabIndex = 6;
-            this.label7.Text = "чел.";
+            this.LabelNumber1.AutoSize = true;
+            this.LabelNumber1.Location = new System.Drawing.Point(230, 32);
+            this.LabelNumber1.Name = "LabelNumber1";
+            this.LabelNumber1.Size = new System.Drawing.Size(27, 13);
+            this.LabelNumber1.TabIndex = 6;
+            this.LabelNumber1.Text = "чел.";
             // 
-            // label5
+            // LabelWorkplaces
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(19, 61);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(145, 13);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Созданные рабочие места:";
+            this.LabelWorkplaces.AutoSize = true;
+            this.LabelWorkplaces.Location = new System.Drawing.Point(19, 61);
+            this.LabelWorkplaces.Name = "LabelWorkplaces";
+            this.LabelWorkplaces.Size = new System.Drawing.Size(145, 13);
+            this.LabelWorkplaces.TabIndex = 4;
+            this.LabelWorkplaces.Text = "Созданные рабочие места:";
             // 
-            // label4
+            // LabelNumber
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(20, 32);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(144, 13);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Численность сотрудников:";
+            this.LabelNumber.AutoSize = true;
+            this.LabelNumber.Location = new System.Drawing.Point(20, 32);
+            this.LabelNumber.Name = "LabelNumber";
+            this.LabelNumber.Size = new System.Drawing.Size(144, 13);
+            this.LabelNumber.TabIndex = 3;
+            this.LabelNumber.Text = "Численность сотрудников:";
             // 
             // TBCPP3
             // 
@@ -212,14 +214,14 @@
             this.TBGF1.TabIndex = 7;
             this.TBGF1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TBFM1_KeyPress);
             // 
-            // label6
+            // LabelProceeds
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(111, 87);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(53, 13);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "Выручка:";
+            this.LabelProceeds.AutoSize = true;
+            this.LabelProceeds.Location = new System.Drawing.Point(111, 87);
+            this.LabelProceeds.Name = "LabelProceeds";
+            this.LabelProceeds.Size = new System.Drawing.Size(53, 13);
+            this.LabelProceeds.TabIndex = 5;
+            this.LabelProceeds.Text = "Выручка:";
             // 
             // label9
             // 
@@ -287,36 +289,36 @@
             this.TBCE1.TabIndex = 16;
             this.TBCE1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TBFM1_KeyPress);
             // 
-            // label1
+            // LabelCompName
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(88, 17);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(128, 13);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Название организации:";
+            this.LabelCompName.AutoSize = true;
+            this.LabelCompName.Location = new System.Drawing.Point(6, 10);
+            this.LabelCompName.Name = "LabelCompName";
+            this.LabelCompName.Size = new System.Drawing.Size(128, 13);
+            this.LabelCompName.TabIndex = 4;
+            this.LabelCompName.Text = "Название организации:";
             // 
-            // label2
+            // LabelINN
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(182, 44);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(34, 13);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "ИНН:";
+            this.LabelINN.AutoSize = true;
+            this.LabelINN.Location = new System.Drawing.Point(100, 37);
+            this.LabelINN.Name = "LabelINN";
+            this.LabelINN.Size = new System.Drawing.Size(34, 13);
+            this.LabelINN.TabIndex = 5;
+            this.LabelINN.Text = "ИНН:";
             // 
-            // label3
+            // LabelInst
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(101, 96);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(115, 13);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Институт поддержки:";
+            this.LabelInst.AutoSize = true;
+            this.LabelInst.Location = new System.Drawing.Point(19, 63);
+            this.LabelInst.Name = "LabelInst";
+            this.LabelInst.Size = new System.Drawing.Size(115, 13);
+            this.LabelInst.TabIndex = 6;
+            this.LabelInst.Text = "Институт поддержки:";
             // 
             // Send
             // 
-            this.Send.Location = new System.Drawing.Point(199, 300);
+            this.Send.Location = new System.Drawing.Point(182, 237);
             this.Send.Name = "Send";
             this.Send.Size = new System.Drawing.Size(79, 23);
             this.Send.TabIndex = 19;
@@ -324,95 +326,106 @@
             this.Send.UseVisualStyleBackColor = true;
             this.Send.Click += new System.EventHandler(this.Send_Click);
             // 
-            // MTB1
-            // 
-            this.MTB1.Location = new System.Drawing.Point(141, 268);
-            this.MTB1.Mask = "00/00/0000";
-            this.MTB1.Name = "MTB1";
-            this.MTB1.Size = new System.Drawing.Size(65, 20);
-            this.MTB1.TabIndex = 20;
-            this.MTB1.ValidatingType = typeof(System.DateTime);
-            this.MTB1.Click += new System.EventHandler(this.MTB1_Click);
-            // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(66, 271);
+            this.label10.Location = new System.Drawing.Point(10, 214);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(72, 13);
+            this.label10.Size = new System.Drawing.Size(28, 13);
             this.label10.TabIndex = 21;
-            this.label10.Text = "Дата отчета:";
-            // 
-            // MC1
-            // 
-            this.MC1.Location = new System.Drawing.Point(218, 126);
-            this.MC1.Name = "MC1";
-            this.MC1.TabIndex = 22;
-            this.MC1.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.MC1_DateSelected);
+            this.label10.Text = "Год:";
             // 
             // CB_INN
             // 
             this.CB_INN.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CB_INN.FormattingEnabled = true;
-            this.CB_INN.Location = new System.Drawing.Point(222, 14);
+            this.CB_INN.Location = new System.Drawing.Point(140, 7);
             this.CB_INN.Name = "CB_INN";
             this.CB_INN.Size = new System.Drawing.Size(238, 21);
             this.CB_INN.TabIndex = 23;
             this.CB_INN.SelectedIndexChanged += new System.EventHandler(this.CB_INN_SelectedIndexChanged);
             // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(12, 70);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(204, 13);
-            this.label11.TabIndex = 24;
-            this.label11.Text = "Общее кол-во созданых рабочих мест:";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(222, 67);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(59, 20);
-            this.textBox1.TabIndex = 25;
-            // 
             // TBcompName
             // 
-            this.TBcompName.Location = new System.Drawing.Point(222, 41);
+            this.TBcompName.Location = new System.Drawing.Point(140, 34);
             this.TBcompName.Name = "TBcompName";
             this.TBcompName.ReadOnly = true;
             this.TBcompName.Size = new System.Drawing.Size(131, 20);
             this.TBcompName.TabIndex = 26;
+            // 
+            // TBYear
+            // 
+            this.TBYear.Location = new System.Drawing.Point(44, 211);
+            this.TBYear.MaxLength = 4;
+            this.TBYear.Name = "TBYear";
+            this.TBYear.Size = new System.Drawing.Size(32, 20);
+            this.TBYear.TabIndex = 27;
+            // 
+            // CBQuarter
+            // 
+            this.CBQuarter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CBQuarter.FormattingEnabled = true;
+            this.CBQuarter.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4"});
+            this.CBQuarter.Location = new System.Drawing.Point(140, 210);
+            this.CBQuarter.Name = "CBQuarter";
+            this.CBQuarter.Size = new System.Drawing.Size(121, 21);
+            this.CBQuarter.TabIndex = 28;
+            this.CBQuarter.SelectedIndexChanged += new System.EventHandler(this.CBQuarter_SelectedIndexChanged);
+            // 
+            // LabelQuarter
+            // 
+            this.LabelQuarter.AutoSize = true;
+            this.LabelQuarter.Location = new System.Drawing.Point(82, 214);
+            this.LabelQuarter.Name = "LabelQuarter";
+            this.LabelQuarter.Size = new System.Drawing.Size(52, 13);
+            this.LabelQuarter.TabIndex = 29;
+            this.LabelQuarter.Text = "Квартал:";
+            // 
+            // LabelDateTime
+            // 
+            this.LabelDateTime.AutoSize = true;
+            this.LabelDateTime.Location = new System.Drawing.Point(10, 247);
+            this.LabelDateTime.Name = "LabelDateTime";
+            this.LabelDateTime.Size = new System.Drawing.Size(0, 13);
+            this.LabelDateTime.TabIndex = 30;
+            // 
+            // TimerUpdateDateTime
+            // 
+            this.TimerUpdateDateTime.Enabled = true;
+            this.TimerUpdateDateTime.Interval = 1000;
+            this.TimerUpdateDateTime.Tick += new System.EventHandler(this.TimerUpdateDateTime_Tick);
             // 
             // SendRepForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(473, 331);
-            this.Controls.Add(this.MC1);
+            this.ClientSize = new System.Drawing.Size(387, 288);
+            this.Controls.Add(this.LabelDateTime);
+            this.Controls.Add(this.LabelQuarter);
+            this.Controls.Add(this.CBQuarter);
+            this.Controls.Add(this.TBYear);
             this.Controls.Add(this.TBcompName);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label11);
             this.Controls.Add(this.CB_INN);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.MTB1);
             this.Controls.Add(this.Send);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.LabelInst);
+            this.Controls.Add(this.LabelINN);
+            this.Controls.Add(this.LabelCompName);
             this.Controls.Add(this.CB1);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.GroupBoxKPI);
             this.MaximizeBox = false;
             this.Name = "SendRepForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "  Отчет";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form2_FormClosing);
             this.Load += new System.EventHandler(this.SendRepForm_Load);
-            this.Click += new System.EventHandler(this.SendRepForm_Click);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.GroupBoxKPI.ResumeLayout(false);
+            this.GroupBoxKPI.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -420,19 +433,19 @@
 
         #endregion
         private System.Windows.Forms.ComboBox CB1;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox GroupBoxKPI;
         private System.Windows.Forms.TextBox TBFM3;
         private System.Windows.Forms.TextBox TBFM2;
         private System.Windows.Forms.TextBox TBFM1;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label LabelProceeds;
+        private System.Windows.Forms.Label LabelWorkplaces;
+        private System.Windows.Forms.Label LabelNumber;
+        private System.Windows.Forms.Label LabelCompName;
+        private System.Windows.Forms.Label LabelINN;
+        private System.Windows.Forms.Label LabelInst;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label LabelWorkplaces1;
+        private System.Windows.Forms.Label LabelNumber1;
         private System.Windows.Forms.TextBox TBGF1;
         private System.Windows.Forms.TextBox TBGF2;
         private System.Windows.Forms.TextBox TBGF3;
@@ -446,12 +459,13 @@
         private System.Windows.Forms.TextBox TBCE2;
         private System.Windows.Forms.TextBox TBCE3;
         private System.Windows.Forms.Button Send;
-        private System.Windows.Forms.MaskedTextBox MTB1;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.MonthCalendar MC1;
         private System.Windows.Forms.ComboBox CB_INN;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox TBcompName;
+        private System.Windows.Forms.TextBox TBYear;
+        private System.Windows.Forms.ComboBox CBQuarter;
+        private System.Windows.Forms.Label LabelQuarter;
+        private System.Windows.Forms.Label LabelDateTime;
+        private System.Windows.Forms.Timer TimerUpdateDateTime;
     }
 }
