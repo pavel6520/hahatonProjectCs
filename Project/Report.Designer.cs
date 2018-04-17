@@ -62,7 +62,6 @@
             this.TBYear = new System.Windows.Forms.TextBox();
             this.CBQuarter = new System.Windows.Forms.ComboBox();
             this.LabelQuarter = new System.Windows.Forms.Label();
-            this.LabelDateTime = new System.Windows.Forms.Label();
             this.TimerUpdateDateTime = new System.Windows.Forms.Timer(this.components);
             this.GroupBoxKPI.SuspendLayout();
             this.SuspendLayout();
@@ -318,7 +317,7 @@
             // 
             // Send
             // 
-            this.Send.Location = new System.Drawing.Point(182, 237);
+            this.Send.Location = new System.Drawing.Point(150, 237);
             this.Send.Name = "Send";
             this.Send.Size = new System.Drawing.Size(79, 23);
             this.Send.TabIndex = 19;
@@ -385,14 +384,6 @@
             this.LabelQuarter.TabIndex = 29;
             this.LabelQuarter.Text = "Квартал:";
             // 
-            // LabelDateTime
-            // 
-            this.LabelDateTime.AutoSize = true;
-            this.LabelDateTime.Location = new System.Drawing.Point(10, 247);
-            this.LabelDateTime.Name = "LabelDateTime";
-            this.LabelDateTime.Size = new System.Drawing.Size(0, 13);
-            this.LabelDateTime.TabIndex = 30;
-            // 
             // TimerUpdateDateTime
             // 
             this.TimerUpdateDateTime.Enabled = true;
@@ -404,8 +395,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(387, 288);
-            this.Controls.Add(this.LabelDateTime);
+            this.ClientSize = new System.Drawing.Size(387, 270);
             this.Controls.Add(this.LabelQuarter);
             this.Controls.Add(this.CBQuarter);
             this.Controls.Add(this.TBYear);
@@ -465,7 +455,6 @@
         private System.Windows.Forms.TextBox TBYear;
         private System.Windows.Forms.ComboBox CBQuarter;
         private System.Windows.Forms.Label LabelQuarter;
-        private System.Windows.Forms.Label LabelDateTime;
         private System.Windows.Forms.Timer TimerUpdateDateTime;
     }
 }

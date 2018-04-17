@@ -16,9 +16,9 @@ namespace Project
     public partial class SendRepForm : Form
     {
         private string [][]inn_comp;
-        string MMDD;
-        DateTime dateNow;
-        int dateNowCountTime = 0;
+        private string MMDD;
+        private DateTime dateNow;
+        private int dateNowCountTime = 60;
         
         public SendRepForm()
         {
@@ -43,7 +43,6 @@ namespace Project
             {
                 dateNow = dateNow.AddSeconds(1);
             }
-            LabelDateTime.Text = dateNow.ToString();
             dateNowCountTime++;
         }
 
@@ -70,7 +69,7 @@ namespace Project
 
         private void Form2_FormClosing(object sender, FormClosingEventArgs e)
         {
-            TimerUpdateDateTime.Stop();
+            //TimerUpdateDateTime.Stop();
             Environment.Exit(0);
         }
 
@@ -169,7 +168,6 @@ namespace Project
         private void SendRepForm_Load(object sender, EventArgs e)
         {
             dateNow = GetNetworkTime();
-            LabelDateTime.Text = dateNow.ToString();
             CB1.SelectedIndex = 0;
             TBFM1.Show(); TBFM1.Text = "0";
             TBFM2.Show(); TBFM2.Text = "0";
