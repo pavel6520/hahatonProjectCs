@@ -44,8 +44,6 @@
             this.TBLogin.Name = "TBLogin";
             this.TBLogin.Size = new System.Drawing.Size(128, 20);
             this.TBLogin.TabIndex = 0;
-            this.TBLogin.Text = "root";
-            this.TBLogin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TBLogin_KeyPress);
             // 
             // TBPass
             // 
@@ -54,8 +52,6 @@
             this.TBPass.PasswordChar = '*';
             this.TBPass.Size = new System.Drawing.Size(128, 20);
             this.TBPass.TabIndex = 1;
-            this.TBPass.Text = "65207634";
-            this.TBPass.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TBPass_KeyPress);
             // 
             // ButtonConnect
             // 
