@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Globalization;
 using System.Threading;
 using System.Net;
 using System.Net.Sockets;
@@ -16,28 +17,88 @@ namespace Project
     public partial class SendRepForm : Form
     {
         private string [][]inn_comp;
-        private string MMDD;
         private DateTime dateNow;
         private int dateNowCountTime = 60;
+        private int SelectInst;
+        private struct Params
+        {
+            public int[] param1;
+            public int[] param2;
+            public double[] param3;
+        }
+        private Params ValParams;
+
+        private bool SaveParam()
+        {
+            try
+            {
+                if(Convert.ToInt32(TBparam1.Text) < 0)
+                {
+                    MessageBox.Show("Неверное значение параметра \"Численность сотрудников\"\nНе может быть меньше нуля", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    CBinst.SelectedIndex = SelectInst;
+                    return false;
+                }
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Неверное значение параметра \"Численность сотрудников\"", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                CBinst.SelectedIndex = SelectInst;
+                return false;
+            }
+            try
+            {
+                Convert.ToInt32(TBparam2.Text);
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Неверное значение параметра \"Созданные рабочие места\"", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                CBinst.SelectedIndex = SelectInst;
+                return false;
+            }
+            try
+            {
+                Convert.ToDouble(TBparam3.Text);
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Неверное значение параметра \"Выручка\"", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                CBinst.SelectedIndex = SelectInst;
+                return false;
+            }
+            ValParams.param1[SelectInst] = Convert.ToInt32(TBparam1.Text);
+            ValParams.param2[SelectInst] = Convert.ToInt32(TBparam2.Text);
+            ValParams.param3[SelectInst] = Convert.ToDouble(TBparam3.Text);
+            SelectInst = CBinst.SelectedIndex;
+            TBparam1.Text = ValParams.param1[CBinst.SelectedIndex].ToString();
+            TBparam2.Text = ValParams.param2[CBinst.SelectedIndex].ToString();
+            if (ValParams.param3[CBinst.SelectedIndex] == 0.0)
+            {
+                TBparam3.Text = "0,0";
+            }
+            else {
+                TBparam3.Text = ValParams.param3[CBinst.SelectedIndex].ToString("G", CultureInfo.CreateSpecificCulture("eu-ES"));
+            }
+            return true;
+        }
         
         public SendRepForm()
         {
             InitializeComponent();
         }
 
-        private bool Is_dig(char x)
-        {
-            if (Char.IsDigit(x))
-                return true;
-            else return false;
-        }
-
         private void TimerUpdateDateTime_Tick(object sender, EventArgs e)
         {
             if(dateNowCountTime >= 60)
             {
-                dateNow = GetNetworkTime();
-                dateNowCountTime = 0;
+                try {
+                    dateNow = GetNetworkTime();
+                }
+                catch (SocketException)
+                {
+                    dateNowCountTime = 0;
+                    dateNow = dateNow.AddSeconds(1);
+                    MessageBox.Show("Ошибка интернет соединения", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else
             {
@@ -66,185 +127,143 @@ namespace Project
             var networkDateTime = (new DateTime(1900, 1, 1, 0, 0, 0, DateTimeKind.Utc)).AddMilliseconds((long)milliseconds);
             return networkDateTime.ToLocalTime();
         }
-
-        private void Form2_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            //TimerUpdateDateTime.Stop();
-            Environment.Exit(0);
-        }
-
+        
         private void CB1_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            switch (CB1.SelectedIndex)
+            if(SelectInst != CBinst.SelectedIndex)
             {
-                case 0:
-                    TBFM1.Show();
-                    TBFM2.Show();
-                    TBFM3.Show();
-                    TBGF1.Hide();
-                    TBGF2.Hide();
-                    TBGF3.Hide();
-                    TBCKR1.Hide();
-                    TBCKR2.Hide();
-                    TBCKR3.Hide();
-                    TBCPP1.Hide();
-                    TBCPP2.Hide();
-                    TBCPP3.Hide();
-                    TBCE1.Hide();
-                    TBCE2.Hide();
-                    TBCE3.Hide();
-                    break;
-                case 1:
-                    TBFM1.Hide();
-                    TBFM2.Hide();
-                    TBFM3.Hide();
-                    TBGF1.Show();
-                    TBGF2.Show();
-                    TBGF3.Show();
-                    TBCKR1.Hide();
-                    TBCKR2.Hide();
-                    TBCKR3.Hide();
-                    TBCPP1.Hide();
-                    TBCPP2.Hide();
-                    TBCPP3.Hide();
-                    TBCE1.Hide();
-                    TBCE2.Hide();
-                    TBCE3.Hide();
-                    break;
-                case 2:
-                    TBFM1.Hide();
-                    TBFM2.Hide();
-                    TBFM3.Hide();
-                    TBGF1.Hide();
-                    TBGF2.Hide();
-                    TBGF3.Hide();
-                    TBCKR1.Show();
-                    TBCKR2.Show();
-                    TBCKR3.Show();
-                    TBCPP1.Hide();
-                    TBCPP2.Hide();
-                    TBCPP3.Hide();
-                    TBCE1.Hide();
-                    TBCE2.Hide();
-                    TBCE3.Hide();
-                    break;
-                case 3:
-                    TBFM1.Hide();
-                    TBFM2.Hide();
-                    TBFM3.Hide();
-                    TBGF1.Hide();
-                    TBGF2.Hide();
-                    TBGF3.Hide();
-                    TBCKR1.Hide();
-                    TBCKR2.Hide();
-                    TBCKR3.Hide();
-                    TBCPP1.Show();
-                    TBCPP2.Show();
-                    TBCPP3.Show();
-                    TBCE1.Hide();
-                    TBCE2.Hide();
-                    TBCE3.Hide();
-                    break;
-                case 4:
-                    TBFM1.Hide();
-                    TBFM2.Hide();
-                    TBFM3.Hide();
-                    TBGF1.Hide();
-                    TBGF2.Hide();
-                    TBGF3.Hide();
-                    TBCKR1.Hide();
-                    TBCKR2.Hide();
-                    TBCKR3.Hide();
-                    TBCPP1.Hide();
-                    TBCPP2.Hide();
-                    TBCPP3.Hide();
-                    TBCE1.Show();
-                    TBCE2.Show();
-                    TBCE3.Show();
-                    break;
+                SaveParam();
             }
         }
 
         private void SendRepForm_Load(object sender, EventArgs e)
         {
             dateNow = GetNetworkTime();
-            CB1.SelectedIndex = 0;
-            TBFM1.Show(); TBFM1.Text = "0";
-            TBFM2.Show(); TBFM2.Text = "0";
-            TBFM3.Show(); TBFM3.Text = "0.0";
-            TBGF1.Hide(); TBGF1.Text = "0";
-            TBGF2.Hide(); TBGF2.Text = "0";
-            TBGF3.Hide(); TBGF3.Text = "0.0";
-            TBCKR1.Hide(); TBCKR1.Text = "0";
-            TBCKR2.Hide(); TBCKR2.Text = "0";
-            TBCKR3.Hide(); TBCKR3.Text = "0.0";
-            TBCPP1.Hide(); TBCPP1.Text = "0";
-            TBCPP2.Hide(); TBCPP2.Text = "0";
-            TBCPP3.Hide(); TBCPP3.Text = "0.0";
-            TBCE1.Hide(); TBCE1.Text = "0";
-            TBCE2.Hide(); TBCE2.Text = "0";
-            TBCE3.Hide(); TBCE3.Text = "0.0";
+            CBinst.SelectedIndex = 0;
+            SelectInst = 0;
+            TBparam1.Text = "0";
+            TBparam2.Text = "0";
+            TBparam3.Text = "0,0";
             MySqlCommand com;
             MySqlDataReader readed;
-            int count = 0;
             try
             {
-                com = new MySqlCommand("select INN, comp_name from project.login_inn where login = '" + Program.ConnectForm.login + "'", Program.ConnectForm.conn);
+                com = new MySqlCommand($"select INN, comp_name from project.login_inn where login = '{Program.ConnectForm.login}'", Program.ConnectForm.conn);
                 readed = com.ExecuteReader();
-                count = 1;
                 inn_comp = new string[1][];
                 while (readed.Read())
                 {
-                    Array.Resize(ref inn_comp, count);
-                    inn_comp[count - 1] = new string[2];
-                    inn_comp[count - 1][0] = readed[0].ToString();
-                    inn_comp[count - 1][1] = readed[1].ToString();
-                    CB_INN.Items.Insert(count - 1, inn_comp[count - 1][1]);
-                    count++;
+                    Array.Resize(ref inn_comp, inn_comp.Length);
+                    inn_comp[inn_comp.Length - 1] = new string[2];
+                    inn_comp[inn_comp.Length - 1][0] = readed[0].ToString();
+                    inn_comp[inn_comp.Length - 1][1] = readed[1].ToString();
+                    CB_INN.Items.Insert(inn_comp.Length - 1, inn_comp[inn_comp.Length - 1][1]);
                 }
             }
             catch (MySqlException ex)
             {
                 Program.ConnectForm.conn.Close();
-                MessageBox.Show("Ошибка получения данных.\n" + ex, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Ошибка получения данных.\n" + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Environment.Exit(0);
             }
             Program.ConnectForm.conn.Close();
             if (CB_INN.Items.Count == 0)
             {
-                MessageBox.Show("На ваш аккаунт не зарегистрировано ни одной компании.\nОбратитесь к администратору.\n"/* + ex*/, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("На ваш аккаунт не зарегистрировано ни одной компании.\nОбратитесь к администратору.\n", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Environment.Exit(0);
             }
+            ValParams.param1 = new int[] { 0, 0, 0, 0, 0 };
+            ValParams.param2 = new int[] { 0, 0, 0, 0, 0 };
+            ValParams.param3 = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0 };
             CB_INN.SelectedIndex = 0;
             CBQuarter.SelectedIndex = 0;
+            int Year = DateTime.Now.Year;
+            DateTime Quarter = Convert.ToDateTime($"1001.{DateTime.Now.Month}.{DateTime.Now.Day}");
+            if (Quarter >= Convert.ToDateTime("1001.1.1") && Quarter < Convert.ToDateTime("1001.03.25"))
+            {
+                TBYear.Text = $"{Year - 1}";
+                CBQuarter.SelectedIndex = 3;
+            }
+            else if (Quarter >= Convert.ToDateTime("1001.03.25") && Quarter < Convert.ToDateTime("1001.06.25"))
+            {
+                TBYear.Text = $"{Year}";
+                CBQuarter.SelectedIndex = 0;
+            }
+            else if (Quarter >= Convert.ToDateTime("1001.06.25") && Quarter < Convert.ToDateTime("1001.09.25"))
+            {
+                TBYear.Text = $"{Year}";
+                CBQuarter.SelectedIndex = 1;
+            }
+            else if (Quarter >= Convert.ToDateTime("1001.09.25") && Quarter < Convert.ToDateTime("1001.12.25"))
+            {
+                TBYear.Text = $"{Year}";
+                CBQuarter.SelectedIndex = 2;
+            }
+            else
+            {
+                TBYear.Text = $"{Year}";
+                CBQuarter.SelectedIndex = 3;
+            }
         }
 
         private void Send_Click(object sender, EventArgs e)
         {
+            if(SaveParam() == false)
+            {
+                return;
+            }
             try
             {
                 Program.ConnectForm.conn.Open();
-                DateTime dateReport = Convert.ToDateTime(TBYear.Text + "." + MMDD);
+                try
+                {
+                    if (Convert.ToInt32(TBYear.Text) < 1000)
+                    {
+                        MessageBox.Show("Неверный формат года", "Неверный формат", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+                catch (FormatException)
+                {
+                    MessageBox.Show($"Неверный формат года", "Неверный формат", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                string Quarter = "";
+                switch (CBQuarter.SelectedIndex)
+                {
+                    case 0:
+                        Quarter = $"{TBYear.Text}.03.25";
+                        break;
+                    case 1:
+                        Quarter = $"{TBYear.Text}.06.25";
+                        break;
+                    case 2:
+                        Quarter = $"{TBYear.Text}.09.25";
+                        break;
+                    case 3:
+                        Quarter = $"{TBYear.Text}.12.25";
+                        break;
+                }
                 dateNow = GetNetworkTime();
-
-                //Обработка пустых полей, формата чисел
-
-                string query = "insert into project.`" + TBcompName.Text + "` value('" + 
-                    dateReport.ToString("yyyy.MM.dd") + "', '" + dateNow.ToString("yyyy.MM.dd HH:mm:ss") +
-                    "', '" + TBFM1.Text + "', '" + TBFM2.Text + "', '" + TBFM3.Text +
-                    "', '" + TBGF1.Text + "', '" + TBGF2.Text + "', '" + TBGF3.Text +
-                    "', '" + TBCKR1.Text + "', '" + TBCKR2.Text + "', '" + TBCKR3.Text +
-                    "', '" + TBCPP1.Text + "', '" + TBCPP2.Text + "', '" + TBCPP3.Text +
-                    "', '" + TBCE1.Text + "', '" + TBCE2.Text + "', '" + TBCE3.Text + "')";
-
+                string query = $"insert into project.`{TBcompName.Text}` value('{Quarter}', '{dateNow.ToString("yyyy.MM.dd HH:mm:ss")}', '" +
+                    $"{ValParams.param1[0]}', '{ValParams.param2[0]}', '" +
+                    $"{ValParams.param3[0].ToString("G", CultureInfo.InvariantCulture)}', '" +
+                    $"{ValParams.param1[1]}', '{ValParams.param2[1]}', '" +
+                    $"{ValParams.param3[1].ToString("G", CultureInfo.InvariantCulture)}', '" +
+                    $"{ValParams.param1[2]}', '{ValParams.param2[2]}', '" +
+                    $"{ValParams.param3[2].ToString("G", CultureInfo.InvariantCulture)}', '" +
+                    $"{ValParams.param1[3]}', '{ValParams.param2[3]}', '" +
+                    $"{ValParams.param3[3].ToString("G", CultureInfo.InvariantCulture)}', '" +
+                    $"{ValParams.param1[4]}', '{ValParams.param2[4]}', '" +
+                    $"{ValParams.param3[4].ToString("G", CultureInfo.InvariantCulture)}')";
                 MySqlCommand command = new MySqlCommand(query, Program.ConnectForm.conn);
                 command.ExecuteNonQuery();
                 Program.ConnectForm.conn.Close();
             }
-            catch (MySqlException ex)
+            catch (Exception ex)
             {
                 Program.ConnectForm.conn.Close();
-                MessageBox.Show("Error\n" + ex);
+                MessageBox.Show("Ошибка отправки\n" + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             Thread.Sleep(1000);
             MessageBox.Show("Успешно отправлено.", "Отправлено", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -254,45 +273,54 @@ namespace Project
         {
             TBcompName.Text = inn_comp[CB_INN.SelectedIndex][0];
         }
-
-
-        private void TBFM3_KeyPress(object sender, KeyPressEventArgs e)
-        {   
-            if (Program.In_Float(e.KeyChar))
-                e.Handled = true;
-        }
-
-        private void TBFM1_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (Program.In_Int(e.KeyChar))
-                e.Handled = true;
-        }
-
+        
         private void CBQuarter_SelectedIndexChanged(object sender, EventArgs e)
         {
-            switch (CBQuarter.SelectedIndex)
-            {
-                case 0:
-                    {
-                        MMDD = "03.25";
-                        break;
-                    }
-                case 1:
-                    {
-                        MMDD = "06.25";
-                        break;
-                    }
-                case 2:
-                    {
-                        MMDD = "09.25";
-                        break;
-                    }
-                case 3:
-                    {
-                        MMDD = "12.25";
-                        break;
-                    }
-            }
+        }
+
+        private void Breset_Click(object sender, EventArgs e)
+        {
+            TBparam1.Text = "0";
+            TBparam2.Text = "0";
+            TBparam3.Text = "0,0";
+            ValParams.param1[CBinst.SelectedIndex] = 0;
+            ValParams.param2[CBinst.SelectedIndex] = 0;
+            ValParams.param3[CBinst.SelectedIndex] = 0.0;
+        }
+
+        private void BresetAll_Click(object sender, EventArgs e)
+        {
+            TBparam1.Text = "0";
+            TBparam2.Text = "0";
+            TBparam3.Text = "0,0";
+            ValParams.param1 = new int[] { 0, 0, 0, 0, 0 };
+            ValParams.param2 = new int[] { 0, 0, 0, 0, 0 };
+            ValParams.param3 = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0 };
+        }
+
+        private void TBYear_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !Validation.CharValidation(Validation.ValidationType.IntType, e.KeyChar);
+        }
+
+        private void TBparam1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !Validation.CharValidation(Validation.ValidationType.IntType, e.KeyChar);
+        }
+
+        private void TBparam2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !Validation.CharValidation(Validation.ValidationType.IntType, e.KeyChar);
+        }
+
+        private void TBparam3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !Validation.CharValidation(Validation.ValidationType.DoubleType, e.KeyChar);
+        }
+
+        private void SendRepForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Environment.Exit(0);
         }
     }
 }
