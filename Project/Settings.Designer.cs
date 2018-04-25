@@ -46,7 +46,6 @@
             this.TBip.Name = "TBip";
             this.TBip.Size = new System.Drawing.Size(156, 20);
             this.TBip.TabIndex = 0;
-            this.TBip.TextChanged += new System.EventHandler(this.TBip_TextChanged);
             // 
             // TBdatabase
             // 
@@ -55,7 +54,6 @@
             this.TBdatabase.Name = "TBdatabase";
             this.TBdatabase.Size = new System.Drawing.Size(156, 20);
             this.TBdatabase.TabIndex = 2;
-            this.TBdatabase.TextChanged += new System.EventHandler(this.TBdatabase_TextChanged);
             // 
             // LabelIP
             // 
@@ -77,7 +75,7 @@
             // 
             // BSave
             // 
-            this.BSave.Location = new System.Drawing.Point(184, 112);
+            this.BSave.Location = new System.Drawing.Point(146, 84);
             this.BSave.Name = "BSave";
             this.BSave.Size = new System.Drawing.Size(75, 23);
             this.BSave.TabIndex = 3;
@@ -101,7 +99,6 @@
             this.TBport.Name = "TBport";
             this.TBport.Size = new System.Drawing.Size(39, 20);
             this.TBport.TabIndex = 1;
-            this.TBport.TextChanged += new System.EventHandler(this.TBport_TextChanged);
             // 
             // LipErr
             // 
@@ -109,9 +106,9 @@
             this.LipErr.ForeColor = System.Drawing.Color.Red;
             this.LipErr.Location = new System.Drawing.Point(278, 9);
             this.LipErr.Name = "LipErr";
-            this.LipErr.Size = new System.Drawing.Size(158, 13);
+            this.LipErr.Size = new System.Drawing.Size(78, 13);
             this.LipErr.TabIndex = 6;
-            this.LipErr.Text = "Обязательно для заполнения";
+            this.LipErr.Text = "Не заполнено";
             this.LipErr.Visible = false;
             // 
             // LportErr
@@ -120,9 +117,9 @@
             this.LportErr.ForeColor = System.Drawing.Color.Red;
             this.LportErr.Location = new System.Drawing.Point(161, 35);
             this.LportErr.Name = "LportErr";
-            this.LportErr.Size = new System.Drawing.Size(158, 13);
+            this.LportErr.Size = new System.Drawing.Size(78, 13);
             this.LportErr.TabIndex = 7;
-            this.LportErr.Text = "Обязательно для заполнения";
+            this.LportErr.Text = "Не заполнено";
             this.LportErr.Visible = false;
             // 
             // LdbErr
@@ -131,16 +128,16 @@
             this.LdbErr.ForeColor = System.Drawing.Color.Red;
             this.LdbErr.Location = new System.Drawing.Point(278, 61);
             this.LdbErr.Name = "LdbErr";
-            this.LdbErr.Size = new System.Drawing.Size(158, 13);
+            this.LdbErr.Size = new System.Drawing.Size(78, 13);
             this.LdbErr.TabIndex = 8;
-            this.LdbErr.Text = "Обязательно для заполнения";
+            this.LdbErr.Text = "Не заполнено";
             this.LdbErr.Visible = false;
             // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(445, 147);
+            this.ClientSize = new System.Drawing.Size(368, 114);
             this.Controls.Add(this.LdbErr);
             this.Controls.Add(this.LportErr);
             this.Controls.Add(this.LipErr);

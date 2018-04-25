@@ -12,10 +12,6 @@ namespace Project
 {
     public partial class SettingsForm : Form
     {
-        /*private bool TBipB;
-        private bool TBportB;
-        private bool TBdatabaseB;*/
-
         public SettingsForm()
         {
             InitializeComponent();
@@ -23,43 +19,36 @@ namespace Project
 
         private void BSave_Click(object sender, EventArgs e)
         {
-            // if (TBip.Text.Length == 0 && TBdatabase.Text.Length == 0 && TBport.Text.Length == 0)
+            if (TBip.Text.IndexOf('`') != -1 || TBdatabase.Text.IndexOf('`') != -1 || TBport.Text.IndexOf('`') != -1)
+            {
+                MessageBox.Show("Символ '`' запрещен", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             if (TBip.Text.Length == 0)
             {
                 LipErr.Show();
+                return;
             }
-            else
-            {
-                LipErr.Hide();
-            }
+            LipErr.Hide();
             if (TBdatabase.Text.Length == 0)
             {
                 LdbErr.Show();
+                return;
             }
-                else
-            {
-                LdbErr.Hide();
-            }
+            LdbErr.Hide();
             if (TBport.Text.Length == 0)
             {
                 LportErr.Show();
+                return;
             }
-            else
+            LportErr.Hide();
+            if (TBip.Text.Length != 0 && TBdatabase.Text.Length != 0 && TBport.Text.Length != 0)
             {
-                LportErr.Hide();
-            }
-
-                if (TBip.Text.Length != 0 && TBdatabase.Text.Length != 0 && TBport.Text.Length != 0)
-            {
-                Program.IF.WriteINI("ConnSett", "Address", TBip.Text);
+                Program.IF.WriteINI("ConnSett", "Adress", TBip.Text);
                 Program.IF.WriteINI("ConnSett", "DBname", TBdatabase.Text);
                 Program.IF.WriteINI("ConnSett", "Port", TBport.Text);
                 this.Close();
             }
-            /*else
-            {
-                MessageBox.Show("Несколько полей пусты", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }*/
         }
 
         private void SettingsForm_Load(object sender, EventArgs e)
@@ -76,28 +65,6 @@ namespace Project
             {
                 TBport.Text = Program.IF.ReadINI("ConnSett", "Port");
             }
-            /*TBipB = TBip.Text.Length != 0;
-            TBportB = TBport.Text.Length != 0;
-            TBdatabaseB = TBdatabase.Text.Length != 0;
-            //BSave.Enabled = TBipB && TBportB && TBdatabaseB;*/
-        }
-
-        private void TBip_TextChanged(object sender, EventArgs e)
-        {
-            //TBipB = TBip.Text.Length != 0;
-            //BSave.Enabled = TBipB && TBportB && TBdatabaseB;
-        }
-
-        private void TBport_TextChanged(object sender, EventArgs e)
-        {
-            //TBportB = TBport.Text.Length != 0;
-            //BSave.Enabled = TBipB && TBportB && TBdatabaseB;
-        }
-
-        private void TBdatabase_TextChanged(object sender, EventArgs e)
-        {
-            //TBdatabaseB = TBdatabase.Text.Length != 0;
-            //BSave.Enabled = TBipB && TBportB && TBdatabaseB;
         }
     }
 }

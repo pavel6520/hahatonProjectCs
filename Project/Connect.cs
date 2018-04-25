@@ -45,9 +45,9 @@ namespace Project
                     response.Close();
                     break;
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    DialogResult = MessageBox.Show("Проверьте Ваш фаервол или настройки сетевого подключения", "Нет подключения к интернету", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                    DialogResult = MessageBox.Show($"Проверьте Ваш фаервол или настройки сетевого подключения\nОшибка: {ex.Message}", "Ошибка", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
                     if(DialogResult == DialogResult.Cancel)
                     {
                         Environment.Exit(0);
@@ -58,11 +58,11 @@ namespace Project
             if (!Program.IF.KeyExists("ConnSett", "Address") || !Program.IF.KeyExists("ConnSett", "DBname") || !Program.IF.KeyExists("ConnSett", "Port"))//Проверка файла настроек
             {
                 SetForm = new SettingsForm();
-                this.Hide();
+                Hide();
                 MessageBox.Show("Первый запуск. Введите настройки.", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 SetForm.FormClosing += (obj, arg) =>
                 {
-                    this.Show();
+                    Show();
                 };
                 SetForm.ShowDialog();
             }
@@ -72,6 +72,16 @@ namespace Project
         {
             try
             {
+                if (!Validation.StringValidation(Validation.ValidationType.LoginType, TBLogin.Text))
+                {
+                    MessageBox.Show("Недопустимые символы в логине", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (!Validation.StringValidation(Validation.ValidationType.LoginType, TBPass.Text))
+                {
+                    MessageBox.Show("Недопустимые символы в пароле", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 if (TBLogin.Text != "" && TBPass.Text != "")
                 {
                     ConnectAddress = Program.IF.ReadINI("ConnSett", "Address");
@@ -100,16 +110,15 @@ namespace Project
                     MessageBox.Show("Введите логин и пароль");
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Не удалось подключится к базе данных. Проверьте настройки.\n", "Ошибка подключения", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Не удалось подключится к базе данных. Проверьте настройки.\n" + ex.Message, "Ошибка подключения", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SetForm = new SettingsForm();
-
             SetForm.FormClosing += (obj, arg) =>
             {
             };
@@ -118,17 +127,17 @@ namespace Project
 
         private void TBLogin_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if ((e.KeyChar <= 64 || e.KeyChar >= 91) && (e.KeyChar <= 96 || e.KeyChar >= 123)
-                && (e.KeyChar <= 47 || e.KeyChar >= 58) && e.KeyChar != 8 && e.KeyChar != 45 && e.KeyChar != 95)
-                e.Handled = true;
+            e.Handled = !Validation.CharValidation(Validation.ValidationType.LoginType, e.KeyChar, PasteMode: true);
         }
 
         private void TBPass_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if ((e.KeyChar <= 64 || e.KeyChar >= 91) && (e.KeyChar <= 96 || e.KeyChar >= 123)
-               && (e.KeyChar <= 47 || e.KeyChar >= 58) && e.KeyChar != 8 && e.KeyChar != 35 && e.KeyChar != 36
-               && e.KeyChar != 38 && e.KeyChar != 63 && e.KeyChar != 64 && e.KeyChar != 37)
-                e.Handled = true;
+            e.Handled = !Validation.CharValidation(Validation.ValidationType.PasswordType, e.KeyChar, PasteMode: true);
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            TBPass.UseSystemPasswordChar = !checkBox1.Checked;
         }
     }
 }
