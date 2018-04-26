@@ -99,6 +99,7 @@ namespace Project
                     dateNow = dateNow.AddSeconds(1);
                     MessageBox.Show("Ошибка интернет соединения", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                dateNowCountTime = 0;
             }
             else
             {
@@ -204,6 +205,11 @@ namespace Project
                 TBYear.Text = $"{Year}";
                 CBQuarter.SelectedIndex = 3;
             }
+        }
+
+        private void SendRepForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Environment.Exit(0);
         }
 
         private void Send_Click(object sender, EventArgs e)
@@ -318,9 +324,94 @@ namespace Project
             e.Handled = !Validation.CharValidation(Validation.ValidationType.DoubleType, e.KeyChar);
         }
 
-        private void SendRepForm_FormClosed(object sender, FormClosedEventArgs e)
+        private void TBparam1_Enter(object sender, EventArgs e)
         {
-            Environment.Exit(0);
+            if (TBparam1.Text == "0")
+            {
+                TBparam1.Text = "";
+            }
+        }
+
+        private void TBparam2_Enter(object sender, EventArgs e)
+        {
+            if (TBparam2.Text == "0")
+            {
+                TBparam2.Text = "";
+            }
+        }
+
+        private void TBparam3_Enter(object sender, EventArgs e)
+        {
+            if (TBparam3.Text == "0,0")
+            {
+                TBparam3.Text = "";
+            }
+        }
+
+        private void TBparam1_Leave(object sender, EventArgs e)
+        {
+            if(TBparam1.Text == "")
+            {
+                TBparam1.Text = "0";
+            }
+        }
+
+        private void TBparam2_Leave(object sender, EventArgs e)
+        {
+            if (TBparam2.Text == "")
+            {
+                TBparam2.Text = "0";
+            }
+        }
+
+        private void TBparam3_Leave(object sender, EventArgs e)
+        {
+            if (TBparam3.Text == "")
+            {
+                TBparam3.Text = "0,0";
+            }
+        }
+
+        private void TBparam1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Down)
+            {
+                e.Handled = true;
+                TBparam2.Focus();
+            }
+            if (e.KeyCode == Keys.Up)
+            {
+                e.Handled = true;
+                TBparam3.Focus();
+            }
+        }
+
+        private void TBparam2_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Down)
+            {
+                e.Handled = true;
+                TBparam3.Focus();
+            }
+            if (e.KeyCode == Keys.Up)
+            {
+                e.Handled = true;
+                TBparam1.Focus();
+            }
+        }
+
+        private void TBparam3_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Down)
+            {
+                e.Handled = true;
+                TBparam1.Focus();
+            }
+            if (e.KeyCode == Keys.Up)
+            {
+                e.Handled = true;
+                TBparam2.Focus();
+            }
         }
     }
 }
