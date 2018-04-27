@@ -44,7 +44,7 @@ namespace Project
             LportErr.Hide();
             if (TBip.Text.Length != 0 && TBdatabase.Text.Length != 0 && TBport.Text.Length != 0)
             {
-                Program.IF.WriteINI("ConnSett", "Adress", TBip.Text);
+                Program.IF.WriteINI("ConnSett", "Address", TBip.Text);
                 Program.IF.WriteINI("ConnSett", "DBname", TBdatabase.Text);
                 Program.IF.WriteINI("ConnSett", "Port", TBport.Text);
                 this.Close();
