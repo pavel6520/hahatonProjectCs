@@ -9,7 +9,7 @@ namespace Project
     static class Validation
     {
         static string IntString = "0123456789";
-        static string DoubleString = ",";
+        static string DoubleString = ",.";
         static string LoginString = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM-_";
         static string PasswordString = "#$&@?%";
         static string CompNameString = "йцукенгшщзхъфывапролджэячсмитьбюёЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮЁ~!\"'*()+=[]{}\\|/,.";
