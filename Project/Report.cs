@@ -12,7 +12,7 @@ using System.Net.Sockets;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
-namespace Project
+namespace hahatonProjectUser
 {
     public partial class SendRepForm : Form
     {
@@ -41,7 +41,7 @@ namespace Project
             }
             catch (FormatException)
             {
-                MessageBox.Show("Неверное значение параметра \"Численность сотрудников\"", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Неверное значение параметра\n\"Численность сотрудников\"", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 CBinst.SelectedIndex = SelectInst;
                 return false;
             }
@@ -51,32 +51,32 @@ namespace Project
             }
             catch (FormatException)
             {
-                MessageBox.Show("Неверное значение параметра \"Созданные рабочие места\"", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Неверное значение параметра\n\"Созданные рабочие места\"", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 CBinst.SelectedIndex = SelectInst;
                 return false;
             }
             try
             {
-                Convert.ToDouble(TBparam3.Text);
+                Convert.ToDouble(TBparam3.Text.Replace('.', ','));
             }
             catch (FormatException)
             {
-                MessageBox.Show("Неверное значение параметра \"Выручка\"", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Неверное значение параметра\n\"Выручка\"", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 CBinst.SelectedIndex = SelectInst;
                 return false;
             }
             ValParams.param1[SelectInst] = Convert.ToInt32(TBparam1.Text);
             ValParams.param2[SelectInst] = Convert.ToInt32(TBparam2.Text);
-            ValParams.param3[SelectInst] = Convert.ToDouble(TBparam3.Text);
+            ValParams.param3[SelectInst] = Convert.ToDouble(TBparam3.Text.Replace('.',','));
             SelectInst = CBinst.SelectedIndex;
             TBparam1.Text = ValParams.param1[CBinst.SelectedIndex].ToString();
-            TBparam2.Text = ValParams.param2[CBinst.SelectedIndex].ToString();
+            TBparam2.Text = ValParams.param2[CBinst.SelectedIndex].ToString().Replace(',', '.');
             if (ValParams.param3[CBinst.SelectedIndex] == 0.0)
             {
-                TBparam3.Text = "0,0";
+                TBparam3.Text = "0.0";
             }
             else {
-                TBparam3.Text = ValParams.param3[CBinst.SelectedIndex].ToString("G", CultureInfo.CreateSpecificCulture("eu-ES"));
+                TBparam3.Text = ValParams.param3[CBinst.SelectedIndex].ToString();
             }
             return true;
         }
@@ -142,9 +142,6 @@ namespace Project
             dateNow = GetNetworkTime();
             CBinst.SelectedIndex = 0;
             SelectInst = 0;
-            TBparam1.Text = "0";
-            TBparam2.Text = "0";
-            TBparam3.Text = "0,0";
             MySqlCommand com;
             MySqlDataReader readed;
             try
@@ -288,7 +285,7 @@ namespace Project
         {
             TBparam1.Text = "0";
             TBparam2.Text = "0";
-            TBparam3.Text = "0,0";
+            TBparam3.Text = "0.0";
             ValParams.param1[CBinst.SelectedIndex] = 0;
             ValParams.param2[CBinst.SelectedIndex] = 0;
             ValParams.param3[CBinst.SelectedIndex] = 0.0;
@@ -298,7 +295,7 @@ namespace Project
         {
             TBparam1.Text = "0";
             TBparam2.Text = "0";
-            TBparam3.Text = "0,0";
+            TBparam3.Text = "0.0";
             ValParams.param1 = new int[] { 0, 0, 0, 0, 0 };
             ValParams.param2 = new int[] { 0, 0, 0, 0, 0 };
             ValParams.param3 = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0 };
@@ -342,7 +339,7 @@ namespace Project
 
         private void TBparam3_Enter(object sender, EventArgs e)
         {
-            if (TBparam3.Text == "0,0")
+            if (TBparam3.Text == "0.0")
             {
                 TBparam3.Text = "";
             }
@@ -368,7 +365,7 @@ namespace Project
         {
             if (TBparam3.Text == "")
             {
-                TBparam3.Text = "0,0";
+                TBparam3.Text = "0.0";
             }
         }
 

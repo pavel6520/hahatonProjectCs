@@ -4,12 +4,12 @@ using System.Linq;
 using System.Windows.Forms;
 using System.Threading.Tasks;
 
-namespace Project
+namespace hahatonProjectUser
 {
     static class Validation
     {
         static string IntString = "0123456789";
-        static string DoubleString = ",";
+        static string DoubleString = ",.";
         static string LoginString = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM-_";
         static string PasswordString = "#$&@?%";
         static string CompNameString = "йцукенгшщзхъфывапролджэячсмитьбюёЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮЁ~!\"'*()+=[]{}\\|/,.";

@@ -1,4 +1,4 @@
-﻿namespace Project
+﻿namespace hahatonProjectUser
 {
     partial class SendRepForm
     {
@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SendRepForm));
             this.CBinst = new System.Windows.Forms.ComboBox();
             this.GroupBoxKPI = new System.Windows.Forms.GroupBox();
             this.Breset = new System.Windows.Forms.Button();
@@ -159,10 +160,12 @@
             // 
             // TBparam3
             // 
+            this.TBparam3.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.TBparam3.Location = new System.Drawing.Point(161, 74);
             this.TBparam3.Name = "TBparam3";
-            this.TBparam3.Size = new System.Drawing.Size(58, 20);
+            this.TBparam3.Size = new System.Drawing.Size(58, 22);
             this.TBparam3.TabIndex = 16;
+            this.TBparam3.Text = "0.0";
             this.TBparam3.Enter += new System.EventHandler(this.TBparam3_Enter);
             this.TBparam3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TBparam3_KeyDown);
             this.TBparam3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TBparam3_KeyPress);
@@ -175,6 +178,7 @@
             this.TBparam2.Size = new System.Drawing.Size(58, 20);
             this.TBparam2.TabIndex = 12;
             this.TBparam2.Tag = "1";
+            this.TBparam2.Text = "0";
             this.TBparam2.Enter += new System.EventHandler(this.TBparam2_Enter);
             this.TBparam2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TBparam2_KeyDown);
             this.TBparam2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TBparam2_KeyPress);
@@ -186,6 +190,7 @@
             this.TBparam1.Name = "TBparam1";
             this.TBparam1.Size = new System.Drawing.Size(58, 20);
             this.TBparam1.TabIndex = 1;
+            this.TBparam1.Text = "0";
             this.TBparam1.Enter += new System.EventHandler(this.TBparam1_Enter);
             this.TBparam1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TBparam1_KeyDown);
             this.TBparam1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TBparam1_KeyPress);
@@ -323,6 +328,7 @@
             this.Controls.Add(this.LabelCompName);
             this.Controls.Add(this.CBinst);
             this.Controls.Add(this.GroupBoxKPI);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "SendRepForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

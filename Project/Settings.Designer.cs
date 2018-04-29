@@ -1,4 +1,4 @@
-﻿namespace Project
+﻿namespace hahatonProjectUser
 {
     partial class SettingsForm
     {
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingsForm));
             this.TBip = new System.Windows.Forms.TextBox();
             this.TBdatabase = new System.Windows.Forms.TextBox();
             this.LabelIP = new System.Windows.Forms.Label();
@@ -149,6 +150,7 @@
             this.Controls.Add(this.TBdatabase);
             this.Controls.Add(this.TBip);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SettingsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Настройки";
