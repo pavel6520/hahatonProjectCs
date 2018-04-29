@@ -1,4 +1,4 @@
-﻿namespace Project
+﻿namespace hahatonProjectUser
 {
     partial class SendRepForm
     {
@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SendRepForm));
             this.CBinst = new System.Windows.Forms.ComboBox();
             this.GroupBoxKPI = new System.Windows.Forms.GroupBox();
             this.Breset = new System.Windows.Forms.Button();
@@ -327,6 +328,7 @@
             this.Controls.Add(this.LabelCompName);
             this.Controls.Add(this.CBinst);
             this.Controls.Add(this.GroupBoxKPI);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "SendRepForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

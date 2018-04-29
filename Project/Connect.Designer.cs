@@ -1,4 +1,4 @@
-﻿namespace Project
+﻿namespace hahatonProjectUser
 {
     partial class ConnectForm
     {
@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConnectForm));
             this.TBLogin = new System.Windows.Forms.TextBox();
             this.TBPass = new System.Windows.Forms.TextBox();
             this.ButtonConnect = new System.Windows.Forms.Button();
@@ -125,6 +126,7 @@
             this.Controls.Add(this.TBPass);
             this.Controls.Add(this.TBLogin);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(255, 255);

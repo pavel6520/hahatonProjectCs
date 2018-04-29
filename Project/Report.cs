@@ -12,7 +12,7 @@ using System.Net.Sockets;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
-namespace Project
+namespace hahatonProjectUser
 {
     public partial class SendRepForm : Form
     {

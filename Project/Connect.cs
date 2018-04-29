@@ -9,7 +9,7 @@ using System.IO;
 using System.Net;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
-namespace Project
+namespace hahatonProjectUser
 {
     public partial class ConnectForm : Form
     {
