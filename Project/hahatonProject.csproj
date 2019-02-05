@@ -82,6 +82,7 @@
       <DependentUpon>Connect.cs</DependentUpon>
     </Compile>
     <Compile Include="Connection .cs" />
+    <Compile Include="Functions.cs" />
     <Compile Include="Report.cs">
       <SubType>Form</SubType>
     </Compile>

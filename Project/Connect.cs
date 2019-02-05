@@ -7,42 +7,6 @@ using MySql.Data.MySqlClient;
 using Newtonsoft.Json;
 namespace hahatonProjectUser
 {
-    /*struct Report
-    {
-        string INN;
-        public int FM1, FM2, GF1, GF2, CKR1, CKR2, CPP1, CPP2, CE1, CE2;
-        public double FM3, GF3, CKR3, CPP3, CE3;
-
-        public Report(string inn, int fm1, int fm2, double fm3, int gf1, int gf2, double gf3, int ckr1, int ckr2,
-            double ckr3, int cpp1, int cpp2, double cpp3, int ce1, int ce2, double ce3)
-        {
-            INN = inn;
-
-            FM1 = fm1;
-            FM2 = fm2;
-            FM3 = fm3;
-
-            GF1 = gf1;
-            GF2 = gf2;
-            GF3 = gf3;
-
-            CKR1 = ckr1; 
-            CKR2 = ckr2; 
-            CKR3 = ckr3;
-
-            CPP1 = cpp1;
-            CPP2 = cpp2;
-            CPP2 = cpp2;
-            CPP3 = cpp3;
-
-            CE1 = ce1;
-            CE2 = ce2;
-            CE3 = ce3;
-        }
-    }*/
-
-    
-
     public partial class ConnectForm : Form
     {
         public MySqlConnection conn;
@@ -130,10 +94,6 @@ namespace hahatonProjectUser
             {
                 MessageBox.Show("Не удалось подключится к серверу.\n" + ex.Message, "Ошибка подключения", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
         }
 
         private void TBLogin_KeyPress(object sender, KeyPressEventArgs e)

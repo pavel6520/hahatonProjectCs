@@ -21,8 +21,6 @@ namespace hahatonProjectUser
 
             Structs.ConnectForm = new ConnectForm();
 
-            Structs.IF = new IniFile("Settings.ini");
-
             Application.Run(Structs.ConnectForm);
         }
     }
