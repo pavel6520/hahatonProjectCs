@@ -41,16 +41,7 @@ namespace hahatonProjectUser
         }
     }*/
 
-    struct Authentication
-    {
-        public string Login, Password;
-
-        public Authentication(string log, string pass)
-        {
-            Login = log;
-            Password = pass;
-        }
-    }
+    
 
     public partial class ConnectForm : Form
     {
@@ -113,8 +104,8 @@ namespace hahatonProjectUser
 
                 if (TBLogin.Text != "" && TBPassword.Text != "")
                 {
-                    if (!Connection.Request(Program.host, "0" + Program.SeparatorChar + JsonConvert.SerializeObject(
-                     new Authentication(TBLogin.Text, TBPassword.Text))))
+                    if (!Connection.Request(Structs.HOST, "0" + Structs.SEPARATOR_CHAR + JsonConvert.SerializeObject(
+                     new Structs.Authentication(TBLogin.Text, TBPassword.Text))))
                     {
                         MessageBox.Show("Отсутствует соединение с сервером.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;

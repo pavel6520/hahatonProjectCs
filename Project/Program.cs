@@ -8,10 +8,7 @@ namespace hahatonProjectUser
 {
     static class Program
     {
-        static public ConnectForm ConnectForm;
-        static public IniFile IF;
-        static public char SeparatorChar = '&';
-        static public string host = "http://localhost:8888/";
+        
 
         /// <summary>
         /// Главная точка входа для приложения.
@@ -22,11 +19,11 @@ namespace hahatonProjectUser
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            ConnectForm = new ConnectForm();
+            Structs.ConnectForm = new ConnectForm();
 
-            IF = new IniFile("Settings.ini");
+            Structs.IF = new IniFile("Settings.ini");
 
-            Application.Run(ConnectForm);
+            Application.Run(Structs.ConnectForm);
         }
     }
 

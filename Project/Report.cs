@@ -12,43 +12,17 @@ using System.Net.Sockets;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 
-public struct Report
-{
-    public int[] param1;
-    public int[] param2;
-    public double[] param3;
-}
 
-struct INN_Comp
-{
-    public struct Body_Element
-    {
-        public string INN, Comp_name;
-
-        public Body_Element(string inn, string name)
-        {
-            INN = inn;
-            Comp_name = name;
-        }
-    }
-
-    public List<Body_Element> body;
-
-    public INN_Comp(List<Body_Element> mas)
-    {
-        body = mas;
-    }
-}
 
 namespace hahatonProjectUser
 {
     public partial class SendReportForm : Form
     {
-        private List<INN_Comp.Body_Element> inn_comp;
+        private List<Structs.INN_Comp.Body_Element> inn_comp;
         private DateTime dateNow;
         private int dateNowCountTime = 60;
         private int SelectInst;        
-        private Report ValParams;
+        private Structs.Report ValParams;
         DateTime Quarter;
 
         private bool SaveParam()
@@ -174,8 +148,8 @@ namespace hahatonProjectUser
             CBinst.SelectedIndex = 0;
             SelectInst = 0;
 
-            Connection.Request(Program.host, "1" + Program.SeparatorChar + JsonConvert.SerializeObject(new Authentication(Program.ConnectForm.login, null)));
-            inn_comp = JsonConvert.DeserializeObject<INN_Comp>(Connection.Response()).body;
+            Connection.Request(Structs.HOST, "1" + Structs.SEPARATOR_CHAR + JsonConvert.SerializeObject(new Structs.Authentication(Structs.ConnectForm.login, null)));
+            inn_comp = JsonConvert.DeserializeObject<Structs.INN_Comp>(Connection.Response()).body;
 
             for (int i = 0; i < inn_comp.Count; i++)
             {
@@ -225,7 +199,7 @@ namespace hahatonProjectUser
         {
             try
             {
-                Connection.Request(Program.host, "2" + Program.SeparatorChar + JsonConvert.SerializeObject(new Authentication(Program.ConnectForm.login, null)));
+                Connection.Request(Structs.HOST, "2" + Structs.SEPARATOR_CHAR + JsonConvert.SerializeObject(new Structs.Authentication(Structs.ConnectForm.login, null)));
             }
             catch { }
 
@@ -277,7 +251,7 @@ namespace hahatonProjectUser
 
                 MessageBox.Show("Quarter == " + Quarter);
 
-                Connection.Request(Program.host, "3" + Program.SeparatorChar + JsonConvert.SerializeObject(ValParams));
+                Connection.Request(Structs.HOST, "3" + Structs.SEPARATOR_CHAR + JsonConvert.SerializeObject(ValParams));
 
                 if (Connection.Response() == "1")
                     MessageBox.Show("Успешно отправлено.", "Отправлено", MessageBoxButtons.OK, MessageBoxIcon.Information);

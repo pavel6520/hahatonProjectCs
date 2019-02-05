@@ -44,26 +44,26 @@ namespace hahatonProjectUser
             LportErr.Hide();
             if (TBip.Text.Length != 0 && TBdatabase.Text.Length != 0 && TBport.Text.Length != 0)
             {
-                Program.IF.WriteINI("ConnSett", "Address", TBip.Text);
-                Program.IF.WriteINI("ConnSett", "DBname", TBdatabase.Text);
-                Program.IF.WriteINI("ConnSett", "Port", TBport.Text);
+                Structs.IF.WriteINI("ConnSett", "Address", TBip.Text);
+                Structs.IF.WriteINI("ConnSett", "DBname", TBdatabase.Text);
+                Structs.IF.WriteINI("ConnSett", "Port", TBport.Text);
                 this.Close();
             }
         }
 
         private void SettingsForm_Load(object sender, EventArgs e)
         {
-            if(Program.IF.KeyExists("ConnSett", "Address"))
+            if(Structs.IF.KeyExists("ConnSett", "Address"))
             {
-                TBip.Text = Program.IF.ReadINI("ConnSett", "Address");
+                TBip.Text = Structs.IF.ReadINI("ConnSett", "Address");
             }
-            if (Program.IF.KeyExists("ConnSett", "DBname"))
+            if (Structs.IF.KeyExists("ConnSett", "DBname"))
             {
-                TBdatabase.Text = Program.IF.ReadINI("ConnSett", "DBname");
+                TBdatabase.Text = Structs.IF.ReadINI("ConnSett", "DBname");
             }
-            if (Program.IF.KeyExists("ConnSett", "Port"))
+            if (Structs.IF.KeyExists("ConnSett", "Port"))
             {
-                TBport.Text = Program.IF.ReadINI("ConnSett", "Port");
+                TBport.Text = Structs.IF.ReadINI("ConnSett", "Port");
             }
         }
     }
