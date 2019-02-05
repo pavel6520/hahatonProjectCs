@@ -10,6 +10,8 @@ namespace hahatonProjectUser
     {
         static public ConnectForm ConnectForm;
         static public IniFile IF;
+        static public char SeparatorChar = '&';
+        static public string host = "http://localhost:8888/";
 
         /// <summary>
         /// Главная точка входа для приложения.
@@ -19,29 +21,18 @@ namespace hahatonProjectUser
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
             ConnectForm = new ConnectForm();
+
             IF = new IniFile("Settings.ini");
+
             Application.Run(ConnectForm);
-        }
-
-        public static bool In_Int(char x)
-        {
-            if (!Char.IsDigit(x) && x != 8)
-                return true;
-            else return false;
-        }
-
-        public static bool In_Float(char x)
-        {
-            if (!Char.IsDigit(x) && x != 8 && x != 46)
-                return true;
-            else return false;
         }
     }
 
     class IniFile
     {
-        string Path; //Имя файла.
+        private string Path; //Имя файла.
 
         [DllImport("kernel32")] // Подключаем kernel32.dll и описываем его функцию WritePrivateProfilesString
         static extern long WritePrivateProfileString(string Section, string Key, string Value, string FilePath);

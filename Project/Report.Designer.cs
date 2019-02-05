@@ -1,6 +1,6 @@
 ﻿namespace hahatonProjectUser
 {
-    partial class SendRepForm
+    partial class SendReportForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SendRepForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SendReportForm));
             this.CBinst = new System.Windows.Forms.ComboBox();
             this.GroupBoxKPI = new System.Windows.Forms.GroupBox();
             this.Breset = new System.Windows.Forms.Button();
@@ -160,7 +160,7 @@
             // 
             // TBparam3
             // 
-            this.TBparam3.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TBparam3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.TBparam3.Location = new System.Drawing.Point(161, 74);
             this.TBparam3.Name = "TBparam3";
             this.TBparam3.Size = new System.Drawing.Size(58, 22);
@@ -309,7 +309,7 @@
             this.BresetAll.UseVisualStyleBackColor = true;
             this.BresetAll.Click += new System.EventHandler(this.BresetAll_Click);
             // 
-            // SendRepForm
+            // SendReportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -330,7 +330,7 @@
             this.Controls.Add(this.GroupBoxKPI);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "SendRepForm";
+            this.Name = "SendReportForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "  Отчет";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.SendRepForm_FormClosed);

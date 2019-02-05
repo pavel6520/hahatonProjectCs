@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConnectForm));
             this.TBLogin = new System.Windows.Forms.TextBox();
-            this.TBPass = new System.Windows.Forms.TextBox();
+            this.TBPassword = new System.Windows.Forms.TextBox();
             this.ButtonConnect = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -50,14 +50,14 @@
             this.TBLogin.TabIndex = 0;
             this.TBLogin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TBLogin_KeyPress);
             // 
-            // TBPass
+            // TBPassword
             // 
-            this.TBPass.Location = new System.Drawing.Point(75, 107);
-            this.TBPass.Name = "TBPass";
-            this.TBPass.Size = new System.Drawing.Size(128, 20);
-            this.TBPass.TabIndex = 1;
-            this.TBPass.UseSystemPasswordChar = true;
-            this.TBPass.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TBPass_KeyPress);
+            this.TBPassword.Location = new System.Drawing.Point(75, 107);
+            this.TBPassword.Name = "TBPassword";
+            this.TBPassword.Size = new System.Drawing.Size(128, 20);
+            this.TBPassword.TabIndex = 1;
+            this.TBPassword.UseSystemPasswordChar = true;
+            this.TBPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TBPass_KeyPress);
             // 
             // ButtonConnect
             // 
@@ -123,7 +123,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ButtonConnect);
-            this.Controls.Add(this.TBPass);
+            this.Controls.Add(this.TBPassword);
             this.Controls.Add(this.TBLogin);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -144,7 +144,7 @@
         #endregion
 
         private System.Windows.Forms.TextBox TBLogin;
-        private System.Windows.Forms.TextBox TBPass;
+        private System.Windows.Forms.TextBox TBPassword;
         private System.Windows.Forms.Button ButtonConnect;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;

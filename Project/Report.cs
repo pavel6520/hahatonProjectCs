@@ -10,23 +10,46 @@ using System.Threading;
 using System.Net;
 using System.Net.Sockets;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
+using Newtonsoft.Json;
+
+public struct Report
+{
+    public int[] param1;
+    public int[] param2;
+    public double[] param3;
+}
+
+struct INN_Comp
+{
+    public struct Body_Element
+    {
+        public string INN, Comp_name;
+
+        public Body_Element(string inn, string name)
+        {
+            INN = inn;
+            Comp_name = name;
+        }
+    }
+
+    public List<Body_Element> body;
+
+    public INN_Comp(List<Body_Element> mas)
+    {
+        body = mas;
+    }
+}
 
 namespace hahatonProjectUser
 {
-    public partial class SendRepForm : Form
+    public partial class SendReportForm : Form
     {
-        private string [][]inn_comp;
+        private List<INN_Comp.Body_Element> inn_comp;
         private DateTime dateNow;
         private int dateNowCountTime = 60;
-        private int SelectInst;
-        private struct Params
-        {
-            public int[] param1;
-            public int[] param2;
-            public double[] param3;
-        }
-        private Params ValParams;
+        private int SelectInst;        
+        private Report ValParams;
+        DateTime Quarter;
 
         private bool SaveParam()
         {
@@ -34,7 +57,7 @@ namespace hahatonProjectUser
             {
                 if(Convert.ToInt32(TBparam1.Text) < 0)
                 {
-                    MessageBox.Show("Неверное значение параметра \"Численность сотрудников\"\nНе может быть меньше нуля", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Неверное значение параметра\n\"Численность сотрудников\"\nНе может быть меньше нуля", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     CBinst.SelectedIndex = SelectInst;
                     return false;
                 }
@@ -45,6 +68,7 @@ namespace hahatonProjectUser
                 CBinst.SelectedIndex = SelectInst;
                 return false;
             }
+
             try
             {
                 Convert.ToInt32(TBparam2.Text);
@@ -55,6 +79,7 @@ namespace hahatonProjectUser
                 CBinst.SelectedIndex = SelectInst;
                 return false;
             }
+
             try
             {
                 Convert.ToDouble(TBparam3.Text.Replace('.', ','));
@@ -65,23 +90,29 @@ namespace hahatonProjectUser
                 CBinst.SelectedIndex = SelectInst;
                 return false;
             }
+
             ValParams.param1[SelectInst] = Convert.ToInt32(TBparam1.Text);
             ValParams.param2[SelectInst] = Convert.ToInt32(TBparam2.Text);
             ValParams.param3[SelectInst] = Convert.ToDouble(TBparam3.Text.Replace('.',','));
+
             SelectInst = CBinst.SelectedIndex;
+
             TBparam1.Text = ValParams.param1[CBinst.SelectedIndex].ToString();
             TBparam2.Text = ValParams.param2[CBinst.SelectedIndex].ToString().Replace(',', '.');
+
             if (ValParams.param3[CBinst.SelectedIndex] == 0.0)
             {
                 TBparam3.Text = "0.0";
             }
-            else {
+            else
+            {
                 TBparam3.Text = ValParams.param3[CBinst.SelectedIndex].ToString();
             }
+
             return true;
         }
         
-        public SendRepForm()
+        public SendReportForm()
         {
             InitializeComponent();
         }
@@ -97,7 +128,7 @@ namespace hahatonProjectUser
                 {
                     dateNowCountTime = 0;
                     dateNow = dateNow.AddSeconds(1);
-                    MessageBox.Show("Ошибка интернет соединения", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Ошибка интернет-соединения", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 dateNowCountTime = 0;
             }
@@ -142,29 +173,15 @@ namespace hahatonProjectUser
             dateNow = GetNetworkTime();
             CBinst.SelectedIndex = 0;
             SelectInst = 0;
-            MySqlCommand com;
-            MySqlDataReader readed;
-            try
+
+            Connection.Request(Program.host, "1" + Program.SeparatorChar + JsonConvert.SerializeObject(new Authentication(Program.ConnectForm.login, null)));
+            inn_comp = JsonConvert.DeserializeObject<INN_Comp>(Connection.Response()).body;
+
+            for (int i = 0; i < inn_comp.Count; i++)
             {
-                com = new MySqlCommand($"select INN, comp_name from project.login_inn where login = '{Program.ConnectForm.login}'", Program.ConnectForm.conn);
-                readed = com.ExecuteReader();
-                inn_comp = new string[1][];
-                while (readed.Read())
-                {
-                    Array.Resize(ref inn_comp, inn_comp.Length);
-                    inn_comp[inn_comp.Length - 1] = new string[2];
-                    inn_comp[inn_comp.Length - 1][0] = readed[0].ToString();
-                    inn_comp[inn_comp.Length - 1][1] = readed[1].ToString();
-                    CB_INN.Items.Insert(inn_comp.Length - 1, inn_comp[inn_comp.Length - 1][1]);
-                }
+                CB_INN.Items.Add(inn_comp[i].Comp_name);
             }
-            catch (MySqlException ex)
-            {
-                Program.ConnectForm.conn.Close();
-                MessageBox.Show("Ошибка получения данных.\n" + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Environment.Exit(0);
-            }
-            Program.ConnectForm.conn.Close();
+
             if (CB_INN.Items.Count == 0)
             {
                 MessageBox.Show("На ваш аккаунт не зарегистрировано ни одной компании.\nОбратитесь к администратору.\n", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -176,7 +193,7 @@ namespace hahatonProjectUser
             CB_INN.SelectedIndex = 0;
             CBQuarter.SelectedIndex = 0;
             int Year = DateTime.Now.Year;
-            DateTime Quarter = Convert.ToDateTime($"1001.{DateTime.Now.Month}.{DateTime.Now.Day}");
+            Quarter = Convert.ToDateTime($"1001.{DateTime.Now.Month}.{DateTime.Now.Day}");
             if (Quarter >= Convert.ToDateTime("1001.1.1") && Quarter < Convert.ToDateTime("1001.03.25"))
             {
                 TBYear.Text = $"{Year - 1}";
@@ -206,6 +223,12 @@ namespace hahatonProjectUser
 
         private void SendRepForm_FormClosed(object sender, FormClosedEventArgs e)
         {
+            try
+            {
+                Connection.Request(Program.host, "2" + Program.SeparatorChar + JsonConvert.SerializeObject(new Authentication(Program.ConnectForm.login, null)));
+            }
+            catch { }
+
             Environment.Exit(0);
         }
 
@@ -215,9 +238,12 @@ namespace hahatonProjectUser
             {
                 return;
             }
+
+            for (int i = 0; i < 5; i++)
+                MessageBox.Show(ValParams.param1[i] + " ; " + ValParams.param2[i] + " ; " + ValParams.param3[i] );
+
             try
             {
-                Program.ConnectForm.conn.Open();
                 try
                 {
                     if (Convert.ToInt32(TBYear.Text) < 1000)
@@ -231,6 +257,7 @@ namespace hahatonProjectUser
                     MessageBox.Show($"Неверный формат года", "Неверный формат", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+
                 string Quarter = "";
                 switch (CBQuarter.SelectedIndex)
                 {
@@ -247,7 +274,17 @@ namespace hahatonProjectUser
                         Quarter = $"{TBYear.Text}.12.25";
                         break;
                 }
-                dateNow = GetNetworkTime();
+
+                MessageBox.Show("Quarter == " + Quarter);
+
+                Connection.Request(Program.host, "3" + Program.SeparatorChar + JsonConvert.SerializeObject(ValParams));
+
+                if (Connection.Response() == "1")
+                    MessageBox.Show("Успешно отправлено.", "Отправлено", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                else
+                    MessageBox.Show("Ошибка отправки", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                /*dateNow = GetNetworkTime();
                 string query = $"insert into project.`{TBcompName.Text}` value('{Quarter}', '{dateNow.ToString("yyyy.MM.dd HH:mm:ss")}', '" +
                     $"{ValParams.param1[0]}', '{ValParams.param2[0]}', '" +
                     $"{ValParams.param3[0].ToString("G", CultureInfo.InvariantCulture)}', '" +
@@ -258,23 +295,17 @@ namespace hahatonProjectUser
                     $"{ValParams.param1[3]}', '{ValParams.param2[3]}', '" +
                     $"{ValParams.param3[3].ToString("G", CultureInfo.InvariantCulture)}', '" +
                     $"{ValParams.param1[4]}', '{ValParams.param2[4]}', '" +
-                    $"{ValParams.param3[4].ToString("G", CultureInfo.InvariantCulture)}')";
-                MySqlCommand command = new MySqlCommand(query, Program.ConnectForm.conn);
-                command.ExecuteNonQuery();
-                Program.ConnectForm.conn.Close();
+                    $"{ValParams.param3[4].ToString("G", CultureInfo.InvariantCulture)}')";*/
             }
             catch (Exception ex)
             {
-                Program.ConnectForm.conn.Close();
                 MessageBox.Show("Ошибка отправки\n" + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            Thread.Sleep(1000);
-            MessageBox.Show("Успешно отправлено.", "Отправлено", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }            
         }
 
         private void CB_INN_SelectedIndexChanged(object sender, EventArgs e)
         {
-            TBcompName.Text = inn_comp[CB_INN.SelectedIndex][0];
+            TBcompName.Text = inn_comp[CB_INN.SelectedIndex].INN;
         }
         
         private void CBQuarter_SelectedIndexChanged(object sender, EventArgs e)

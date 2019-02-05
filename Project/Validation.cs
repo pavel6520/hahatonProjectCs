@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows.Forms;
-using System.Threading.Tasks;
-
-namespace hahatonProjectUser
+﻿namespace hahatonProjectUser
 {
     static class Validation
     {
