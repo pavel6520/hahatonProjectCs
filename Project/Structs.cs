@@ -18,10 +18,9 @@ namespace hahatonProjectUser
         /// </summary>
         public enum Errors
         {
-            ConnectionFileNotExists,
-            ErrorCreatingConnection,
-            ErrorStartServer,
-            ErrorStopServer,
+            BadLogin,
+            BadPassword,
+            ErrorServerConnection,
         }
 
         public struct Authentication

@@ -52,47 +52,40 @@ namespace hahatonProjectUser
 
         private void ButtonConnect_Click(object sender, EventArgs e)
         {
-            try
+            if (!Validation.StringValidation(Validation.ValidationType.LoginType, TBLogin.Text))
             {
-                if (!Validation.StringValidation(Validation.ValidationType.LoginType, TBLogin.Text))
+                Functions.ShowError(Structs.Errors.BadLogin);
+                return;
+            }
+
+            if (!Validation.StringValidation(Validation.ValidationType.PasswordType, TBPassword.Text))
+            {
+                Functions.ShowError(Structs.Errors.BadPassword);
+                return;
+            }
+
+            if (TBLogin.Text != "" && TBPassword.Text != "")
+            {
+                if (!Connection.Request(Structs.HOST, "0" + Structs.SEPARATOR_CHAR + JsonConvert.SerializeObject(
+                    new Structs.Authentication(TBLogin.Text, TBPassword.Text))))
                 {
-                    MessageBox.Show("Недопустимые символы в логине", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Functions.ShowError(Structs.Errors.ErrorServerConnection);
                     return;
                 }
 
-                if (!Validation.StringValidation(Validation.ValidationType.PasswordType, TBPassword.Text))
+                if (Connection.Response() == "1")
                 {
-                    MessageBox.Show("Недопустимые символы в пароле", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
+                    login = TBLogin.Text;
+                    Hide();
 
-                if (TBLogin.Text != "" && TBPassword.Text != "")
-                {
-                    if (!Connection.Request(Structs.HOST, "0" + Structs.SEPARATOR_CHAR + JsonConvert.SerializeObject(
-                     new Structs.Authentication(TBLogin.Text, TBPassword.Text))))
-                    {
-                        MessageBox.Show("Отсутствует соединение с сервером.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-
-                    if (Connection.Response() == "1")
-                    {
-                        login = TBLogin.Text;
-                        Hide();
-
-                        new SendReportForm().Show();
-                    }
-                    else
-                        MessageBox.Show("Данные введены неверно");
+                    new SendReportForm().Show();
                 }
                 else
-                {
-                    MessageBox.Show("Введите логин и пароль");
-                }
+                    MessageBox.Show("Данные введены неверно");
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show("Не удалось подключится к серверу.\n" + ex.Message, "Ошибка подключения", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Введите логин и пароль");
             }
         }
 
