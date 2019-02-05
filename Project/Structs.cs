@@ -12,6 +12,8 @@ namespace hahatonProjectUser
         static public IniFile IF;
         static public readonly char SEPARATOR_CHAR = '&';
         static public readonly string HOST = "http://localhost:8888/";
+        public static string login;
+        public static string password;
 
         /// <summary>
         /// Представляет константы для типов ошибок
@@ -21,6 +23,8 @@ namespace hahatonProjectUser
             BadLogin,
             BadPassword,
             ErrorServerConnection,
+            BadLogOrPass,
+            NeedLogOrPass,
         }
 
         public struct Authentication

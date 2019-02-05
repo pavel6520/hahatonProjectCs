@@ -11,10 +11,7 @@ namespace hahatonProjectUser
     public partial class ConnectForm : Form
     {
         public MySqlConnection conn;
-        public string ConnectAddress;
-        public string ConnectPort;
-        public string NameDB;
-        public string login;        
+         
 
         public ConnectForm()
         {
@@ -29,7 +26,7 @@ namespace hahatonProjectUser
                 {
                     Functions.CheckInternetConnection();                    
                 }
-            });/*            
+            });*/        
         }
 
         private void ButtonConnect_Click(object sender, EventArgs e)
@@ -57,17 +54,18 @@ namespace hahatonProjectUser
 
                 if (Connection.Response() == "1")
                 {
-                    login = TBLogin.Text;
+                    Structs.login = TBLogin.Text;
+                    Structs.password = TBPassword.Text;
                     Hide();
 
                     new SendReportForm().Show();
                 }
                 else
-                    MessageBox.Show("Данные введены неверно");
+                    Functions.ShowError(Structs.Errors.BadLogOrPass);
             }
             else
             {
-                MessageBox.Show("Введите логин и пароль");
+                Functions.ShowError(Structs.Errors.NeedLogOrPass);
             }
         }
 
