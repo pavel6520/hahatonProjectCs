@@ -32,14 +32,14 @@ namespace hahatonProjectUser
                 if(Convert.ToInt32(TBparam1.Text) < 0)
                 {
                     MessageBox.Show("Неверное значение параметра\n\"Численность сотрудников\"\nНе может быть меньше нуля", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    CBinst.SelectedIndex = SelectInst;
+                    CB_inst.SelectedIndex = SelectInst;
                     return false;
                 }
             }
             catch (FormatException)
             {
                 MessageBox.Show("Неверное значение параметра\n\"Численность сотрудников\"", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                CBinst.SelectedIndex = SelectInst;
+                CB_inst.SelectedIndex = SelectInst;
                 return false;
             }
 
@@ -50,7 +50,7 @@ namespace hahatonProjectUser
             catch (FormatException)
             {
                 MessageBox.Show("Неверное значение параметра\n\"Созданные рабочие места\"", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                CBinst.SelectedIndex = SelectInst;
+                CB_inst.SelectedIndex = SelectInst;
                 return false;
             }
 
@@ -61,7 +61,7 @@ namespace hahatonProjectUser
             catch (FormatException)
             {
                 MessageBox.Show("Неверное значение параметра\n\"Выручка\"", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                CBinst.SelectedIndex = SelectInst;
+                CB_inst.SelectedIndex = SelectInst;
                 return false;
             }
 
@@ -69,18 +69,18 @@ namespace hahatonProjectUser
             ValParams.param2[SelectInst] = Convert.ToInt32(TBparam2.Text);
             ValParams.param3[SelectInst] = Convert.ToDouble(TBparam3.Text.Replace('.',','));
 
-            SelectInst = CBinst.SelectedIndex;
+            SelectInst = CB_inst.SelectedIndex;
 
-            TBparam1.Text = ValParams.param1[CBinst.SelectedIndex].ToString();
-            TBparam2.Text = ValParams.param2[CBinst.SelectedIndex].ToString().Replace(',', '.');
+            TBparam1.Text = ValParams.param1[CB_inst.SelectedIndex].ToString();
+            TBparam2.Text = ValParams.param2[CB_inst.SelectedIndex].ToString().Replace(',', '.');
 
-            if (ValParams.param3[CBinst.SelectedIndex] == 0.0)
+            if (ValParams.param3[CB_inst.SelectedIndex] == 0.0)
             {
                 TBparam3.Text = "0.0";
             }
             else
             {
-                TBparam3.Text = ValParams.param3[CBinst.SelectedIndex].ToString();
+                TBparam3.Text = ValParams.param3[CB_inst.SelectedIndex].ToString();
             }
 
             return true;
@@ -114,12 +114,10 @@ namespace hahatonProjectUser
             }
             dateNowCountTime++;
         }
-
-        
         
         private void CB1_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            if(SelectInst != CBinst.SelectedIndex)
+            if(SelectInst != CB_inst.SelectedIndex)
             {
                 SaveParam();
             }
@@ -128,7 +126,7 @@ namespace hahatonProjectUser
         private void SendRepForm_Load(object sender, EventArgs e)
         {
             dateNow = Functions.GetNetworkTime();
-            CBinst.SelectedIndex = 0;
+            CB_inst.SelectedIndex = 0;
             SelectInst = 0;
 
             Connection.Request(Structs.HOST, "1" + Structs.SEPARATOR_CHAR + JsonConvert.SerializeObject(new Structs.Authentication(Structs.login, Structs.password)));
@@ -141,16 +139,24 @@ namespace hahatonProjectUser
 
             if (CB_INN.Items.Count == 0)
             {
-                MessageBox.Show("На ваш аккаунт не зарегистрировано ни одной компании.\nОбратитесь к администратору.\n", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Connection.Request(Structs.HOST, "2" + Structs.SEPARATOR_CHAR + JsonConvert.SerializeObject(new Structs.Authentication(Structs.login, Structs.password)));
+                Functions.ShowError(Structs.Errors.СompaniesNotFound);
+
                 Environment.Exit(0);
             }
             ValParams.param1 = new int[] { 0, 0, 0, 0, 0 };
             ValParams.param2 = new int[] { 0, 0, 0, 0, 0 };
             ValParams.param3 = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0 };
+
             CB_INN.SelectedIndex = 0;
-            CBQuarter.SelectedIndex = 0;
+            CB_Quarter.SelectedIndex = 0;
             int Year = DateTime.Now.Year;
-            Quarter = Convert.ToDateTime($"1001.{DateTime.Now.Month}.{DateTime.Now.Day}");
+
+            TB_Year.Text = DateTime.Now.Year.ToString();
+            CB_Quarter.SelectedIndex = DateTime.Now.Month / 4;
+
+            /*Quarter = Convert.ToDateTime($"1001.{DateTime.Now.Month}.{DateTime.Now.Day}");
+
             if (Quarter >= Convert.ToDateTime("1001.1.1") && Quarter < Convert.ToDateTime("1001.03.25"))
             {
                 TBYear.Text = $"{Year - 1}";
@@ -175,16 +181,12 @@ namespace hahatonProjectUser
             {
                 TBYear.Text = $"{Year}";
                 CBQuarter.SelectedIndex = 3;
-            }
+            }*/
         }
 
         private void SendRepForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            try
-            {
-                Connection.Request(Structs.HOST, "2" + Structs.SEPARATOR_CHAR + JsonConvert.SerializeObject(new Structs.Authentication(Structs.login, Structs.password)));
-            }
-            catch { }
+            Connection.Request(Structs.HOST, "2" + Structs.SEPARATOR_CHAR + JsonConvert.SerializeObject(new Structs.Authentication(Structs.login, Structs.password)));
 
             Environment.Exit(0);
         }
@@ -203,7 +205,7 @@ namespace hahatonProjectUser
             {
                 try
                 {
-                    if (Convert.ToInt32(TBYear.Text) < 1000)
+                    if (Convert.ToInt32(TB_Year.Text) < 1000)
                     {
                         MessageBox.Show("Неверный формат года", "Неверный формат", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
@@ -216,19 +218,20 @@ namespace hahatonProjectUser
                 }
 
                 string Quarter = "";
-                switch (CBQuarter.SelectedIndex)
+
+                switch (CB_Quarter.SelectedIndex)
                 {
                     case 0:
-                        Quarter = $"{TBYear.Text}.03.25";
+                        Quarter = $"{TB_Year.Text}.03.25";
                         break;
                     case 1:
-                        Quarter = $"{TBYear.Text}.06.25";
+                        Quarter = $"{TB_Year.Text}.06.25";
                         break;
                     case 2:
-                        Quarter = $"{TBYear.Text}.09.25";
+                        Quarter = $"{TB_Year.Text}.09.25";
                         break;
                     case 3:
-                        Quarter = $"{TBYear.Text}.12.25";
+                        Quarter = $"{TB_Year.Text}.12.25";
                         break;
                 }
 
@@ -274,9 +277,9 @@ namespace hahatonProjectUser
             TBparam1.Text = "0";
             TBparam2.Text = "0";
             TBparam3.Text = "0.0";
-            ValParams.param1[CBinst.SelectedIndex] = 0;
-            ValParams.param2[CBinst.SelectedIndex] = 0;
-            ValParams.param3[CBinst.SelectedIndex] = 0.0;
+            ValParams.param1[CB_inst.SelectedIndex] = 0;
+            ValParams.param2[CB_inst.SelectedIndex] = 0;
+            ValParams.param3[CB_inst.SelectedIndex] = 0.0;
         }
 
         private void BresetAll_Click(object sender, EventArgs e)

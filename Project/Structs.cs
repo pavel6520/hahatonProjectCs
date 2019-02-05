@@ -25,6 +25,7 @@ namespace hahatonProjectUser
             ErrorServerConnection,
             BadLogOrPass,
             NeedLogOrPass,
+            СompaniesNotFound,
         }
 
         public struct Authentication

@@ -41,6 +41,10 @@ namespace hahatonProjectUser
                 case Structs.Errors.NeedLogOrPass:
                     MessageBox.Show("Введите логин и/или пароль.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     break;
+
+                case Structs.Errors.СompaniesNotFound:
+                    MessageBox.Show("На ваш аккаунт не зарегистрировано ни одной компании.\nОбратитесь к администратору.\n", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    break;
             }
 
             Console.WriteLine();

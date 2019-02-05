@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SendReportForm));
-            this.CBinst = new System.Windows.Forms.ComboBox();
+            this.CB_inst = new System.Windows.Forms.ComboBox();
             this.GroupBoxKPI = new System.Windows.Forms.GroupBox();
             this.Breset = new System.Windows.Forms.Button();
             this.LabelWorkplaces1 = new System.Windows.Forms.Label();
@@ -49,8 +49,8 @@
             this.label10 = new System.Windows.Forms.Label();
             this.CB_INN = new System.Windows.Forms.ComboBox();
             this.TBcompName = new System.Windows.Forms.TextBox();
-            this.TBYear = new System.Windows.Forms.TextBox();
-            this.CBQuarter = new System.Windows.Forms.ComboBox();
+            this.TB_Year = new System.Windows.Forms.TextBox();
+            this.CB_Quarter = new System.Windows.Forms.ComboBox();
             this.LabelQuarter = new System.Windows.Forms.Label();
             this.TimerUpdateDateTime = new System.Windows.Forms.Timer(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
@@ -60,19 +60,19 @@
             // 
             // CBinst
             // 
-            this.CBinst.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CBinst.FormattingEnabled = true;
-            this.CBinst.Items.AddRange(new object[] {
+            this.CB_inst.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CB_inst.FormattingEnabled = true;
+            this.CB_inst.Items.AddRange(new object[] {
             "Фонд Микрофинансирования",
             "Гарантийный фонд",
             "Центр кластерного развития",
             "Центр поддержки предпринимательства",
             "Центр экспорта"});
-            this.CBinst.Location = new System.Drawing.Point(140, 60);
-            this.CBinst.Name = "CBinst";
-            this.CBinst.Size = new System.Drawing.Size(238, 21);
-            this.CBinst.TabIndex = 2;
-            this.CBinst.SelectionChangeCommitted += new System.EventHandler(this.CB1_SelectionChangeCommitted);
+            this.CB_inst.Location = new System.Drawing.Point(140, 60);
+            this.CB_inst.Name = "CBinst";
+            this.CB_inst.Size = new System.Drawing.Size(238, 21);
+            this.CB_inst.TabIndex = 2;
+            this.CB_inst.SelectionChangeCommitted += new System.EventHandler(this.CB1_SelectionChangeCommitted);
             // 
             // GroupBoxKPI
             // 
@@ -260,29 +260,29 @@
             this.TBcompName.Size = new System.Drawing.Size(131, 20);
             this.TBcompName.TabIndex = 26;
             // 
-            // TBYear
+            // TB_Year
             // 
-            this.TBYear.Location = new System.Drawing.Point(44, 235);
-            this.TBYear.MaxLength = 4;
-            this.TBYear.Name = "TBYear";
-            this.TBYear.Size = new System.Drawing.Size(32, 20);
-            this.TBYear.TabIndex = 27;
-            this.TBYear.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TBYear_KeyPress);
+            this.TB_Year.Location = new System.Drawing.Point(44, 235);
+            this.TB_Year.MaxLength = 4;
+            this.TB_Year.Name = "TB_Year";
+            this.TB_Year.Size = new System.Drawing.Size(32, 20);
+            this.TB_Year.TabIndex = 27;
+            this.TB_Year.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TBYear_KeyPress);
             // 
-            // CBQuarter
+            // CB_Quarter
             // 
-            this.CBQuarter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CBQuarter.FormattingEnabled = true;
-            this.CBQuarter.Items.AddRange(new object[] {
+            this.CB_Quarter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CB_Quarter.FormattingEnabled = true;
+            this.CB_Quarter.Items.AddRange(new object[] {
             "1",
             "2",
             "3",
             "4"});
-            this.CBQuarter.Location = new System.Drawing.Point(140, 235);
-            this.CBQuarter.Name = "CBQuarter";
-            this.CBQuarter.Size = new System.Drawing.Size(121, 21);
-            this.CBQuarter.TabIndex = 28;
-            this.CBQuarter.SelectedIndexChanged += new System.EventHandler(this.CBQuarter_SelectedIndexChanged);
+            this.CB_Quarter.Location = new System.Drawing.Point(140, 235);
+            this.CB_Quarter.Name = "CB_Quarter";
+            this.CB_Quarter.Size = new System.Drawing.Size(53, 21);
+            this.CB_Quarter.TabIndex = 28;
+            this.CB_Quarter.SelectedIndexChanged += new System.EventHandler(this.CBQuarter_SelectedIndexChanged);
             // 
             // LabelQuarter
             // 
@@ -317,8 +317,8 @@
             this.ClientSize = new System.Drawing.Size(387, 297);
             this.Controls.Add(this.BresetAll);
             this.Controls.Add(this.LabelQuarter);
-            this.Controls.Add(this.CBQuarter);
-            this.Controls.Add(this.TBYear);
+            this.Controls.Add(this.CB_Quarter);
+            this.Controls.Add(this.TB_Year);
             this.Controls.Add(this.TBcompName);
             this.Controls.Add(this.CB_INN);
             this.Controls.Add(this.label10);
@@ -326,7 +326,7 @@
             this.Controls.Add(this.LabelInst);
             this.Controls.Add(this.LabelINN);
             this.Controls.Add(this.LabelCompName);
-            this.Controls.Add(this.CBinst);
+            this.Controls.Add(this.CB_inst);
             this.Controls.Add(this.GroupBoxKPI);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -343,7 +343,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.ComboBox CBinst;
+        private System.Windows.Forms.ComboBox CB_inst;
         private System.Windows.Forms.GroupBox GroupBoxKPI;
         private System.Windows.Forms.TextBox TBparam2;
         private System.Windows.Forms.Label LabelProceeds;
@@ -361,8 +361,8 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox CB_INN;
         private System.Windows.Forms.TextBox TBcompName;
-        private System.Windows.Forms.TextBox TBYear;
-        private System.Windows.Forms.ComboBox CBQuarter;
+        private System.Windows.Forms.TextBox TB_Year;
+        private System.Windows.Forms.ComboBox CB_Quarter;
         private System.Windows.Forms.Label LabelQuarter;
         private System.Windows.Forms.Timer TimerUpdateDateTime;
         private System.Windows.Forms.Button Breset;
