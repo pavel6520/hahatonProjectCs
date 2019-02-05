@@ -2,6 +2,7 @@
 using System.Data;
 using System.IO;
 using System.Net;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using Newtonsoft.Json;
@@ -22,32 +23,13 @@ namespace hahatonProjectUser
 
         private void ConnectForm_Load(object sender, EventArgs e)
         {
-            /*while (true)//Проверка интернета
+            /*Task.Factory.StartNew(() => 
             {
-                try
-                {        
-                    HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://www.google.ru/");
-                    request.UserAgent = "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1)";
-                    request.Timeout = 3000;
-
-                    HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-                    Stream ReceiveStream1 = response.GetResponseStream();
-                    StreamReader sr = new StreamReader(ReceiveStream1, true);
-                    string responseFromServer = sr.ReadToEnd();
-
-                    response.Close();
-                    break;
-                }
-                catch
+                while (true)
                 {
-                    DialogResult = MessageBox.Show("Проверьте Ваш фаервол или настройки сетевого подключения", "Ошибка", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
-                    if(DialogResult == DialogResult.Cancel)
-                    {
-                        Environment.Exit(0);
-                    }
-                    continue;
+                    Functions.CheckInternetConnection();                    
                 }
-            }*/
+            });/*            
         }
 
         private void ButtonConnect_Click(object sender, EventArgs e)
