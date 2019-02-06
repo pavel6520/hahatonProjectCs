@@ -294,9 +294,12 @@ namespace hahatonProjectUser
 
         private void SendRepForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Connection.Request(Structs.HOST, "2" + Structs.SEPARATOR_CHAR + JsonConvert.SerializeObject(new Structs.Authentication(Structs.login, Structs.password)));
+            Task.Factory.StartNew(() =>
+            {
+                Connection.Request(Structs.HOST, "2" + Structs.SEPARATOR_CHAR + JsonConvert.SerializeObject(new Structs.Authentication(Structs.login, Structs.password)));
 
-            Environment.Exit(0);
+                Environment.Exit(0);
+            });
         }
     }
 }
