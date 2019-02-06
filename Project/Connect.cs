@@ -10,26 +10,12 @@ namespace hahatonProjectUser
 {
     public partial class ConnectForm : Form
     {
-        public MySqlConnection conn;
-         
-
         public ConnectForm()
         {
             InitializeComponent();
         }
 
-        private void ConnectForm_Load(object sender, EventArgs e)
-        {
-            /*Task.Factory.StartNew(() => 
-            {
-                while (true)
-                {
-                    Functions.CheckInternetConnection();                    
-                }
-            });*/        
-        }
-
-        private void ButtonConnect_Click(object sender, EventArgs e)
+        private void BT_Connect_Click(object sender, EventArgs e)
         {
             if (!Validation.StringValidation(Validation.ValidationType.LoginType, TBLogin.Text))
             {
@@ -69,17 +55,17 @@ namespace hahatonProjectUser
             }
         }
 
-        private void TBLogin_KeyPress(object sender, KeyPressEventArgs e)
+        private void TB_Login_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !Validation.CharValidation(Validation.ValidationType.LoginType, e.KeyChar, PasteMode: true);
         }
 
-        private void TBPass_KeyPress(object sender, KeyPressEventArgs e)
+        private void TB_Pass_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !Validation.CharValidation(Validation.ValidationType.PasswordType, e.KeyChar, PasteMode: true);
         }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        private void CB_CheckedChanged(object sender, EventArgs e)
         {
             TBPassword.UseSystemPasswordChar = !checkBox1.Checked;
         }

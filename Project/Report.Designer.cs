@@ -38,9 +38,9 @@
             this.LabelNumber = new System.Windows.Forms.Label();
             this.LabelProceeds = new System.Windows.Forms.Label();
             this.LabelProceeds1 = new System.Windows.Forms.Label();
-            this.TBparam3 = new System.Windows.Forms.TextBox();
-            this.TBparam2 = new System.Windows.Forms.TextBox();
-            this.TBparam1 = new System.Windows.Forms.TextBox();
+            this.TB_param3 = new System.Windows.Forms.TextBox();
+            this.TB_param2 = new System.Windows.Forms.TextBox();
+            this.TB_param1 = new System.Windows.Forms.TextBox();
             this.LabelCompName = new System.Windows.Forms.Label();
             this.LabelINN = new System.Windows.Forms.Label();
             this.LabelInst = new System.Windows.Forms.Label();
@@ -80,9 +80,9 @@
             this.GroupBoxKPI.Controls.Add(this.LabelNumber);
             this.GroupBoxKPI.Controls.Add(this.LabelProceeds);
             this.GroupBoxKPI.Controls.Add(this.LabelProceeds1);
-            this.GroupBoxKPI.Controls.Add(this.TBparam3);
-            this.GroupBoxKPI.Controls.Add(this.TBparam2);
-            this.GroupBoxKPI.Controls.Add(this.TBparam1);
+            this.GroupBoxKPI.Controls.Add(this.TB_param3);
+            this.GroupBoxKPI.Controls.Add(this.TB_param2);
+            this.GroupBoxKPI.Controls.Add(this.TB_param1);
             this.GroupBoxKPI.Location = new System.Drawing.Point(10, 86);
             this.GroupBoxKPI.Name = "GroupBoxKPI";
             this.GroupBoxKPI.Size = new System.Drawing.Size(365, 103);
@@ -156,41 +156,41 @@
             // 
             // TBparam3
             // 
-            this.TBparam3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.TBparam3.Location = new System.Drawing.Point(161, 74);
-            this.TBparam3.Name = "TBparam3";
-            this.TBparam3.Size = new System.Drawing.Size(58, 22);
-            this.TBparam3.TabIndex = 16;
-            this.TBparam3.Text = "0.0";
-            this.TBparam3.Enter += new System.EventHandler(this.TBparam3_Enter);
-            this.TBparam3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TBparam3_KeyDown);
-            this.TBparam3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TBparam3_KeyPress);
-            this.TBparam3.Leave += new System.EventHandler(this.TBparam3_Leave);
+            this.TB_param3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TB_param3.Location = new System.Drawing.Point(161, 74);
+            this.TB_param3.Name = "TBparam3";
+            this.TB_param3.Size = new System.Drawing.Size(58, 22);
+            this.TB_param3.TabIndex = 16;
+            this.TB_param3.Text = "0.0";
+            this.TB_param3.Enter += new System.EventHandler(this.TB_param3_Enter);
+            this.TB_param3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TB_param3_KeyDown);
+            this.TB_param3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TB_param3_KeyPress);
+            this.TB_param3.Leave += new System.EventHandler(this.TB_param3_Leave);
             // 
             // TBparam2
             // 
-            this.TBparam2.Location = new System.Drawing.Point(161, 48);
-            this.TBparam2.Name = "TBparam2";
-            this.TBparam2.Size = new System.Drawing.Size(58, 20);
-            this.TBparam2.TabIndex = 12;
-            this.TBparam2.Tag = "1";
-            this.TBparam2.Text = "0";
-            this.TBparam2.Enter += new System.EventHandler(this.TBparam2_Enter);
-            this.TBparam2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TBparam2_KeyDown);
-            this.TBparam2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TBparam2_KeyPress);
-            this.TBparam2.Leave += new System.EventHandler(this.TBparam2_Leave);
+            this.TB_param2.Location = new System.Drawing.Point(161, 48);
+            this.TB_param2.Name = "TBparam2";
+            this.TB_param2.Size = new System.Drawing.Size(58, 20);
+            this.TB_param2.TabIndex = 12;
+            this.TB_param2.Tag = "1";
+            this.TB_param2.Text = "0";
+            this.TB_param2.Enter += new System.EventHandler(this.TB_param2_Enter);
+            this.TB_param2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TB_param2_KeyDown);
+            this.TB_param2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TB_param2_KeyPress);
+            this.TB_param2.Leave += new System.EventHandler(this.TB_param2_Leave);
             // 
             // TBparam1
             // 
-            this.TBparam1.Location = new System.Drawing.Point(161, 19);
-            this.TBparam1.Name = "TBparam1";
-            this.TBparam1.Size = new System.Drawing.Size(58, 20);
-            this.TBparam1.TabIndex = 1;
-            this.TBparam1.Text = "0";
-            this.TBparam1.Enter += new System.EventHandler(this.TBparam1_Enter);
-            this.TBparam1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TBparam1_KeyDown);
-            this.TBparam1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TBparam1_KeyPress);
-            this.TBparam1.Leave += new System.EventHandler(this.TBparam1_Leave);
+            this.TB_param1.Location = new System.Drawing.Point(161, 19);
+            this.TB_param1.Name = "TBparam1";
+            this.TB_param1.Size = new System.Drawing.Size(58, 20);
+            this.TB_param1.TabIndex = 1;
+            this.TB_param1.Text = "0";
+            this.TB_param1.Enter += new System.EventHandler(this.TB_param1_Enter);
+            this.TB_param1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TB_param1_KeyDown);
+            this.TB_param1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TB_param1_KeyPress);
+            this.TB_param1.Leave += new System.EventHandler(this.TB_param1_Leave);
             // 
             // LabelCompName
             // 
@@ -227,7 +227,7 @@
             this.Send.TabIndex = 19;
             this.Send.Text = "Отправить";
             this.Send.UseVisualStyleBackColor = true;
-            this.Send.Click += new System.EventHandler(this.Send_Click);
+            this.Send.Click += new System.EventHandler(this.BT_Send_Click);
             // 
             // label10
             // 
@@ -263,7 +263,7 @@
             this.TB_Year.Name = "TB_Year";
             this.TB_Year.Size = new System.Drawing.Size(32, 20);
             this.TB_Year.TabIndex = 27;
-            this.TB_Year.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TBYear_KeyPress);
+            this.TB_Year.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TB_Year_KeyPress);
             // 
             // CB_Quarter
             // 
@@ -278,7 +278,6 @@
             this.CB_Quarter.Name = "CB_Quarter";
             this.CB_Quarter.Size = new System.Drawing.Size(53, 21);
             this.CB_Quarter.TabIndex = 28;
-            this.CB_Quarter.SelectedIndexChanged += new System.EventHandler(this.CBQuarter_SelectedIndexChanged);
             // 
             // LabelQuarter
             // 
@@ -335,7 +334,7 @@
         #endregion
         private System.Windows.Forms.ComboBox CB_inst;
         private System.Windows.Forms.GroupBox GroupBoxKPI;
-        private System.Windows.Forms.TextBox TBparam2;
+        private System.Windows.Forms.TextBox TB_param2;
         private System.Windows.Forms.Label LabelProceeds;
         private System.Windows.Forms.Label LabelWorkplaces;
         private System.Windows.Forms.Label LabelNumber;
@@ -345,8 +344,8 @@
         private System.Windows.Forms.Label LabelProceeds1;
         private System.Windows.Forms.Label LabelWorkplaces1;
         private System.Windows.Forms.Label LabelNumber1;
-        private System.Windows.Forms.TextBox TBparam3;
-        private System.Windows.Forms.TextBox TBparam1;
+        private System.Windows.Forms.TextBox TB_param3;
+        private System.Windows.Forms.TextBox TB_param1;
         private System.Windows.Forms.Button Send;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox CB_compName;

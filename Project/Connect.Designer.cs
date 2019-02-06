@@ -45,7 +45,7 @@
             this.TBLogin.Name = "TBLogin";
             this.TBLogin.Size = new System.Drawing.Size(128, 20);
             this.TBLogin.TabIndex = 0;
-            this.TBLogin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TBLogin_KeyPress);
+            this.TBLogin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TB_Login_KeyPress);
             // 
             // TBPassword
             // 
@@ -54,7 +54,7 @@
             this.TBPassword.Size = new System.Drawing.Size(128, 20);
             this.TBPassword.TabIndex = 1;
             this.TBPassword.UseSystemPasswordChar = true;
-            this.TBPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TBPass_KeyPress);
+            this.TBPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TB_Pass_KeyPress);
             // 
             // ButtonConnect
             // 
@@ -64,7 +64,7 @@
             this.ButtonConnect.TabIndex = 2;
             this.ButtonConnect.Text = "Войти";
             this.ButtonConnect.UseVisualStyleBackColor = true;
-            this.ButtonConnect.Click += new System.EventHandler(this.ButtonConnect_Click);
+            this.ButtonConnect.Click += new System.EventHandler(this.BT_Connect_Click);
             // 
             // label1
             // 
@@ -93,7 +93,7 @@
             this.checkBox1.TabIndex = 6;
             this.toolTip1.SetToolTip(this.checkBox1, "Показать пароль");
             this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.CB_CheckedChanged);
             // 
             // ConnectForm
             // 
@@ -111,7 +111,6 @@
             this.Name = "ConnectForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Авторизация";
-            this.Load += new System.EventHandler(this.ConnectForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
