@@ -32,7 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConnectForm));
             this.TBLogin = new System.Windows.Forms.TextBox();
             this.TBPassword = new System.Windows.Forms.TextBox();
-            this.ButtonConnect = new System.Windows.Forms.Button();
+            this.BT_Connect = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
@@ -56,15 +56,15 @@
             this.TBPassword.UseSystemPasswordChar = true;
             this.TBPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TB_Pass_KeyPress);
             // 
-            // ButtonConnect
+            // BT_Connect
             // 
-            this.ButtonConnect.Location = new System.Drawing.Point(85, 132);
-            this.ButtonConnect.Name = "ButtonConnect";
-            this.ButtonConnect.Size = new System.Drawing.Size(75, 23);
-            this.ButtonConnect.TabIndex = 2;
-            this.ButtonConnect.Text = "Войти";
-            this.ButtonConnect.UseVisualStyleBackColor = true;
-            this.ButtonConnect.Click += new System.EventHandler(this.BT_Connect_Click);
+            this.BT_Connect.Location = new System.Drawing.Point(85, 132);
+            this.BT_Connect.Name = "BT_Connect";
+            this.BT_Connect.Size = new System.Drawing.Size(75, 23);
+            this.BT_Connect.TabIndex = 2;
+            this.BT_Connect.Text = "Войти";
+            this.BT_Connect.UseVisualStyleBackColor = true;
+            this.BT_Connect.Click += new System.EventHandler(this.BT_Connect_Click);
             // 
             // label1
             // 
@@ -102,7 +102,7 @@
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.ButtonConnect);
+            this.Controls.Add(this.BT_Connect);
             this.Controls.Add(this.TBPassword);
             this.Controls.Add(this.TBLogin);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -120,7 +120,7 @@
 
         private System.Windows.Forms.TextBox TBLogin;
         private System.Windows.Forms.TextBox TBPassword;
-        private System.Windows.Forms.Button ButtonConnect;
+        private System.Windows.Forms.Button BT_Connect;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckBox checkBox1;
