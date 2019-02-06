@@ -44,7 +44,7 @@
             this.LabelCompName = new System.Windows.Forms.Label();
             this.LabelINN = new System.Windows.Forms.Label();
             this.LabelInst = new System.Windows.Forms.Label();
-            this.Send = new System.Windows.Forms.Button();
+            this.BT_Send = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.CB_compName = new System.Windows.Forms.ComboBox();
             this.TB_INN = new System.Windows.Forms.TextBox();
@@ -154,11 +154,11 @@
             this.LabelProceeds1.TabIndex = 8;
             this.LabelProceeds1.Text = "млн.";
             // 
-            // TBparam3
+            // TB_param3
             // 
             this.TB_param3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.TB_param3.Location = new System.Drawing.Point(161, 74);
-            this.TB_param3.Name = "TBparam3";
+            this.TB_param3.Name = "TB_param3";
             this.TB_param3.Size = new System.Drawing.Size(58, 22);
             this.TB_param3.TabIndex = 16;
             this.TB_param3.Text = "0.0";
@@ -167,10 +167,10 @@
             this.TB_param3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TB_param3_KeyPress);
             this.TB_param3.Leave += new System.EventHandler(this.TB_param3_Leave);
             // 
-            // TBparam2
+            // TB_param2
             // 
             this.TB_param2.Location = new System.Drawing.Point(161, 48);
-            this.TB_param2.Name = "TBparam2";
+            this.TB_param2.Name = "TB_param2";
             this.TB_param2.Size = new System.Drawing.Size(58, 20);
             this.TB_param2.TabIndex = 12;
             this.TB_param2.Tag = "1";
@@ -180,10 +180,10 @@
             this.TB_param2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TB_param2_KeyPress);
             this.TB_param2.Leave += new System.EventHandler(this.TB_param2_Leave);
             // 
-            // TBparam1
+            // TB_param1
             // 
             this.TB_param1.Location = new System.Drawing.Point(161, 19);
-            this.TB_param1.Name = "TBparam1";
+            this.TB_param1.Name = "TB_param1";
             this.TB_param1.Size = new System.Drawing.Size(58, 20);
             this.TB_param1.TabIndex = 1;
             this.TB_param1.Text = "0";
@@ -219,15 +219,15 @@
             this.LabelInst.TabIndex = 6;
             this.LabelInst.Text = "Институт поддержки:";
             // 
-            // Send
+            // BT_Send
             // 
-            this.Send.Location = new System.Drawing.Point(154, 262);
-            this.Send.Name = "Send";
-            this.Send.Size = new System.Drawing.Size(79, 23);
-            this.Send.TabIndex = 19;
-            this.Send.Text = "Отправить";
-            this.Send.UseVisualStyleBackColor = true;
-            this.Send.Click += new System.EventHandler(this.BT_Send_Click);
+            this.BT_Send.Location = new System.Drawing.Point(154, 262);
+            this.BT_Send.Name = "BT_Send";
+            this.BT_Send.Size = new System.Drawing.Size(79, 23);
+            this.BT_Send.TabIndex = 19;
+            this.BT_Send.Text = "Отправить";
+            this.BT_Send.UseVisualStyleBackColor = true;
+            this.BT_Send.Click += new System.EventHandler(this.BT_Send_Click);
             // 
             // label10
             // 
@@ -311,7 +311,7 @@
             this.Controls.Add(this.TB_INN);
             this.Controls.Add(this.CB_compName);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.Send);
+            this.Controls.Add(this.BT_Send);
             this.Controls.Add(this.LabelInst);
             this.Controls.Add(this.LabelINN);
             this.Controls.Add(this.LabelCompName);
@@ -346,7 +346,7 @@
         private System.Windows.Forms.Label LabelNumber1;
         private System.Windows.Forms.TextBox TB_param3;
         private System.Windows.Forms.TextBox TB_param1;
-        private System.Windows.Forms.Button Send;
+        private System.Windows.Forms.Button BT_Send;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox CB_compName;
         private System.Windows.Forms.TextBox TB_INN;

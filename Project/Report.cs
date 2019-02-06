@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 
@@ -142,12 +143,18 @@ namespace hahatonProjectUser
             valParams.quarter = Convert.ToInt32(CB_Quarter.SelectedItem);
             valParams.year = Convert.ToInt32(TB_Year.Text);
 
-            Connection.Request(Structs.HOST, "3" + Structs.SEPARATOR_CHAR + JsonConvert.SerializeObject(valParams));
+            BT_Send.Enabled = false;
+            Task.Factory.StartNew(() => 
+            {
+                Connection.Request(Structs.HOST, "3" + Structs.SEPARATOR_CHAR + JsonConvert.SerializeObject(valParams));
 
-            if (Connection.Response() == "1")
-                Functions.ShowError(Structs.Messages.SuccessfulSend);
-            else
-                Functions.ShowError(Structs.Messages.ErrorSend);
+                if (Connection.Response() == "1")
+                    Functions.ShowError(Structs.Messages.SuccessfulSend);
+                else
+                    Functions.ShowError(Structs.Messages.ErrorSend);
+
+                BT_Send.Enabled = true;
+            });
         }
 
         private void CB_INN_SelectedIndexChanged(object sender, EventArgs e)
