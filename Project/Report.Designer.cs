@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SendReportForm));
             this.CB_inst = new System.Windows.Forms.ComboBox();
             this.GroupBoxKPI = new System.Windows.Forms.GroupBox();
@@ -52,8 +51,6 @@
             this.TB_Year = new System.Windows.Forms.TextBox();
             this.CB_Quarter = new System.Windows.Forms.ComboBox();
             this.LabelQuarter = new System.Windows.Forms.Label();
-            this.TimerUpdateDateTime = new System.Windows.Forms.Timer(this.components);
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.BresetAll = new System.Windows.Forms.Button();
             this.GroupBoxKPI.SuspendLayout();
             this.SuspendLayout();
@@ -100,7 +97,6 @@
             this.Breset.Size = new System.Drawing.Size(75, 23);
             this.Breset.TabIndex = 17;
             this.Breset.Text = "Сбросить";
-            this.toolTip1.SetToolTip(this.Breset, "Сбросить параметры выбранного фонда");
             this.Breset.UseVisualStyleBackColor = true;
             this.Breset.Click += new System.EventHandler(this.BT_reset_Click);
             // 
@@ -293,12 +289,6 @@
             this.LabelQuarter.TabIndex = 29;
             this.LabelQuarter.Text = "Квартал:";
             // 
-            // TimerUpdateDateTime
-            // 
-            this.TimerUpdateDateTime.Enabled = true;
-            this.TimerUpdateDateTime.Interval = 1000;
-            this.TimerUpdateDateTime.Tick += new System.EventHandler(this.TimerUpdateDateTime_Tick);
-            // 
             // BresetAll
             // 
             this.BresetAll.Location = new System.Drawing.Point(281, 195);
@@ -364,9 +354,7 @@
         private System.Windows.Forms.TextBox TB_Year;
         private System.Windows.Forms.ComboBox CB_Quarter;
         private System.Windows.Forms.Label LabelQuarter;
-        private System.Windows.Forms.Timer TimerUpdateDateTime;
         private System.Windows.Forms.Button Breset;
-        private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Button BresetAll;
     }
 }

@@ -90,30 +90,6 @@ namespace hahatonProjectUser
         {
             InitializeComponent();
         }
-
-        private void TimerUpdateDateTime_Tick(object sender, EventArgs e)
-        {
-            /*if(dateNowCountTime >= 60)
-            {
-                try
-                {
-                    dateNow = Functions.GetNetworkTime();
-                }
-                catch (SocketException)
-                {
-                    dateNowCountTime = 0;
-                    dateNow = dateNow.AddSeconds(1);
-
-                    MessageBox.Show("Ошибка интернет-соединения", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                dateNowCountTime = 0;
-            }
-            else
-            {
-                dateNow = dateNow.AddSeconds(1);
-            }
-            dateNowCountTime++;*/
-        }
         
         private void CB1_SelectionChangeCommitted(object sender, EventArgs e)
         {
