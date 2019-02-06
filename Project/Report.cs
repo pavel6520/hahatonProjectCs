@@ -22,7 +22,7 @@ namespace hahatonProjectUser
         private DateTime dateNow;
         private int dateNowCountTime = 60;
         private int SelectInst;        
-        private Structs.Report ValParams;
+        private Structs.Report valParams;
         DateTime Quarter;
 
         private bool SaveParam()
@@ -65,22 +65,22 @@ namespace hahatonProjectUser
                 return false;
             }
 
-            ValParams.param1[SelectInst] = Convert.ToInt32(TBparam1.Text);
-            ValParams.param2[SelectInst] = Convert.ToInt32(TBparam2.Text);
-            ValParams.param3[SelectInst] = Convert.ToDouble(TBparam3.Text.Replace('.',','));
+            valParams.param1[SelectInst] = Convert.ToInt32(TBparam1.Text);
+            valParams.param2[SelectInst] = Convert.ToInt32(TBparam2.Text);
+            valParams.param3[SelectInst] = Convert.ToDouble(TBparam3.Text.Replace('.',','));
 
             SelectInst = CB_inst.SelectedIndex;
 
-            TBparam1.Text = ValParams.param1[CB_inst.SelectedIndex].ToString();
-            TBparam2.Text = ValParams.param2[CB_inst.SelectedIndex].ToString().Replace(',', '.');
+            TBparam1.Text = valParams.param1[CB_inst.SelectedIndex].ToString();
+            TBparam2.Text = valParams.param2[CB_inst.SelectedIndex].ToString().Replace(',', '.');
 
-            if (ValParams.param3[CB_inst.SelectedIndex] == 0.0)
+            if (valParams.param3[CB_inst.SelectedIndex] == 0.0)
             {
                 TBparam3.Text = "0.0";
             }
             else
             {
-                TBparam3.Text = ValParams.param3[CB_inst.SelectedIndex].ToString();
+                TBparam3.Text = valParams.param3[CB_inst.SelectedIndex].ToString();
             }
 
             return true;
@@ -93,7 +93,7 @@ namespace hahatonProjectUser
 
         private void TimerUpdateDateTime_Tick(object sender, EventArgs e)
         {
-            if(dateNowCountTime >= 60)
+            /*if(dateNowCountTime >= 60)
             {
                 try
                 {
@@ -112,7 +112,7 @@ namespace hahatonProjectUser
             {
                 dateNow = dateNow.AddSeconds(1);
             }
-            dateNowCountTime++;
+            dateNowCountTime++;*/
         }
         
         private void CB1_SelectionChangeCommitted(object sender, EventArgs e)
@@ -125,7 +125,8 @@ namespace hahatonProjectUser
 
         private void SendRepForm_Load(object sender, EventArgs e)
         {
-            dateNow = Functions.GetNetworkTime();
+            //dateNow = Functions.GetNetworkTime();
+
             CB_inst.SelectedIndex = 0;
             SelectInst = 0;
 
@@ -134,21 +135,21 @@ namespace hahatonProjectUser
 
             for (int i = 0; i < inn_comp.Count; i++)
             {
-                CB_INN.Items.Add(inn_comp[i].Comp_name);
+                CB_compName.Items.Add(inn_comp[i].Comp_name);
             }
 
-            if (CB_INN.Items.Count == 0)
+            if (CB_compName.Items.Count == 0)
             {
                 Connection.Request(Structs.HOST, "2" + Structs.SEPARATOR_CHAR + JsonConvert.SerializeObject(new Structs.Authentication(Structs.login, Structs.password)));
                 Functions.ShowError(Structs.Errors.СompaniesNotFound);
 
                 Environment.Exit(0);
             }
-            ValParams.param1 = new int[] { 0, 0, 0, 0, 0 };
-            ValParams.param2 = new int[] { 0, 0, 0, 0, 0 };
-            ValParams.param3 = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0 };
+            valParams.param1 = new int[] { 0, 0, 0, 0, 0 };
+            valParams.param2 = new int[] { 0, 0, 0, 0, 0 };
+            valParams.param3 = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0 };
 
-            CB_INN.SelectedIndex = 0;
+            CB_compName.SelectedIndex = 0;
             CB_Quarter.SelectedIndex = 0;
             int Year = DateTime.Now.Year;
 
@@ -198,9 +199,6 @@ namespace hahatonProjectUser
                 return;
             }
 
-            for (int i = 0; i < 5; i++)
-                MessageBox.Show(ValParams.param1[i] + " ; " + ValParams.param2[i] + " ; " + ValParams.param3[i] );
-
             try
             {
                 try
@@ -235,9 +233,13 @@ namespace hahatonProjectUser
                         break;
                 }
 
-                MessageBox.Show("Quarter == " + Quarter);
+                valParams.inn = TB_INN.Text;
+                valParams.quarter = Convert.ToInt32(CB_Quarter.SelectedItem);
+                valParams.year = Convert.ToInt32(TB_Year.Text);
 
-                Connection.Request(Structs.HOST, "3" + Structs.SEPARATOR_CHAR + JsonConvert.SerializeObject(ValParams));
+                MessageBox.Show(valParams.inn + " " + valParams.quarter + " " + valParams.year);
+
+                Connection.Request(Structs.HOST, "3" + Structs.SEPARATOR_CHAR + JsonConvert.SerializeObject(valParams));
 
                 if (Connection.Response() == "1")
                     MessageBox.Show("Успешно отправлено.", "Отправлено", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -265,7 +267,7 @@ namespace hahatonProjectUser
 
         private void CB_INN_SelectedIndexChanged(object sender, EventArgs e)
         {
-            TBcompName.Text = inn_comp[CB_INN.SelectedIndex].INN;
+            TB_INN.Text = inn_comp[CB_compName.SelectedIndex].INN;
         }
         
         private void CBQuarter_SelectedIndexChanged(object sender, EventArgs e)
@@ -277,9 +279,9 @@ namespace hahatonProjectUser
             TBparam1.Text = "0";
             TBparam2.Text = "0";
             TBparam3.Text = "0.0";
-            ValParams.param1[CB_inst.SelectedIndex] = 0;
-            ValParams.param2[CB_inst.SelectedIndex] = 0;
-            ValParams.param3[CB_inst.SelectedIndex] = 0.0;
+            valParams.param1[CB_inst.SelectedIndex] = 0;
+            valParams.param2[CB_inst.SelectedIndex] = 0;
+            valParams.param3[CB_inst.SelectedIndex] = 0.0;
         }
 
         private void BresetAll_Click(object sender, EventArgs e)
@@ -287,9 +289,9 @@ namespace hahatonProjectUser
             TBparam1.Text = "0";
             TBparam2.Text = "0";
             TBparam3.Text = "0.0";
-            ValParams.param1 = new int[] { 0, 0, 0, 0, 0 };
-            ValParams.param2 = new int[] { 0, 0, 0, 0, 0 };
-            ValParams.param3 = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0 };
+            valParams.param1 = new int[] { 0, 0, 0, 0, 0 };
+            valParams.param2 = new int[] { 0, 0, 0, 0, 0 };
+            valParams.param3 = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0 };
         }
 
         private void TBYear_KeyPress(object sender, KeyPressEventArgs e)

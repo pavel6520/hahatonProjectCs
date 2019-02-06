@@ -47,8 +47,8 @@
             this.LabelInst = new System.Windows.Forms.Label();
             this.Send = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
-            this.CB_INN = new System.Windows.Forms.ComboBox();
-            this.TBcompName = new System.Windows.Forms.TextBox();
+            this.CB_compName = new System.Windows.Forms.ComboBox();
+            this.TB_INN = new System.Windows.Forms.TextBox();
             this.TB_Year = new System.Windows.Forms.TextBox();
             this.CB_Quarter = new System.Windows.Forms.ComboBox();
             this.LabelQuarter = new System.Windows.Forms.Label();
@@ -58,7 +58,7 @@
             this.GroupBoxKPI.SuspendLayout();
             this.SuspendLayout();
             // 
-            // CBinst
+            // CB_inst
             // 
             this.CB_inst.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CB_inst.FormattingEnabled = true;
@@ -69,7 +69,7 @@
             "Центр поддержки предпринимательства",
             "Центр экспорта"});
             this.CB_inst.Location = new System.Drawing.Point(140, 60);
-            this.CB_inst.Name = "CBinst";
+            this.CB_inst.Name = "CB_inst";
             this.CB_inst.Size = new System.Drawing.Size(238, 21);
             this.CB_inst.TabIndex = 2;
             this.CB_inst.SelectionChangeCommitted += new System.EventHandler(this.CB1_SelectionChangeCommitted);
@@ -242,23 +242,23 @@
             this.label10.TabIndex = 21;
             this.label10.Text = "Год:";
             // 
-            // CB_INN
+            // CB_compName
             // 
-            this.CB_INN.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CB_INN.FormattingEnabled = true;
-            this.CB_INN.Location = new System.Drawing.Point(140, 7);
-            this.CB_INN.Name = "CB_INN";
-            this.CB_INN.Size = new System.Drawing.Size(238, 21);
-            this.CB_INN.TabIndex = 23;
-            this.CB_INN.SelectedIndexChanged += new System.EventHandler(this.CB_INN_SelectedIndexChanged);
+            this.CB_compName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CB_compName.FormattingEnabled = true;
+            this.CB_compName.Location = new System.Drawing.Point(140, 7);
+            this.CB_compName.Name = "CB_compName";
+            this.CB_compName.Size = new System.Drawing.Size(238, 21);
+            this.CB_compName.TabIndex = 23;
+            this.CB_compName.SelectedIndexChanged += new System.EventHandler(this.CB_INN_SelectedIndexChanged);
             // 
-            // TBcompName
+            // TB_INN
             // 
-            this.TBcompName.Location = new System.Drawing.Point(140, 34);
-            this.TBcompName.Name = "TBcompName";
-            this.TBcompName.ReadOnly = true;
-            this.TBcompName.Size = new System.Drawing.Size(131, 20);
-            this.TBcompName.TabIndex = 26;
+            this.TB_INN.Location = new System.Drawing.Point(140, 34);
+            this.TB_INN.Name = "TB_INN";
+            this.TB_INN.ReadOnly = true;
+            this.TB_INN.Size = new System.Drawing.Size(131, 20);
+            this.TB_INN.TabIndex = 26;
             // 
             // TB_Year
             // 
@@ -319,8 +319,8 @@
             this.Controls.Add(this.LabelQuarter);
             this.Controls.Add(this.CB_Quarter);
             this.Controls.Add(this.TB_Year);
-            this.Controls.Add(this.TBcompName);
-            this.Controls.Add(this.CB_INN);
+            this.Controls.Add(this.TB_INN);
+            this.Controls.Add(this.CB_compName);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.Send);
             this.Controls.Add(this.LabelInst);
@@ -359,8 +359,8 @@
         private System.Windows.Forms.TextBox TBparam1;
         private System.Windows.Forms.Button Send;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.ComboBox CB_INN;
-        private System.Windows.Forms.TextBox TBcompName;
+        private System.Windows.Forms.ComboBox CB_compName;
+        private System.Windows.Forms.TextBox TB_INN;
         private System.Windows.Forms.TextBox TB_Year;
         private System.Windows.Forms.ComboBox CB_Quarter;
         private System.Windows.Forms.Label LabelQuarter;
