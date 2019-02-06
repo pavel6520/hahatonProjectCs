@@ -141,7 +141,7 @@ namespace hahatonProjectUser
             if (CB_compName.Items.Count == 0)
             {
                 Connection.Request(Structs.HOST, "2" + Structs.SEPARATOR_CHAR + JsonConvert.SerializeObject(new Structs.Authentication(Structs.login, Structs.password)));
-                Functions.ShowError(Structs.Errors.СompaniesNotFound);
+                Functions.ShowError(Structs.Messages.СompaniesNotFound);
 
                 Environment.Exit(0);
             }
@@ -155,34 +155,6 @@ namespace hahatonProjectUser
 
             TB_Year.Text = DateTime.Now.Year.ToString();
             CB_Quarter.SelectedIndex = DateTime.Now.Month / 4;
-
-            /*Quarter = Convert.ToDateTime($"1001.{DateTime.Now.Month}.{DateTime.Now.Day}");
-
-            if (Quarter >= Convert.ToDateTime("1001.1.1") && Quarter < Convert.ToDateTime("1001.03.25"))
-            {
-                TBYear.Text = $"{Year - 1}";
-                CBQuarter.SelectedIndex = 3;
-            }
-            else if (Quarter >= Convert.ToDateTime("1001.03.25") && Quarter < Convert.ToDateTime("1001.06.25"))
-            {
-                TBYear.Text = $"{Year}";
-                CBQuarter.SelectedIndex = 0;
-            }
-            else if (Quarter >= Convert.ToDateTime("1001.06.25") && Quarter < Convert.ToDateTime("1001.09.25"))
-            {
-                TBYear.Text = $"{Year}";
-                CBQuarter.SelectedIndex = 1;
-            }
-            else if (Quarter >= Convert.ToDateTime("1001.09.25") && Quarter < Convert.ToDateTime("1001.12.25"))
-            {
-                TBYear.Text = $"{Year}";
-                CBQuarter.SelectedIndex = 2;
-            }
-            else
-            {
-                TBYear.Text = $"{Year}";
-                CBQuarter.SelectedIndex = 3;
-            }*/
         }
 
         private void SendRepForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -201,68 +173,28 @@ namespace hahatonProjectUser
 
             try
             {
-                try
+                if (Convert.ToInt32(TB_Year.Text) < 1900 || Convert.ToInt32(TB_Year.Text) > 2999)
                 {
-                    if (Convert.ToInt32(TB_Year.Text) < 1000)
-                    {
-                        MessageBox.Show("Неверный формат года", "Неверный формат", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-                }
-                catch (FormatException)
-                {
-                    MessageBox.Show($"Неверный формат года", "Неверный формат", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Functions.ShowError(Structs.Messages.BadYearFormat);
                     return;
                 }
-
-                string Quarter = "";
-
-                switch (CB_Quarter.SelectedIndex)
-                {
-                    case 0:
-                        Quarter = $"{TB_Year.Text}.03.25";
-                        break;
-                    case 1:
-                        Quarter = $"{TB_Year.Text}.06.25";
-                        break;
-                    case 2:
-                        Quarter = $"{TB_Year.Text}.09.25";
-                        break;
-                    case 3:
-                        Quarter = $"{TB_Year.Text}.12.25";
-                        break;
-                }
-
-                valParams.inn = TB_INN.Text;
-                valParams.quarter = Convert.ToInt32(CB_Quarter.SelectedItem);
-                valParams.year = Convert.ToInt32(TB_Year.Text);
-
-                MessageBox.Show(valParams.inn + " " + valParams.quarter + " " + valParams.year);
-
-                Connection.Request(Structs.HOST, "3" + Structs.SEPARATOR_CHAR + JsonConvert.SerializeObject(valParams));
-
-                if (Connection.Response() == "1")
-                    MessageBox.Show("Успешно отправлено.", "Отправлено", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                else
-                    MessageBox.Show("Ошибка отправки", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                /*dateNow = GetNetworkTime();
-                string query = $"insert into project.`{TBcompName.Text}` value('{Quarter}', '{dateNow.ToString("yyyy.MM.dd HH:mm:ss")}', '" +
-                    $"{ValParams.param1[0]}', '{ValParams.param2[0]}', '" +
-                    $"{ValParams.param3[0].ToString("G", CultureInfo.InvariantCulture)}', '" +
-                    $"{ValParams.param1[1]}', '{ValParams.param2[1]}', '" +
-                    $"{ValParams.param3[1].ToString("G", CultureInfo.InvariantCulture)}', '" +
-                    $"{ValParams.param1[2]}', '{ValParams.param2[2]}', '" +
-                    $"{ValParams.param3[2].ToString("G", CultureInfo.InvariantCulture)}', '" +
-                    $"{ValParams.param1[3]}', '{ValParams.param2[3]}', '" +
-                    $"{ValParams.param3[3].ToString("G", CultureInfo.InvariantCulture)}', '" +
-                    $"{ValParams.param1[4]}', '{ValParams.param2[4]}', '" +
-                    $"{ValParams.param3[4].ToString("G", CultureInfo.InvariantCulture)}')";*/
             }
-            catch (Exception ex)
+            catch (FormatException)
             {
-                MessageBox.Show("Ошибка отправки\n" + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }            
+                Functions.ShowError(Structs.Messages.BadYearFormat);
+                return;
+            }
+
+            valParams.inn = TB_INN.Text;
+            valParams.quarter = Convert.ToInt32(CB_Quarter.SelectedItem);
+            valParams.year = Convert.ToInt32(TB_Year.Text);
+
+            Connection.Request(Structs.HOST, "3" + Structs.SEPARATOR_CHAR + JsonConvert.SerializeObject(valParams));
+
+            if (Connection.Response() == "1")
+                Functions.ShowError(Structs.Messages.SuccessfulSend);
+            else
+                Functions.ShowError(Structs.Messages.ErrorSend);
         }
 
         private void CB_INN_SelectedIndexChanged(object sender, EventArgs e)
@@ -274,7 +206,7 @@ namespace hahatonProjectUser
         {
         }
 
-        private void Breset_Click(object sender, EventArgs e)
+        private void BT_reset_Click(object sender, EventArgs e)
         {
             TBparam1.Text = "0";
             TBparam2.Text = "0";
@@ -284,7 +216,7 @@ namespace hahatonProjectUser
             valParams.param3[CB_inst.SelectedIndex] = 0.0;
         }
 
-        private void BresetAll_Click(object sender, EventArgs e)
+        private void BT_resetAll_Click(object sender, EventArgs e)
         {
             TBparam1.Text = "0";
             TBparam2.Text = "0";

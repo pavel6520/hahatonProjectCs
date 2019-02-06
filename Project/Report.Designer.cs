@@ -102,7 +102,7 @@
             this.Breset.Text = "Сбросить";
             this.toolTip1.SetToolTip(this.Breset, "Сбросить параметры выбранного фонда");
             this.Breset.UseVisualStyleBackColor = true;
-            this.Breset.Click += new System.EventHandler(this.Breset_Click);
+            this.Breset.Click += new System.EventHandler(this.BT_reset_Click);
             // 
             // LabelWorkplaces1
             // 
@@ -307,7 +307,7 @@
             this.BresetAll.TabIndex = 30;
             this.BresetAll.Text = "Сбросить все";
             this.BresetAll.UseVisualStyleBackColor = true;
-            this.BresetAll.Click += new System.EventHandler(this.BresetAll_Click);
+            this.BresetAll.Click += new System.EventHandler(this.BT_resetAll_Click);
             // 
             // SendReportForm
             // 

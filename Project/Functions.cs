@@ -15,35 +15,47 @@ namespace hahatonProjectUser
         /// <summary>
         /// Выводит сообщение об ошибке
         /// </summary>
-        public static void ShowError(Structs.Errors error)
+        public static void ShowError(Structs.Messages error)
         {
             Console.WriteLine();
             Console.WriteLine();
 
             switch (error)
             {
-                case Structs.Errors.BadLogin:
+                case Structs.Messages.BadLogin:
                     MessageBox.Show("Недопустимые символы в логине", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;
 
-                case Structs.Errors.BadPassword:
+                case Structs.Messages.BadPassword:
                     MessageBox.Show("Недопустимые символы в пароле", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;
 
-                case Structs.Errors.ErrorServerConnection:
+                case Structs.Messages.ErrorServerConnection:
                     MessageBox.Show("Отсутствует соединение с сервером.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;
 
-                case Structs.Errors.BadLogOrPass:
+                case Structs.Messages.BadLogOrPass:
                     MessageBox.Show("Логин и/или пароль введены неверно.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;
 
-                case Structs.Errors.NeedLogOrPass:
+                case Structs.Messages.NeedLogOrPass:
                     MessageBox.Show("Введите логин и/или пароль.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     break;
 
-                case Structs.Errors.СompaniesNotFound:
+                case Structs.Messages.СompaniesNotFound:
                     MessageBox.Show("На ваш аккаунт не зарегистрировано ни одной компании.\nОбратитесь к администратору.\n", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    break;
+
+                case Structs.Messages.BadYearFormat:
+                    MessageBox.Show("Неверный формат года", "Неверный формат", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    break;
+
+                case Structs.Messages.ErrorSend:
+                    MessageBox.Show("Ошибка отправки данных на сервер", "Отправка данных", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    break;
+
+                case Structs.Messages.SuccessfulSend:
+                    MessageBox.Show("Данные успешно отправлены на сервер.", "Отправка данных", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     break;
             }
 

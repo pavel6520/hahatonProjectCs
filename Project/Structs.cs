@@ -18,7 +18,7 @@ namespace hahatonProjectUser
         /// <summary>
         /// Представляет константы для типов ошибок
         /// </summary>
-        public enum Errors
+        public enum Messages
         {
             BadLogin,
             BadPassword,
@@ -26,6 +26,9 @@ namespace hahatonProjectUser
             BadLogOrPass,
             NeedLogOrPass,
             СompaniesNotFound,
+            BadYearFormat,
+            ErrorSend,
+            SuccessfulSend,
         }
 
         public struct Authentication

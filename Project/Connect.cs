@@ -33,13 +33,13 @@ namespace hahatonProjectUser
         {
             if (!Validation.StringValidation(Validation.ValidationType.LoginType, TBLogin.Text))
             {
-                Functions.ShowError(Structs.Errors.BadLogin);
+                Functions.ShowError(Structs.Messages.BadLogin);
                 return;
             }
 
             if (!Validation.StringValidation(Validation.ValidationType.PasswordType, TBPassword.Text))
             {
-                Functions.ShowError(Structs.Errors.BadPassword);
+                Functions.ShowError(Structs.Messages.BadPassword);
                 return;
             }
 
@@ -48,7 +48,7 @@ namespace hahatonProjectUser
                 if (!Connection.Request(Structs.HOST, "0" + Structs.SEPARATOR_CHAR + JsonConvert.SerializeObject(
                     new Structs.Authentication(TBLogin.Text, TBPassword.Text))))
                 {
-                    Functions.ShowError(Structs.Errors.ErrorServerConnection);
+                    Functions.ShowError(Structs.Messages.ErrorServerConnection);
                     return;
                 }
 
@@ -61,11 +61,11 @@ namespace hahatonProjectUser
                     new SendReportForm().Show();
                 }
                 else
-                    Functions.ShowError(Structs.Errors.BadLogOrPass);
+                    Functions.ShowError(Structs.Messages.BadLogOrPass);
             }
             else
             {
-                Functions.ShowError(Structs.Errors.NeedLogOrPass);
+                Functions.ShowError(Structs.Messages.NeedLogOrPass);
             }
         }
 
